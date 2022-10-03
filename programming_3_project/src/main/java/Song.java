@@ -66,17 +66,17 @@ public class Song {
     @Override
     public String toString() {
         // get a list of all the author names
-        String authorNames = "";
+        StringBuilder authorNames = new StringBuilder();
         for (Author author : this.author) {
-            authorNames += author.getName() + ", ";
+            authorNames.append(author.getName()).append(" | ");
         }
         return "\nSONG" +
                 "\n------------------" +
-                "\nTITLE : " + title +
-                "\nINDEX : " + index +
-                "\nLENGTH : " + length +
-                "\nAUTHOR : " + authorNames+
-                "\nALBUM : " + album.getName()+"" +
+                "\n [ TITLE : " + title +
+                " | INDEX : " + index +
+                " | LENGTH : " + length +
+                " | AUTHOR : " + authorNames+
+                "ALBUM : " + album.getName()+" ]" +
                 "\n------------------";
     }
 }

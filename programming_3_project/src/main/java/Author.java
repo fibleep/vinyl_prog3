@@ -74,23 +74,23 @@ public class Author {
     @Override
     public String toString() {
         // get a list of all the album names
-        String albumNames = "";
+        StringBuilder albumNames = new StringBuilder();
         for (Album album : this.album) {
-            albumNames += album.getName() + ", ";
+            albumNames.append(album.getName()).append(" | ");
         }
         // get a list of all the song names
-        String songNames = "";
+        StringBuilder songNames = new StringBuilder();
         for (Song song : this.song) {
-            songNames += song.getTitle() + ", ";
+            songNames.append(song.getTitle()).append(" | ");
         }
 
         return "\nAUTHOR" +
                 "\n------------------" +
-                "\nNAME : " + name +
-                "\nAGE : " + age +
-                "\nGENDER : " + gender +
-                "\nALBUMS : " + albumNames+
-                "\nSONGS : " + songNames+"" +
+                "\n [ NAME : " + name +
+                " | AGE : " + age +
+                " | GENDER : " + gender +
+                " | ALBUMS : " + albumNames+
+                "SONGS : " + songNames+"" +
                 "\n------------------";
     }
 }

@@ -1,14 +1,15 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Album {
     String name;
     List<Song> songs;
-    LocalDate year;
+    LocalDateTime year;
     Genre genre;
     Author artist;
 
-    public Album(String name, LocalDate year, Genre genre, Author artist, List<Song> songs) {
+    public Album(String name, LocalDateTime year, Genre genre, Author artist, List<Song> songs) {
         this.name = name;
         this.year = year;
         this.genre = genre;
@@ -23,11 +24,11 @@ public class Album {
         this.name = name;
     }
 
-    public LocalDate getYear() {
+    public LocalDateTime getYear() {
         return year;
     }
 
-    public void setYear(LocalDate year) {
+    public void setYear(LocalDateTime year) {
         this.year = year;
     }
 
@@ -65,13 +66,18 @@ public class Album {
 
     @Override
     public String toString() {
+        // get all song names
+        StringBuilder songNames = new StringBuilder();
+        for (Song song : this.songs) {
+            songNames.append(song.getTitle()).append(" | ");
+        }
         return "\nALBUM" +
                 "\n------------------" +
-                "\nNAME : " + name +
-                "\nSONGS : " + songs +
-                "\nYEAR : " + year +
-                "\nAUTHORS : " + artist.getName() +
-                "\nGENRE : " + genre +
+                "\n [ NAME : " + name +
+                " | SONGS : " + songNames +
+                "YEAR : " + year +
+                " | AUTHORS : " + artist.getName() +
+                " | GENRE : " + genre +
                 "\n------------------";
     }
 }

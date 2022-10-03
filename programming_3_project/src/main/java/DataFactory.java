@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class DataFactory {
         Author dariaZ=new Author("Daria Zawiałow",30,"female",null,null);
         Author quebo=new Author("Quebonafide",31,"male",null,null);
         // create albums
-        Album wojnyNoce = new Album("Wojny i noce", LocalDate.parse("2021-01-01"),Genre.ALT,dariaZ,null);
-        Album pocztowka = new Album("POCZTÓWKA Z WWA, LATO '19", LocalDate.parse("2019-01-01"),Genre.RAP,tacoH,null);
-        Album wosk = new Album("Wosk", LocalDate.parse("2020-01-01"),Genre.RAP,tacoH,null);
-        Album malomiasteczkowy = new Album("Małomiasteczkowy", LocalDate.parse("2018-01-01"),Genre.POP,dawidP,null);
-        Album romanticpsycho = new Album("ROMANTICPSYCHO", LocalDate.parse("2020-01-01"),Genre.RAP,quebo,null);
+        Album wojnyNoce = new Album("Wojny i noce", LocalDateTime.parse("2021-01-01T00:00:00"),Genre.ALT,dariaZ,null);
+        Album pocztowka = new Album("POCZTÓWKA Z WWA, LATO '19", LocalDateTime.parse("2019-01-01T00:00:00"),Genre.RAP,tacoH,null);
+        Album wosk = new Album("Wosk", LocalDateTime.parse("2020-01-01T00:00:00"),Genre.RAP,tacoH,null);
+        Album malomiasteczkowy = new Album("Małomiasteczkowy", LocalDateTime.parse("2018-01-01T00:00:00"),Genre.POP,dawidP,null);
+        Album romanticpsycho = new Album("ROMANTICPSYCHO", LocalDateTime.parse("2020-01-01T00:00:00"),Genre.RAP,quebo,null);
         // create songs
         Song zaKrotkiSen = new Song("Za krótki sen",4,4.01,List.of(dariaZ,dawidP),wojnyNoce);
         Song flowerNight = new Song("Flower Night",12,4.27,List.of(dariaZ),wojnyNoce);

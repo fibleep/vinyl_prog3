@@ -8,6 +8,7 @@ public class GUI {
         System.out.println("3. Shows songs of author");
         System.out.println("4. Show all albums");
         System.out.println("5. Show all albums of author from a specific year");
+        System.out.println("6. Show all authors");
         System.out.println("------------------");
         System.out.println("Choose an option: ");
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +33,10 @@ public class GUI {
             case 5 -> {
                 System.out.println("Showing all albums of author from a specific year...");
                 return Action.SHOW_ALBUMS_OF_AUTHOR_FROM_YEAR;
+            }
+            case 6 -> {
+                System.out.println("Showing all authors...");
+                return Action.SHOW_AUTHORS;
             }
             default -> {
                 System.out.println("Invalid option");
