@@ -1,3 +1,8 @@
+package presentation;
+
+import domain.Action;
+
+import java.awt.*;
 import java.util.Scanner;
 
 public class GUI {

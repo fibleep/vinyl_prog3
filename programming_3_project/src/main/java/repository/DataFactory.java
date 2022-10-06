@@ -1,4 +1,10 @@
-import java.time.LocalDate;
+package repository;
+
+import domain.Album;
+import domain.Author;
+import domain.Genre;
+import domain.Song;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +25,7 @@ public class DataFactory {
         Author dariaZ=new Author("Daria Zawiałow",30,"female",null,null);
         Author quebo=new Author("Quebonafide",31,"male",null,null);
         // create albums
-        Album wojnyNoce = new Album("Wojny i noce", LocalDateTime.parse("2021-01-01T00:00:00"),Genre.ALT,dariaZ,null);
+        Album wojnyNoce = new Album("Wojny i noce", LocalDateTime.parse("2021-01-01T00:00:00"), Genre.ALT,dariaZ,null);
         Album pocztowka = new Album("POCZTÓWKA Z WWA, LATO '19", LocalDateTime.parse("2019-01-01T00:00:00"),Genre.RAP,tacoH,null);
         Album wosk = new Album("Wosk", LocalDateTime.parse("2020-01-01T00:00:00"),Genre.RAP,tacoH,null);
         Album malomiasteczkowy = new Album("Małomiasteczkowy", LocalDateTime.parse("2018-01-01T00:00:00"),Genre.POP,dawidP,null);
@@ -51,42 +57,42 @@ public class DataFactory {
         Song bubbletea = new Song("BUBBLETEA",15,4.44,List.of(quebo,dariaZ),romanticpsycho);
 
         // add songs to albums
-        wojnyNoce.songs=List.of(zaKrotkiSen,flowerNight,serce,hollow);
-        pocztowka.songs=List.of(wanna,future,sanatorium,wwa);
-        wosk.songs=List.of(woskSong,bxl,szczerze,wiatr);
-        malomiasteczkowy.songs=List.of(malomiasteczkowySong,najnowszyKlip,trofea,nieMaFal);
-        romanticpsycho.songs=List.of(romanticpsychoSong,jesien,tokyo2020,bubbletea);
+        wojnyNoce.setSongs(List.of(zaKrotkiSen, flowerNight, serce, hollow));
+        pocztowka.setSongs(List.of(wanna, future, sanatorium, wwa));
+        wosk.setSongs(List.of(woskSong, bxl, szczerze, wiatr));
+        malomiasteczkowy.setSongs(List.of(malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal));
+        romanticpsycho.setSongs(List.of(romanticpsychoSong, jesien, tokyo2020, bubbletea));
         // add albums to authors
-        tacoH.album=List.of(pocztowka,wosk);
-        dawidP.album=List.of(malomiasteczkowy);
-        dariaZ.album=List.of(wojnyNoce);
-        quebo.album=List.of(romanticpsycho);
+        tacoH.setAlbum(List.of(pocztowka, wosk));
+        dawidP.setAlbum(List.of(malomiasteczkowy));
+        dariaZ.setAlbum(List.of(wojnyNoce));
+        quebo.setAlbum(List.of(romanticpsycho));
         // add authors to songs
-        zaKrotkiSen.author=List.of(dariaZ,dawidP);
-        flowerNight.author=List.of(dariaZ);
-        serce.author=List.of(dariaZ);
-        hollow.author=List.of(dariaZ);
-        wanna.author=List.of(tacoH,dawidP);
-        future.author=List.of(tacoH);
-        sanatorium.author=List.of(tacoH,dawidP);
-        wwa.author=List.of(tacoH);
-        woskSong.author=List.of(tacoH);
-        bxl.author=List.of(tacoH);
-        szczerze.author=List.of(tacoH);
-        wiatr.author=List.of(tacoH);
-        malomiasteczkowySong.author=List.of(dawidP);
-        najnowszyKlip.author=List.of(dawidP);
-        trofea.author=List.of(dawidP);
-        nieMaFal.author=List.of(dawidP);
-        romanticpsychoSong.author=List.of(quebo,tacoH);
-        jesien.author=List.of(quebo);
-        tokyo2020.author=List.of(quebo,tacoH);
-        bubbletea.author=List.of(quebo,dariaZ);
+        zaKrotkiSen.setAuthor(List.of(dariaZ, dawidP));
+        flowerNight.setAuthor(List.of(dariaZ));
+        serce.setAuthor(List.of(dariaZ));
+        hollow.setAuthor(List.of(dariaZ));
+        wanna.setAuthor(List.of(tacoH, dawidP));
+        future.setAuthor(List.of(tacoH));
+        sanatorium.setAuthor(List.of(tacoH, dawidP));
+        wwa.setAuthor(List.of(tacoH));
+        woskSong.setAuthor(List.of(tacoH));
+        bxl.setAuthor(List.of(tacoH));
+        szczerze.setAuthor(List.of(tacoH));
+        wiatr.setAuthor(List.of(tacoH));
+        malomiasteczkowySong.setAuthor(List.of(dawidP));
+        najnowszyKlip.setAuthor(List.of(dawidP));
+        trofea.setAuthor(List.of(dawidP));
+        nieMaFal.setAuthor(List.of(dawidP));
+        romanticpsychoSong.setAuthor(List.of(quebo, tacoH));
+        jesien.setAuthor(List.of(quebo));
+        tokyo2020.setAuthor(List.of(quebo, tacoH));
+        bubbletea.setAuthor(List.of(quebo, dariaZ));
         // add songs to authors
-        dariaZ.song=List.of(zaKrotkiSen,flowerNight,serce,hollow);
-        tacoH.song=List.of(wanna,future,sanatorium,wwa,woskSong,bxl,szczerze,wiatr);
-        dawidP.song=List.of(malomiasteczkowySong,najnowszyKlip,trofea,nieMaFal);
-        quebo.song=List.of(romanticpsychoSong,jesien,tokyo2020,bubbletea);
+        dariaZ.setSong(List.of(zaKrotkiSen, flowerNight, serce, hollow));
+        tacoH.setSong(List.of(wanna, future, sanatorium, wwa, woskSong, bxl, szczerze, wiatr));
+        dawidP.setSong(List.of(malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal));
+        quebo.setSong(List.of(romanticpsychoSong, jesien, tokyo2020, bubbletea));
 
 
 

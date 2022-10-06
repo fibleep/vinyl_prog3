@@ -1,4 +1,5 @@
-import java.time.LocalDate;
+package domain;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

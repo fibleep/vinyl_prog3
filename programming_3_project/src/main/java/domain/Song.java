@@ -1,12 +1,13 @@
-import java.sql.Timestamp;
+package domain;
+
 import java.util.List;
 
 public class Song {
-    String title;
-    int index;
-    double length;
-    List<Author> author;
-    Album album;
+    private String title;
+    private int index;
+    private double length;
+    private List<Author> author;
+    private Album album;
 
     public Song(String title, int index, double length, List<Author> author, Album album) {
         this.title = title;
