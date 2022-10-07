@@ -6,8 +6,8 @@ public class Song {
     private String title;
     private int index;
     private double length;
-    private List<Author> author;
-    private Album album;
+    private transient List<Author> author;
+    private transient Album album;
 
     public Song(String title, int index, double length, List<Author> author, Album album) {
         this.title = title;

@@ -8,7 +8,7 @@ public class Album {
     List<Song> songs;
     LocalDateTime year;
     Genre genre;
-    Author artist;
+    transient Author artist;
 
     public Album(String name, LocalDateTime year, Genre genre, Author artist, List<Song> songs) {
         this.name = name;

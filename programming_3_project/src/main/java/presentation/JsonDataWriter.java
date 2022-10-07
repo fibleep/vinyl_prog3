@@ -15,17 +15,18 @@ public class JsonDataWriter {
     private static final String SONGS_JSON = "songs.json";
     private static final String AUTHORS_JSON = "authors.json";
     private static final String ALBUMS_JSON = "albums.json";
+    private final Gson gson;
 
     public JsonDataWriter() {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-        // builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
-        Gson gson = builder.create();
+        builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        this.gson = builder.create();
     }
 
     public void writeSongs(List<Song> songs) {
         try (FileWriter writer = new FileWriter(SONGS_JSON)) {
-            String json ="a"; // gson.toJson(songs);
+            String json = gson.toJson(songs);
             writer.write(json);
         } catch (IOException e) {
             throw new RuntimeException("Unable to save Songs to JSON", e);
@@ -34,7 +35,7 @@ public class JsonDataWriter {
 
     public void writeAuthors(List<Author> authors) {
         try (FileWriter writer = new FileWriter(AUTHORS_JSON)) {
-            String json ="a"; // gson.toJson(authors);
+            String json = gson.toJson(authors);
             writer.write(json);
         } catch (IOException e) {
             throw new RuntimeException("Unable to save authors to JSON", e);
@@ -43,7 +44,7 @@ public class JsonDataWriter {
 
     public void writeAlbums(List<Album> albums) {
         try (FileWriter writer = new FileWriter(ALBUMS_JSON)) {
-            String json ="a"; // gson.toJson(albums);
+            String json = gson.toJson(albums);
             writer.write(json);
         } catch (IOException e) {
             throw new RuntimeException("Unable to save albums to JSON", e);

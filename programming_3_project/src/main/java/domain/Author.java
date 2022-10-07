@@ -6,8 +6,8 @@ public class Author {
     String name;
     int age;
     String gender;
-    List<Album> album;
-    List<Song> song;
+    transient List<Album> album;
+    transient List<Song> song;
 
     public Author(String name, int age, String gender, List<Album> album, List<Song> song) {
         this.name = name;
