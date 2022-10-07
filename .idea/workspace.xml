@@ -5,66 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9239675-2857-4acb-9630-d164dfc65338" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/programming_3_project.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/7.4/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/file-system.probe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/codestream.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/albums.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/StartApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/domain/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/domain/Album.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/domain/Author.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/domain/Genre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/domain/Song.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/presentation/GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/presentation/JsonDataWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/presentation/LocalDateTimeSerializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/presentation/View$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/presentation/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/classes/java/main/repository/DataFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/songs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/StartApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/domain/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/domain/Album.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/domain/Author.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/domain/Genre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/domain/Song.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/presentation/GUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/presentation/JsonDataWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/presentation/LocalDateTimeSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/presentation/View.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/programming_3_project/src/main/java/repository/DataFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/MusicServiceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/MusicServiceConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +30,14 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -108,6 +58,11 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.musicdatabase.service.configuration" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.musicdatabase.service.ServiceApplication" />
@@ -138,7 +93,7 @@
       <updated>1664031509266</updated>
       <workItem from="1664031511235" duration="88000" />
       <workItem from="1665044715511" duration="285000" />
-      <workItem from="1665136766839" duration="1630000" />
+      <workItem from="1665136766839" duration="3478000" />
     </task>
     <servers />
   </component>
