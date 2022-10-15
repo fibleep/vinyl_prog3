@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class DataFactoryImplementation {
+    // MOVE THE SEEDING TO CONFIGURATION
     public static List<Song> songs;
     public static List<Author> authors;
 
