@@ -5,7 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.musicdatabase.service.domain.Album;
 import com.musicdatabase.service.domain.Author;
 import com.musicdatabase.service.domain.Song;
-import com.musicdatabase.service.repository.DataFactoryImplementation;
+import com.musicdatabase.service.repository.DataFactory;
+import com.musicdatabase.service.repository.DataSeeder;
 
 
 
@@ -14,10 +15,12 @@ import java.util.Scanner;
 
 public class View {
     public void initialize() {
-        DataFactoryImplementation.seed();
-        List<Author> authors = DataFactoryImplementation.getAuthors();
-        List<Album> albums = DataFactoryImplementation.getAlbums();
-        List<Song> songs = DataFactoryImplementation.getSongs();
+
+        DataFactory dataFactory = new DataSeeder();
+        DataSeeder.seed();
+        List<Author> authors = DataSeeder.getAuthors();
+        List<Album> albums = DataSeeder.getAlbums();
+        List<Song> songs = DataSeeder.getSongs();
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();

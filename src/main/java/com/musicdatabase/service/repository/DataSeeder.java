@@ -11,12 +11,22 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Component
-public class DataFactoryImplementation {
+public class DataSeeder implements DataFactory {
     // MOVE THE SEEDING TO CONFIGURATION
     public static List<Song> songs;
     public static List<Author> authors;
 
     public static List<Album> albums;
+    private final AuthorRepository authorRepository;
+    private final SongRepository songRepository;
+    private final AlbumRepository albumRepository;
+
+    public DataSeeder(AuthorRepository authorRepository, SongRepository songRepository, AlbumRepository albumRepository) {
+        this.authorRepository = authorRepository;
+        this.songRepository = songRepository;
+        this.albumRepository = albumRepository;
+    }
+
     public static void seed(){
         songs = new ArrayList<>();
         authors = new ArrayList<>();
@@ -104,16 +114,9 @@ public class DataFactoryImplementation {
         authors.addAll(List.of(tacoH,dawidP,dariaZ,quebo));
         // fill albums
         albums.addAll(List.of(wojnyNoce,pocztowka,wosk,malomiasteczkowy,romanticpsycho));
-    }
 
-    public static List<Song> getSongs() {
-        return songs;
-    }
-
-    public static List<Author> getAuthors() {
-        return authors;
-    }
-    public static List<Album> getAlbums() {
-        return albums;
+        songs.forEach(songRepository::createSong);
+        authors.forEach(authorRepository::createAuthor);
+        albums.forEach(albumRepository::createAlbum);
     }
 }
