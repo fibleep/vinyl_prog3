@@ -1,17 +1,16 @@
-package com.musicdatabase.service.presentation;
+package com.musicdatabase.service.repository;
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.musicdatabase.service.domain.Album;
-import com.musicdatabase.service.domain.Author;
-import com.musicdatabase.service.domain.Song;
+import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Component
 public class JsonDataWriter {
     private static final String SONGS_JSON = "songs.json";
     private static final String AUTHORS_JSON = "authors.json";
@@ -25,7 +24,7 @@ public class JsonDataWriter {
         this.gson = builder.create();
     }
 
-    public void writeSongs(List<Song> songs) {
+    public void writeSongs(SongRepository songs) {
         try (FileWriter writer = new FileWriter(SONGS_JSON)) {
             String json = gson.toJson(songs);
             writer.write(json);
@@ -34,7 +33,7 @@ public class JsonDataWriter {
         }
     }
 
-    public void writeAuthors(List<Author> authors) {
+    public void writeAuthors(AuthorRepository authors) {
         try (FileWriter writer = new FileWriter(AUTHORS_JSON)) {
             String json = gson.toJson(authors);
             writer.write(json);
@@ -43,7 +42,7 @@ public class JsonDataWriter {
         }
     }
 
-    public void writeAlbums(List<Album> albums) {
+    public void writeAlbums(AlbumRepository albums) {
         try (FileWriter writer = new FileWriter(ALBUMS_JSON)) {
             String json = gson.toJson(albums);
             writer.write(json);

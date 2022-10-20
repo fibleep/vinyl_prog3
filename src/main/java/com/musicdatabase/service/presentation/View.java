@@ -5,52 +5,53 @@ import com.google.gson.GsonBuilder;
 import com.musicdatabase.service.domain.Album;
 import com.musicdatabase.service.domain.Author;
 import com.musicdatabase.service.domain.Song;
-import com.musicdatabase.service.repository.DataFactory;
-import com.musicdatabase.service.repository.DataSeeder;
+import com.musicdatabase.service.repository.*;
+import com.musicdatabase.service.service.AlbumService;
+import com.musicdatabase.service.service.AuthorService;
+import com.musicdatabase.service.service.SongService;
+import org.springframework.stereotype.Component;
 
 
-
-import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class View {
-    public void initialize() {
+    private final AlbumService albumService;
+    private final AuthorService authorService;
+    private final SongService songService;
 
-        DataFactory dataFactory = new DataSeeder();
+    public View(AlbumService albumService, AuthorService authorService, SongService songService) {
+        this.albumService = albumService;
+        this.authorService = authorService;
+        this.songService = songService;
+    }
+    public void initialize() {
+        AlbumRepository albumRepository = new ListAlbumRepository();
+        AuthorRepository authorRepository = new ListAuthorRepository();
+        SongRepository songRepository = new ListSongRepository();
+        DataFactory dataFactory = new DataSeeder(authorRepository, songRepository,albumRepository);
         DataSeeder.seed();
-        List<Author> authors = DataSeeder.getAuthors();
-        List<Album> albums = DataSeeder.getAlbums();
-        List<Song> songs = DataSeeder.getSongs();
+
+
+
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-        Gson gson = builder.create();
-        JsonDataWriter jsonWriter = new JsonDataWriter();
         while(true) {
             switch (presentation.GUI.menu()) {
                 case SHOW_SONGS -> {
-                    for (Song song : songs) {
-                        System.out.println(song);
-                        jsonWriter.writeSongs(songs);
-                    }
+                    songService.readSongs().forEach(System.out::println);
                 }
                 case SHOW_AUTHORS -> {
-                    for (Author author : authors) {
-                        System.out.println(author);
-                        jsonWriter.writeAuthors(authors);
-                    }
+                    authorService.readAuthors().forEach(System.out::println);
                 }
                 case SHOW_ALBUMS -> {
-                    for (Album album : albums) {
-                        System.out.println(album);
-                        jsonWriter.writeAlbums(albums);
-                    }
+                    albumService.readAlbums().forEach(System.out::println);
                 }
                 case SHOW_SONGS_OF_AUTHOR -> {
                     System.out.println("Enter author name: ");
                     Scanner scanner = new Scanner(System.in);
                     String authorName = scanner.nextLine();
-                    songs.stream().filter(song -> song.getAuthor().stream().anyMatch(author -> author.getName().equals(authorName))).forEach(System.out::println);
-                    jsonWriter.writeSongs(songs);
+                    songService.readSongsByAuthor(authorName).forEach(System.out::println);
                 }
                 case SHOW_ALBUMS_OF_AUTHOR_FROM_YEAR -> {
                     System.out.println("Enter author name: ");
@@ -58,8 +59,7 @@ public class View {
                     String authorName = scanner.nextLine();
                     System.out.println("Enter year: ");
                     int year = scanner.nextInt();
-                    albums.stream().filter(album -> album.getArtist().getName().equals(authorName) && album.getYear().getYear() == year).forEach(System.out::println);
-                    jsonWriter.writeAlbums(albums);
+                    albumService.readAlbumsByAuthorAndYear(authorName,year).forEach(System.out::println);
                 }
             }
         }

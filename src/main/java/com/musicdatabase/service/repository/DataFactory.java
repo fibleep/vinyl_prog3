@@ -9,6 +9,8 @@ import com.musicdatabase.service.domain.Song;
 import java.util.List;
 
 public interface DataFactory {
-    public static void seed();
+    public static void seed() {
+
+    }
 
 }

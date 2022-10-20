@@ -1,10 +1,13 @@
 package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.domain.Author;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ListAuthorRepository implements AuthorRepository {
 
 private List<Author> authors = new ArrayList<>();

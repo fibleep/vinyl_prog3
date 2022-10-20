@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Service</title>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Artists</th>
+            <th>Title</th>
+        </tr>
+        <tr>
+            <td th:text="${musicToService.stream().map(Music::getId).collect(toList())}"></td>
+            <td th:text="${musicToService.stream().map(Music::getArtists).collect(joining(','))}"></td>
+            <td th:text="${musicToService.stream().map(Music::getTitle).collect(toList())}"></td>
+        </tr>
+    </table>
+</head>
+<body>
+
+</body>
+</html>

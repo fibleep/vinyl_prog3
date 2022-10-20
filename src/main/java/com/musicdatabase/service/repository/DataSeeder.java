@@ -17,9 +17,9 @@ public class DataSeeder implements DataFactory {
     public static List<Author> authors;
 
     public static List<Album> albums;
-    private final AuthorRepository authorRepository;
-    private final SongRepository songRepository;
-    private final AlbumRepository albumRepository;
+    private static AuthorRepository authorRepository = null;
+    private static SongRepository songRepository = null;
+    private static AlbumRepository albumRepository = null;
 
     public DataSeeder(AuthorRepository authorRepository, SongRepository songRepository, AlbumRepository albumRepository) {
         this.authorRepository = authorRepository;
