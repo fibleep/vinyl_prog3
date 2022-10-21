@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SongService {
 
-    List<Song> readSongs();
+    List<Song> getSongs();
     List<Song> readSongsByAuthor(String author);
 
     void writeSongsToJSON(SongRepository songs);

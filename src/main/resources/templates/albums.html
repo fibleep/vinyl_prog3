@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Service - ALBUM</title>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Genre</th>
+    </tr>
+      <tbody>
+      <tr th:each="album : ${albums}">
+        <td th:text="${album.getName()}"></td>
+        <td th:text="${album.getYear()}"></td>
+        <td th:text="${album.getGenre()}"></td>
+      </tbody>
+  </table>
+</head>
+<body>
+
+</body>
+</html>

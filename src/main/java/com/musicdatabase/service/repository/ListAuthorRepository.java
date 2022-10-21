@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class ListAuthorRepository implements AuthorRepository {
 
-private List<Author> authors = new ArrayList<>();
+static final List<Author> authors = new ArrayList<>();
 
     @Override
     public List<Author> readAuthors() {

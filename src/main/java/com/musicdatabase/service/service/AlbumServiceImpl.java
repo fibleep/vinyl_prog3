@@ -21,7 +21,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<Album> readAlbums() {
+    public List<Album> getAlbums() {
         return albumRepository.readAlbums();
     }
 

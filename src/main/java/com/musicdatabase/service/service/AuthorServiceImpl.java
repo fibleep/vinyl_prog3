@@ -20,7 +20,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> readAuthors() {
+    public List<Author> getAuthors() {
         return authorRepository.readAuthors();
     }
 

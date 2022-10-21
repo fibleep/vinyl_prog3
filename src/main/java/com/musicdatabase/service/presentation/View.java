@@ -1,10 +1,6 @@
 package com.musicdatabase.service.presentation;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.musicdatabase.service.domain.Album;
-import com.musicdatabase.service.domain.Author;
-import com.musicdatabase.service.domain.Song;
 import com.musicdatabase.service.repository.*;
 import com.musicdatabase.service.service.AlbumService;
 import com.musicdatabase.service.service.AuthorService;
@@ -39,13 +35,13 @@ public class View {
         while(true) {
             switch (presentation.GUI.menu()) {
                 case SHOW_SONGS -> {
-                    songService.readSongs().forEach(System.out::println);
+                    songService.getSongs().forEach(System.out::println);
                 }
                 case SHOW_AUTHORS -> {
-                    authorService.readAuthors().forEach(System.out::println);
+                    authorService.getAuthors().forEach(System.out::println);
                 }
                 case SHOW_ALBUMS -> {
-                    albumService.readAlbums().forEach(System.out::println);
+                    albumService.getAlbums().forEach(System.out::println);
                 }
                 case SHOW_SONGS_OF_AUTHOR -> {
                     System.out.println("Enter author name: ");

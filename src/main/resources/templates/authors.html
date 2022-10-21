@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Service - AUTHOR</title>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+    </tr>
+    <tr>
+      <tbody>
+        <tr th:each="author : ${authors}">
+          <td th:text="${author.getName()}"></td>
+          <td th:text="${author.getAge()}"></td>
+          <td th:text="${author.getGender()}"></td>
+        </tr>
+      </tbody>
+  </table>
+</head>
+<body>
+
+</body>
+</html>

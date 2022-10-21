@@ -6,14 +6,14 @@ public class Song {
     private String title;
     private int index;
     private double length;
-    private transient List<Author> author;
+    private transient List<Author> authors;
     private transient Album album;
 
-    public Song(String title, int index, double length, List<Author> author, Album album) {
+    public Song(String title, int index, double length, List<Author> authors, Album album) {
         this.title = title;
         this.index = index;
         this.length = length;
-        this.author = author;
+        this.authors = authors;
         this.album = album;
     }
 
@@ -41,20 +41,20 @@ public class Song {
         this.length = length;
     }
 
-    public List<Author> getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
     public void addAuthor(Author author) {
-        this.author.add(author);
+        this.authors.add(author);
     }
 
     public void removeAuthor(Author author) {
-        this.author.remove(author);
+        this.authors.remove(author);
     }
 
-    public void setAuthor(List<Author> author) {
-        this.author = author;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public Album getAlbum() {
@@ -68,7 +68,7 @@ public class Song {
     public String toString() {
         // get a list of all the author names
         StringBuilder authorNames = new StringBuilder();
-        for (Author author : this.author) {
+        for (Author author : this.authors) {
             authorNames.append(author.getName()).append(" | ");
         }
         return "\nSONG" +

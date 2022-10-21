@@ -6,7 +6,7 @@ import com.musicdatabase.service.repository.AlbumRepository;
 import java.util.List;
 
 public interface AlbumService {
-    List<Album> readAlbums();
+    List<Album> getAlbums();
     List<Album> readAlbumsByAuthor(String author);
     List<Album> readAlbumsByAuthorAndYear(String title, int year);
 

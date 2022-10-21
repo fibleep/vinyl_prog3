@@ -6,7 +6,7 @@ import com.musicdatabase.service.repository.AuthorRepository;
 import java.util.List;
 
 public interface AuthorService {
-    List<Author> readAuthors();
+    List<Author> getAuthors();
 
     void writeAuthorsToJSON(AuthorRepository authors);
 }
