@@ -1,0 +1,21 @@
+
+/* HEX Codes: BLUE #3B5BA5, ORANGEY #E87A5D, YELLOW BUT DEEP #F3B941 */
+
+html{
+    background-color: #3B5BA5;
+    color:#F3B941;
+}
+ol{
+    list-style-type:none;
+}
+li{
+    display:inline;
+    padding: 10px;
+}
+a{
+    color:#F3B941;
+    text-decoration: none;
+}
+a:hover{
+    color: #E87A5D;
+}
