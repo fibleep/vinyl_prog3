@@ -1,11 +1,10 @@
 package com.musicdatabase.service.controller;
 
+import com.musicdatabase.service.domain.Song;
 import com.musicdatabase.service.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.logging.Logger;
@@ -19,6 +18,23 @@ public class SongController {
     public SongController(SongService songService) {
         logger.info("MusicController created");
         this.songService = songService;
+    }
+    @GetMapping("/addsong")
+    public ModelAndView addSong() {
+        logger.info("addSong called");
+        return new ModelAndView("addsong");
+    }
+    @PostMapping("/addsong")
+    public ModelAndView addSong(String name, int duration, int index) {
+        logger.info("addSong called");
+        Song song = null;
+        songService.addSong(new Song(name, index, duration, null, null));
+        return new ModelAndView("redirect:/songs");
+    }
+    @GetMapping("/{song}")
+    public ModelAndView getSong(@PathVariable String song) {
+        logger.info("getSong called");
+        return new ModelAndView("song-details", "song", songService.getSongs().stream().filter(s -> s.getTitle().equals(song)).findFirst().get());
     }
     @GetMapping
     public ModelAndView getSongs() {

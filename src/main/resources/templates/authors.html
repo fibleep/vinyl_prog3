@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
   <meta charset="UTF-8">
   <title>Music Service - AUTHOR</title>
+</head>
+<body>
+<div th:insert="fragments/fragments :: header"></div>
+<div th:insert="fragments/fragments :: navbar"></div>
   <table>
     <tr>
       <th>Name</th>
@@ -18,8 +26,6 @@
         </tr>
       </tbody>
   </table>
-</head>
-<body>
-
+<div th:insert="~{fragments/fragments::footer}">No footer</div>
 </body>
 </html>

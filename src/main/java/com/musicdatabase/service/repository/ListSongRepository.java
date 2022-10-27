@@ -22,5 +22,10 @@ public class ListSongRepository implements SongRepository {
         return song;
     }
 
+    @Override
+    public void deleteSong(Song song) {
+        songs.remove(song);
+    }
+
 
 }

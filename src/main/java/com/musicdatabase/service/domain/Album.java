@@ -8,13 +8,13 @@ public class Album {
     List<Song> songs;
     LocalDateTime year;
     Genre genre;
-    transient Author artist;
+    transient Author author;
 
-    public Album(String name, LocalDateTime year, Genre genre, Author artist, List<Song> songs) {
+    public Album(String name, LocalDateTime year, Genre genre, Author author, List<Song> songs) {
         this.name = name;
         this.year = year;
         this.genre = genre;
-        this.artist = artist;
+        this.author = author;
         this.songs = songs;
     }
     public String getName() {
@@ -41,12 +41,12 @@ public class Album {
         this.genre = genre;
     }
 
-    public Author getArtist() {
-        return artist;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setArtist(Author artist) {
-        this.artist = artist;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public List<Song> getSongs() {
@@ -77,7 +77,7 @@ public class Album {
                 "\n [ NAME : " + name +
                 " | SONGS : " + songNames +
                 "YEAR : " + year +
-                " | AUTHORS : " + artist.getName() +
+                " | AUTHORS : " + author.getName() +
                 " | GENRE : " + genre +
                 "\n------------------";
     }

@@ -9,4 +9,6 @@ public interface AuthorService {
     List<Author> getAuthors();
 
     void writeAuthorsToJSON(AuthorRepository authors);
+
+    void addAuthor(Author author);
 }

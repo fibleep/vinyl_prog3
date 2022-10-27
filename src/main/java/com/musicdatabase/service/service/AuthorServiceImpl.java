@@ -25,6 +25,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public void addAuthor(Author author) {
+        authorRepository.createAuthor(author);
+    }
+
+    @Override
     public void writeAuthorsToJSON(AuthorRepository authors) {
         jsonDataWriter.writeAuthors(authors);
     }

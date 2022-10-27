@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
     <meta charset="UTF-8">
     <title>Music Service - ADD SONG</title>
 </head>
 <body>
-<form action="/songs" method="post">
+<div th:insert="fragments/fragments :: header"></div>
+<div th:insert="fragments/fragments :: navbar"></div>
+<form method="post">
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
+<!--    <label for="authors">Authors</label>-->
+<!--    <select name="author1" id="authors">-->
+<!--        <option th:each="author : ${authors}" th:value="${author.getName()}" th:text="${author.getName()}"></option>-->
+<!--    </select>-->
+<!--    <select name="author2" id="authors2">-->
+<!--        <option label=" "></option>-->
+<!--        <option th:each="author : ${authors}" th:value="${author.getName()}" th:text="${author.getName()}" ></option>-->
+<!--    </select>-->
+<!--    <label for="album">Album</label>-->
+<!--    <select name="album" id="album">-->
+<!--        <option th:each="album : ${albums}" th:value="${album.getName()}" th:text="${album.getName()}"></option>-->
+<!--    </select>-->
     <label for="duration">Duration</label>
-    <input type="text" name="duration" id="duration">
+    <input type="number" name="duration" id="duration">
+    <label for="index">Index</label>
+    <input type="text" name="index" id="index">
+
     <button type="submit">Add</button>
 </form>
+<div th:insert="~{fragments/fragments::footer}">No footer</div>
 </body>
 </html>

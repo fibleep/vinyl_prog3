@@ -10,5 +10,8 @@ public interface AlbumService {
     List<Album> readAlbumsByAuthor(String author);
     List<Album> readAlbumsByAuthorAndYear(String title, int year);
 
+    void addAlbum(Album album);
+    void removeAlbum(Album album);
+
     void writeAlbumsToJSON(AlbumRepository albums);
 }

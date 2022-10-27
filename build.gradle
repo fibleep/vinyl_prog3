@@ -19,6 +19,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.google.code.gson:gson:2.7'
+	implementation 'org.webjars:bootstrap:5.2.2'
+	implementation 'org.webjars:webjars-locator:0.45'
+	implementation 'org.webjars.npm:bootstrap-icons:1.9.1'
 }
 
 tasks.named('test') {

@@ -17,6 +17,11 @@ public class ListAlbumRepository implements AlbumRepository {
     }
 
     @Override
+    public void deleteAlbum(Album album) {
+        albums.remove(album);
+    }
+
+    @Override
     public List<Album> readAlbums() {
         return albums;
     }
