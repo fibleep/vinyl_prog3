@@ -17,4 +17,6 @@ public class AlbumViewModel {
     private String year;
     @NotBlank(message = "genre is required")
     private String genre;
+    @NotBlank(message = "author is required")
+    private String author;
 }

@@ -16,7 +16,6 @@
 <table>
     <tr>
         <th>Songs</th>
-        <th>Year</th>
         <th>Genre</th>
         <th>Author</th>
     </tr>
@@ -25,7 +24,6 @@
         <a th:href="@{/songs/{song}(song=${song.getTitle()})}")>
         <td th:text="${song.getTitle()}"></td>
         </a>
-        <td th:text="${album.getYear()}"></td>
         <td th:text="${album.getGenre()}"></td>
         <td th:text="${album.getAuthor().getName()}"></td>
     </tr>

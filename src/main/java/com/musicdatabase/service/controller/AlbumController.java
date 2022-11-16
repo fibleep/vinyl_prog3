@@ -5,6 +5,7 @@ import com.musicdatabase.service.domain.Album;
 import com.musicdatabase.service.domain.Author;
 import com.musicdatabase.service.domain.Genre;
 import com.musicdatabase.service.service.AlbumService;
+import com.musicdatabase.service.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -27,16 +28,20 @@ public class AlbumController {
 
     @Autowired
     private final AlbumService albumService;
+    @Autowired
+    private final AuthorService authorService;
 
-    public AlbumController(AlbumService albumService) {
+    public AlbumController(AlbumService albumService,AuthorService authorService) {
         logger.info("AlbumController created");
         this.albumService = albumService;
+        this.authorService = authorService;
     }
 
     @GetMapping("/addalbum")
     public ModelAndView showAddAlbum(Model model) {
         logger.info("addAlbum called");
         model.addAttribute("albumViewModel", new AlbumViewModel());
+        model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
         return new ModelAndView("/album/addalbum","genres", Genre.values());
     }
     @PostMapping("/addalbum")
@@ -52,6 +57,7 @@ public class AlbumController {
         album.setName(albumViewModel.getName());
         album.setYear(localDateTime);
         album.setGenre(genreValue);
+        album.setAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(albumViewModel.getAuthor())).findFirst().get());
         albumService.addAlbum(album);
         return new ModelAndView("redirect:/albums");
     }

@@ -31,6 +31,9 @@ public class Album {
         return year;
     }
 
+    public String getYearString() {
+        return year.getYear() + "";
+    }
     public void setYear(LocalDateTime year) {
         this.year = year;
     }

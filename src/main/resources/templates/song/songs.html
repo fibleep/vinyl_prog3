@@ -15,6 +15,10 @@
       <th>Title</th>
       <th>Duration</th>
       <th>Index</th>
+      <th>Album</th>
+      <th>Author</th>
+
+
     </tr>
     <tr>
       <tbody>
@@ -22,6 +26,12 @@
           <td><a th:href="@{/songs/{song}(song=${song.getTitle()})}" th:text="${song.getTitle()}"></a></td>
             <td th:text="${song.getLength()}"></td>
           <td th:text="${song.getIndex()}"></td>
+            <td> <a th:href="@{/albums/{album}(album=${song.getAlbum().getName()})}" th:text="${song.getAlbum().getName()}"></a></td>
+            <td>
+                <ul th:each="author : ${song.getAuthors()}" class="d-inline p-1">
+                  | <a th:href="@{/authors/{author}(author=${author.getName()})}" ><li th:text="${author.getName()}"></li></a>
+                </ul>
+            </td>
         </tr>
       </tbody>
   </table>

@@ -22,7 +22,7 @@
       <tr th:each="album : ${albums}">
         <td><a th:href="@{/albums/{album}(album=${album.getName()})}"
            th:text="${album.getName()}"></a></td>
-        <td th:text="${album.getYear()}"></td>
+        <td th:text="${album.getYearString()}"></td>
         <td th:text="${album.getGenre()}"></td>
       </tbody>
   </table>

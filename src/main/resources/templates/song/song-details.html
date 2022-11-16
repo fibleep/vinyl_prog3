@@ -24,7 +24,7 @@
         <td th:text="${song.getIndex()}"></td>
         <td th:text="${song.getLength()}"></td>
         <td>
-        <ul th:each="author : ${song.getAuthors()}">
+        <ul th:each="author : ${song.getAuthorsString()}">
             <li th:text="${author.getName()}"></li>
         </ul>
         </td>
