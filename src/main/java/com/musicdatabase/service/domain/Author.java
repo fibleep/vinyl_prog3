@@ -1,64 +1,27 @@
 package com.musicdatabase.service.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 public class Author {
     String name;
     int age;
-    String gender;
+    Gender gender;
     transient List<Album> album;
     transient List<Song> song;
 
-    public Author(String name, int age, String gender, List<Album> album, List<Song> song) {
+    public Author(String name, int age, Gender gender, List<Album> album, List<Song> song) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.album = album;
         this.song = song;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public List<Album> getAlbum() {
-        return album;
-    }
-
-    public void addAlbum(Album album) {
-        this.album.add(album);
-    }
-
-    public void removeAlbum(Album album) {
-        this.album.remove(album);
-    }
-
-    public void setAlbum(List<Album> album) {
-        this.album = album;
-    }
-
-    public List<Song> getSong() {
-        return song;
+    public Author() {
     }
 
     public void addSong(Song song) {

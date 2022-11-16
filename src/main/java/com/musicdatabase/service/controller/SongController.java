@@ -16,30 +16,30 @@ public class SongController {
     @Autowired
     private SongService songService;
     public SongController(SongService songService) {
-        logger.info("MusicController created");
+        logger.info("SongController created");
         this.songService = songService;
     }
     @GetMapping("/addsong")
     public ModelAndView addSong() {
         logger.info("addSong called");
-        return new ModelAndView("addsong");
+        return new ModelAndView("/song/addsong");
     }
     @PostMapping("/addsong")
     public ModelAndView addSong(String name, int duration, int index) {
         logger.info("addSong called");
         Song song = null;
         songService.addSong(new Song(name, index, duration, null, null));
-        return new ModelAndView("redirect:/songs");
+        return new ModelAndView("redirect:/song/songs");
     }
     @GetMapping("/{song}")
     public ModelAndView getSong(@PathVariable String song) {
         logger.info("getSong called");
-        return new ModelAndView("song-details", "song", songService.getSongs().stream().filter(s -> s.getTitle().equals(song)).findFirst().get());
+        return new ModelAndView("/song/song-details", "song", songService.getSongs().stream().filter(s -> s.getTitle().equals(song)).findFirst().get());
     }
     @GetMapping
     public ModelAndView getSongs() {
         logger.info("getSongs called");
-        return new ModelAndView("songs", "songs", songService.getSongs());
+        return new ModelAndView("/song/songs", "songs", songService.getSongs());
     }
 
 }

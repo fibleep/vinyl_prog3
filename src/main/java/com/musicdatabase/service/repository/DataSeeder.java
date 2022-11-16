@@ -1,10 +1,7 @@
 package com.musicdatabase.service.repository;
 
 
-import com.musicdatabase.service.domain.Album;
-import com.musicdatabase.service.domain.Author;
-import com.musicdatabase.service.domain.Genre;
-import com.musicdatabase.service.domain.Song;
+import com.musicdatabase.service.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -32,10 +29,10 @@ public class DataSeeder implements DataFactory {
         authors = new ArrayList<>();
         albums = new ArrayList<>();
         //create authors
-        Author tacoH=new Author("Taco Hemingway",32,"male",null,null);
-        Author dawidP=new Author("Dawid Podsiadło",29,"male",null,null);
-        Author dariaZ=new Author("Daria Zawiałow",30,"female",null,null);
-        Author quebo=new Author("Quebonafide",31,"male",null,null);
+        Author tacoH=new Author("Taco Hemingway",32, Gender.MALE,null,null);
+        Author dawidP=new Author("Dawid Podsiadło",29,Gender.FEMALE,null,null);
+        Author dariaZ=new Author("Daria Zawiałow",30,Gender.FEMALE,null,null);
+        Author quebo=new Author("Quebonafide",31,Gender.MALE,null,null);
         // create albums
         Album wojnyNoce = new Album("Wojny i noce", LocalDateTime.parse("2021-01-01T00:00:00"), Genre.ALT,dariaZ,null);
         Album pocztowka = new Album("POCZTÓWKA Z WWA, LATO '19", LocalDateTime.parse("2019-01-01T00:00:00"),Genre.RAP,tacoH,null);

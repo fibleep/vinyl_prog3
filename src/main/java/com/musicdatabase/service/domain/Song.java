@@ -1,7 +1,13 @@
 package com.musicdatabase.service.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 
+@Getter
+@Setter
 public class Song {
     private String title;
     private int index;
@@ -16,33 +22,7 @@ public class Song {
         this.authors = authors;
         this.album = album;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
+    public Song() {
     }
 
     public void addAuthor(Author author) {
@@ -57,13 +37,6 @@ public class Song {
         this.authors = authors;
     }
 
-    public Album getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
     @Override
     public String toString() {
         // get a list of all the author names

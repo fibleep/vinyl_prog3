@@ -17,6 +17,8 @@ public class Album {
         this.author = author;
         this.songs = songs;
     }
+    public Album() {
+    }
     public String getName() {
         return name;
     }
