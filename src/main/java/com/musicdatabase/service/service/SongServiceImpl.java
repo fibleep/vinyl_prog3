@@ -1,6 +1,6 @@
 package com.musicdatabase.service.service;
 
-import com.musicdatabase.service.domain.Song;
+import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import com.musicdatabase.service.repository.SongRepository;
 import org.springframework.stereotype.Service;

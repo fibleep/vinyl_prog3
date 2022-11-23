@@ -1,6 +1,6 @@
 package com.musicdatabase.service.repository;
 
-import com.musicdatabase.service.domain.Album;
+import com.musicdatabase.service.model.Album;
 
 import java.util.List;
 

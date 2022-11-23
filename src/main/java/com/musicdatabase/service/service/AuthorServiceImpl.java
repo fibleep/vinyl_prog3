@@ -1,9 +1,8 @@
 package com.musicdatabase.service.service;
 
-import com.musicdatabase.service.domain.Author;
+import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

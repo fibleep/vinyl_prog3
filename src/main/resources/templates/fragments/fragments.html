@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -9,31 +9,38 @@
 <div th:fragment="navbar">
     <header>
         <div class="px-3 py-3">
-            <a href="../" class="navbar-brand position-absolute left-0 pb-4"> <h1>Vinyl</h1><p th:text="#{home.welcome}"></p> </a>
+            <a class="navbar-brand position-absolute left-0 top-0" href="../"><h1>Vinyl</h1>
+                <p th:text="#{home.welcome}"></p></a>
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="@{/}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
+                       href="@{/}">
                     </a>
 
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a th:href="@{/}" class="nav-link text-white">
+                            <a class="nav-link text-white" th:href="@{/}">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/albums}" class="nav-link text-white">
+                            <a class="nav-link text-white" th:href="@{/albums}">
                                 Albums
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/authors}" class="nav-link text-white">
+                            <a class="nav-link text-white" th:href="@{/authors}">
                                 Authors
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/songs}" class="nav-link text-white">
+                            <a class="nav-link text-white" th:href="@{/songs}">
                                 Songs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-white" th:href="@{/history}">
+                                History
                             </a>
                         </li>
                     </ul>
@@ -44,8 +51,10 @@
 </div>
 
 
-<div th:fragment="footer" class="text-cen fixed-bottom text-bg-dark">
+<div class="text-cen fixed-bottom" th:fragment="footer">
+    <footer class="text-center text-white">
         <p>&copy VINYL - FIFI CORP</p>
+    </footer>
 </div>
 </body>
 </html>

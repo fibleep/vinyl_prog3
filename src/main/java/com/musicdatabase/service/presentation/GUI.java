@@ -1,8 +1,7 @@
 package presentation;
 
-import com.musicdatabase.service.domain.Action;
+import com.musicdatabase.service.model.Action;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class GUI {

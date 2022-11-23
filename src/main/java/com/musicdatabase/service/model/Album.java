@@ -1,4 +1,4 @@
-package com.musicdatabase.service.domain;
+package com.musicdatabase.service.model;
 
 import java.time.LocalDateTime;
 import java.util.List;

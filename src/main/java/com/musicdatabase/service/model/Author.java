@@ -1,4 +1,4 @@
-package com.musicdatabase.service.domain;
+package com.musicdatabase.service.model;
 
 import lombok.Getter;
 import lombok.Setter;

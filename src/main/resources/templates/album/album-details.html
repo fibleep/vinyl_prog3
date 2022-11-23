@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
     <title>Vinyl</title>
 </head>
@@ -12,8 +12,8 @@
 <div th:insert="fragments/fragments :: navbar"></div>
 <meta charset="UTF-8">
 <title>Vinyl</title>
-<h1 th:text="${album.name}"> </h1>
 <table>
+    <h1 class="table-header" th:text="${album.name}"></h1>
     <tr>
         <th>Songs</th>
         <th>Genre</th>
@@ -21,8 +21,8 @@
     </tr>
     <tbody>
     <tr th:each="song : ${album.songs}">
-        <a th:href="@{/songs/{song}(song=${song.getTitle()})}")>
-        <td th:text="${song.getTitle()}"></td>
+        <a ) th:href="@{/songs/{song}(song=${song.getTitle()})}">
+            <td th:text="${song.getTitle()}"></td>
         </a>
         <td th:text="${album.getGenre()}"></td>
         <td th:text="${album.getAuthor().getName()}"></td>

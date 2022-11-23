@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-  <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
     <title>Vinyl</title>
 </head>
 <body>
-  <div th:insert="fragments/fragments :: navbar"></div>
-  <meta charset="UTF-8">
-  <title>Vinyl</title>
-  <table>
+<div th:insert="fragments/fragments :: navbar"></div>
+<meta charset="UTF-8">
+<title>Vinyl</title>
+<table>
+    <h1 class="table-header">Albums</h1>
     <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Genre</th>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Genre</th>
     </tr>
-      <tbody>
-      <tr th:each="album : ${albums}">
+    <tbody>
+    <tr th:each="album : ${albums}">
         <td><a th:href="@{/albums/{album}(album=${album.getName()})}"
-           th:text="${album.getName()}"></a></td>
+               th:text="${album.getName()}"></a></td>
         <td th:text="${album.getYearString()}"></td>
         <td th:text="${album.getGenre()}"></td>
-      </tbody>
-  </table>
-  <a th:href="@{/albums/addalbum}">
-    Add album </a>
-  <div th:insert="~{fragments/fragments::footer}">No footer</div>
+    </tbody>
+</table>
+<a th:href="@{/albums/addalbum}">
+    <button class="btn btn-dark btn-outline-danger" type="button">
+        Add album
+    </button>
+</a>
+<div th:insert="~{fragments/fragments::footer}">No footer</div>
 
 
 </body>

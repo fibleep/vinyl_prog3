@@ -1,7 +1,7 @@
 package com.musicdatabase.service.controller.converter;
 
 
-import com.musicdatabase.service.domain.Gender;
+import com.musicdatabase.service.model.Gender;
 import org.springframework.core.convert.converter.Converter;
 
 public class StringToGenderConverter implements Converter<String, Gender> {

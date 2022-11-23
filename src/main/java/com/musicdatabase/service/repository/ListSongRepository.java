@@ -1,7 +1,6 @@
 package com.musicdatabase.service.repository;
 
-import com.musicdatabase.service.domain.Song;
-import org.springframework.stereotype.Component;
+import com.musicdatabase.service.model.Song;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

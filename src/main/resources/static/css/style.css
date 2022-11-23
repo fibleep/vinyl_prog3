@@ -30,7 +30,13 @@ header{
     color:#cdcbd4;
     padding: 10px;
     text-align: left;
-
+}
+footer{
+    background-color: black;
+    -webkit-text-stroke-color: #c42a44;
+    -webkit-text-stroke: 1px;
+    -webkit-text-fill-color: black;
+    color:#cdcbd4;
 }
 table{
     width: 100%;

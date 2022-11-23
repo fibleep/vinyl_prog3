@@ -1,6 +1,6 @@
 package com.musicdatabase.service.repository;
 
-import com.musicdatabase.service.domain.Author;
+import com.musicdatabase.service.model.Author;
 
 import java.util.List;
 

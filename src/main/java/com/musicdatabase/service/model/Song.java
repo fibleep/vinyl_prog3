@@ -1,11 +1,10 @@
-package com.musicdatabase.service.domain;
+package com.musicdatabase.service.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -13,8 +12,8 @@ public class Song {
     private String title;
     private int index;
     private double length;
-    private transient List<Author> authors;
-    private transient Album album;
+    private transient List<Author> authors = new ArrayList<>();
+    private transient Album album = null;
 
     public Song(String title, int index, double length, List<Author> authors, Album album) {
         this.title = title;
