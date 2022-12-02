@@ -1,34 +1,32 @@
-package com.musicdatabase.service.repository;
-
+package com.musicdatabase.service.configuration;
 
 import com.musicdatabase.service.model.*;
+import com.musicdatabase.service.repository.AlbumRepository;
+import com.musicdatabase.service.repository.AuthorRepository;
+import com.musicdatabase.service.repository.SongRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DataSeeder implements DataFactory {
-    // MOVE THE SEEDING TO CONFIGURATION
-    public static List<Song> songs;
-    public static List<Author> authors;
-
-    public static List<Album> albums;
-    private static AuthorRepository authorRepository = null;
-    private static SongRepository songRepository = null;
-    private static AlbumRepository albumRepository = null;
-
-    public DataSeeder(AuthorRepository authorRepository, SongRepository songRepository, AlbumRepository albumRepository) {
-        DataSeeder.authorRepository = authorRepository;
-        DataSeeder.songRepository = songRepository;
-        DataSeeder.albumRepository = albumRepository;
+public class DatabaseSeeder implements CommandLineRunner {
+    private AlbumRepository albumRepository;
+    private AuthorRepository authorRepository;
+    private SongRepository songRepository;
+    public DatabaseSeeder(AlbumRepository albumRepository, AuthorRepository authorRepository, SongRepository songRepository) {
+        this.albumRepository = albumRepository;
+        this.authorRepository = authorRepository;
+        this.songRepository = songRepository;
     }
-
-    public static void seed() {
-        songs = new ArrayList<>();
-        authors = new ArrayList<>();
-        albums = new ArrayList<>();
+    @Override
+    public void run(String... args) throws Exception {
+        ArrayList<Song> songs = new ArrayList<>();
+        ArrayList<Author> authors = new ArrayList<>();
+        ArrayList<Album> albums = new ArrayList<>();
         //create authors
         Author tacoH = new Author("Taco Hemingway", 32, Gender.MALE, null, null);
         Author dawidP = new Author("Dawid Podsiadło", 29, Gender.MALE, null, null);

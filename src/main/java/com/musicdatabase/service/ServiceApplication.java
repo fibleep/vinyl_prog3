@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 public class ServiceApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(ServiceApplication.class, args);
-        View view = context.getBean(View.class);
-        view.initialize();
+//        View view = context.getBean(View.class);
+//        view.initialize();
     }
 }

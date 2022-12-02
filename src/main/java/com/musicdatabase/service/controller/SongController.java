@@ -59,6 +59,8 @@ public class SongController {
         song.setIndex(songViewModel.getIndex());
         song.setLength(songViewModel.getLength());
         song.addAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
+        song.setAlbum(albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get());
+        albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get().addSong(song);
         songService.addSong(song);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/songs");

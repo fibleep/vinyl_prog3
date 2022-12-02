@@ -25,8 +25,6 @@ public class View {
         AlbumRepository albumRepository = new ListAlbumRepository();
         AuthorRepository authorRepository = new ListAuthorRepository();
         SongRepository songRepository = new ListSongRepository();
-        DataFactory dataFactory = new DataSeeder(authorRepository, songRepository,albumRepository);
-        DataSeeder.seed();
 
 
 
