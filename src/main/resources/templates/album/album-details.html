@@ -9,28 +9,27 @@
     <title>Vinyl</title>
 </head>
 <body>
-<div th:insert="fragments/fragments :: navbar"></div>
-<meta charset="UTF-8">
-<title>Vinyl</title>
-<table>
-    <h1 class="table-header" th:text="${album.name}"></h1>
-    <tr>
-        <th>Songs</th>
-        <th>Genre</th>
-        <th>Author</th>
-    </tr>
-    <tbody>
-    <tr th:each="song : ${album.songs}">
-        <a ) th:href="@{/songs/{song}(song=${song.getTitle()})}">
-            <td th:text="${song.getTitle()}"></td>
-        </a>
-        <td th:text="${album.getGenre()}"></td>
-        <td th:text="${album.getAuthor().getName()}"></td>
-    </tr>
-    </tbody>
+<main>
+    <div th:insert="fragments/fragments :: navbar"></div>
+    <h1 th:text="${album.name}"></h1>
+    <table>
+        <tr>
+            <th>Songs</th>
+            <th>Genre</th>
+            <th>Author</th>
+        </tr>
+        <tbody>
+        <tr th:each="song : ${album.songs}">
+            <a th:href="@{/songs/{song}(song=${song.getTitle()})}">
+                <td th:text="${song.getTitle()}"></td>
+            </a>
+            <td th:text="${album.getGenre()}"></td>
+            <td th:text="${album.getAuthor().getName()}"></td>
+        </tr>
+        </tbody>
 
-</table>
-<div th:insert="~{fragments/fragments::footer}">No footer</div>
-
+    </table>
+    <div th:insert="~{fragments/fragments::footer}">No footer</div>
+</main>
 </body>
 </html>

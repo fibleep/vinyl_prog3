@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-<link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}">
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-<script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-<link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
-  <meta charset="UTF-8">
-  <title>Vinyl</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
+    <meta charset="UTF-8">
+    <title>Vinyl</title>
 </head>
 <body>
-<div th:insert="fragments/fragments :: navbar"></div>
-<form method="post">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" required>
-  <label for="age">Age</label>
-  <input type="number" min="0" max="200" step="1" name="age" id="age" required>
-  <label>Gender</label>
-  <input type="radio" id="M" name="gender" value="M"> MALE
-  <input type="radio" id="F" name="gender" value="F"> FEMALE
-  <input type="radio" id="Other" name="gender" value="OTHER"> OTHER
-  <button type="submit">Add</button>
-</form>
-<div th:insert="~{fragments/fragments::footer}">No footer</div>
+<main>
+    <div th:insert="fragments/fragments :: navbar"></div>
+    <div class="m-auto d-flex justify-content-center mt-5">
+        <form method="post" class="text-white border-danger d-flex flex-column p-5 border rounded">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+            <label for="age">Age</label>
+            <input type="number" min="0" max="200" step="1" name="age" id="age" required>
+            <label>Gender</label>
+            <input type="radio" id="M" name="gender" value="M"> MALE
+            <input type="radio" id="F" name="gender" value="F"> FEMALE
+            <input type="radio" id="Other" name="gender" value="OTHER"> OTHER
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div th:insert="~{fragments/fragments::footer}">No footer</div>
+</main>
 </body>
 </html>

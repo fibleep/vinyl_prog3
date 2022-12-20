@@ -10,25 +10,31 @@
     <title>Vinyl</title>
 </head>
 <body>
-<div th:insert="fragments/fragments :: navbar"></div>
-<form th:object="${albumViewModel}" method="post" class="form-group">
-    <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
-        <p>The form contained errors!</p>
+<main>
+    <div th:insert="fragments/fragments :: navbar"></div>
+    <div class="m-auto d-flex justify-content-center mt-5">
+        <form th:object="${albumViewModel}" method="post"
+              class="text-white border-danger d-flex flex-column p-5 border rounded">
+            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
+                <p>The form contained errors!</p>
+            </div>
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" name="name" id="name" placeholder="Enter name" required>
+            <label for="year">Year</label>
+            <input th:field="*{year}" type="number" min="1900" max="2022" step="1" value="2012" name="year" id="year"
+                   placeholder="Year" required/>
+            <label for="genre">Genre</label>
+            <select th:field="*{genre}" name="genre" id="genre" required>
+                <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+            </select>
+            <label for="author">Author</label>
+            <select th:field="*{author}" name="author" id="author" required>
+                <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        <div th:insert="~{fragments/fragments::footer}">No footer</div>
     </div>
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" name="name" id="name" placeholder="Enter name" required>
-    <label for="year">Year</label>
-    <input th:field="*{year}" type="number" min="1900" max="2022" step="1" value="2012" name="year" id="year" placeholder="Year" required/>
-    <label for="genre">Genre</label>
-    <select th:field="*{genre}" name="genre" id="genre" required>
-            <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
-        </select>
-    <label for="author">Author</label>
-    <select th:field="*{author}" name="author" id="author" required>
-        <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
-    </select>
-    <button type="submit">Add</button>
-</form>
-<div th:insert="~{fragments/fragments::footer}">No footer</div>
+</main>
 </body>
 </html>

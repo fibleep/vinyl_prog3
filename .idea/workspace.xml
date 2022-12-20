@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="🔨🔨🔨">
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="working on css -&gt; improved forms but broke everything else">
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/ServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/ServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/presentation/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/presentation/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/DataSeeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/JsonDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/JsonDataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -53,6 +62,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -68,15 +78,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7f7a70f7ac858bab20ef779d83a81388&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.musicdatabase.service.configuration" />
@@ -143,6 +161,15 @@
       <workItem from="1669037038980" duration="2259000" />
       <workItem from="1669059457192" duration="10341000" />
       <workItem from="1669971600973" duration="5202000" />
+      <workItem from="1670838014133" duration="59000" />
+      <workItem from="1670921367169" duration="175000" />
+      <workItem from="1670921563630" duration="596000" />
+      <workItem from="1670922252933" duration="604000" />
+      <workItem from="1671041355105" duration="1276000" />
+      <workItem from="1671092109857" duration="76000" />
+      <workItem from="1671093489548" duration="12000" />
+      <workItem from="1671205714553" duration="3832000" />
+      <workItem from="1671538704287" duration="1592000" />
     </task>
     <servers />
   </component>
@@ -159,6 +186,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="working on css -&gt; improved forms but broke everything else" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on css -&gt; improved forms but broke everything else" />
   </component>
 </project>

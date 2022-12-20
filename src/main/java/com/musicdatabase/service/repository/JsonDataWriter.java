@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Component
 public class JsonDataWriter {

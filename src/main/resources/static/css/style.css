@@ -1,55 +1,51 @@
-
 /* black-blue: #140c3c, lighter-red:#c42a44, deeper-red:#400c3c, light-gray:#cdcbd4, hover-gray:#847c9c */
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+html, main {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     font-size: 16px;
     color: #cdcbd4;
     background-color: #140c3c;
 }
-form{
-    margin: 0 auto;
-    height: 100%;
-    padding: 1em;
-    color: #cdcbd4;
-    border: 1px solid #CCC;
-    width: 100%;
-    background-color: #400c3c;
+
+form {
+    background: #400c3c;
 }
-ol{
-    list-style-type:none;
+
+ol {
+    list-style-type: none;
 }
-header{
+
+header {
     background-color: black;
     -webkit-text-stroke-color: #c42a44;
     -webkit-text-stroke: 1px;
     -webkit-text-fill-color: black;
-    color:#cdcbd4;
+    color: #cdcbd4;
     padding: 10px;
     text-align: left;
 }
-footer{
-    background-color: black;
+
+footer {
     -webkit-text-stroke-color: #c42a44;
     -webkit-text-stroke: 1px;
     -webkit-text-fill-color: black;
-    color:#cdcbd4;
+    color: #cdcbd4;
 }
-table{
+
+table {
     width: 100%;
     background-color: #400c3c;
 }
-li{
-    display:inline;
+
+li {
+    display: inline;
     padding: 10px;
 }
-a{
-    color:#cdcbd4;
+
+a {
+    color: #cdcbd4;
     text-decoration: none;
 }
-a:hover{
+
+a:hover {
     color: #847c9c;
 }
