@@ -1,0 +1,61 @@
+# Checklist for the project for programming 3
+
+- Deadline: *Friday January 13th 23:59*
+- 3 entities according to specs in assignment 1 [X]
+- Option to save data to a JSON file [X]
+- Layered architecture [X]
+- presentation - service - repository - domain → separate packages [X]
+- Interfaces for loose coupling between layers [X]
+- Logging: [X]
+    - loggers in each class - log important methods [X]
+    - set loglevel to debug in application.properties [X]
+- presentation layer:
+    - spring MVC application
+        - pages:
+            - to show 2 main entities in some overview (table)
+            - to show details of main entities [X]
+            - to show relationships between the entities [X]
+        - possibility to add entities - delete entities
+        - add session history page to show history of visited pages in the session [X]
+        - Menu on top using fragments [X]
+        - Footer at the bottom using fragments [X]
+        - thymeleaf files in templates folder [X]
+        - static files in static folder [X]
+        - bootstrap
+            - is used to work out the views [X]
+            - is loaded using webjars [X]
+            - use bootstrap to
+                - make pages are responsive
+                - design the tables [X]
+                - add navbars (thymeleaf fragments!) [X]
+                - add footers (thymeleaf fragments!) [X]
+        - support for second language
+        - validation:
+            - use viewmodels for the forms, add validation there [X]
+            - use validation messages, show them in your views [X]
+            - some minimal client side validation
+- repository layer: 4 implementations
+    - using collections [X]
+    - using JdbcTemplate
+    - using ORM (JPA)
+    - using JpaRepository (Spring Data)
+        - at least two method queries
+        - at least one custom query
+    - database: H2 or Postgresql
+    - profiles
+        - to switch between repository implementations
+- service layer:
+    - 2 implementations (springdata and other) --> use profiles or git tag
+- exception handling:
+    - Provide two custom error pages
+    - Implement a custom Exception for your application (extends RuntimeException)
+    - Use a @ControllerAdvise class to handle all database exceptions
+    - Handle the custom Exception at the Controller level
+    - Be sure to log all exceptions using the logging framework
+- Add a README.MD file to the root of the project
+    - In this file:
+        - Your name
+        - Explanation of your domain and the relations between the entities (high level explanation)
+        - Explanation of your profiles
+        - What database do you use
+        - Any extra information needed to be able to run the project smoothly

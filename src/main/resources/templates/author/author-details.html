@@ -6,32 +6,25 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
     <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
-    <title>Music Service - AUTHOR</title>
+    <title>Vinyl</title>
 </head>
 <body>
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
+    <h1 th:text="${author.name}"></h1>
     <table>
-        <h1 class="table-header">Authors</h1>
         <tr>
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
         </tr>
-        <tr>
-            <tbody>
-            <tr th:each="author : ${authors}">
-                <td><a th:href="@{authors/{author}(author=${author.getName()})}" th:text="${author.getName()}"></a></td>
-                <td th:text="${author.getAge()}"></td>
-                <td th:text="${author.getGender()}"></td>
-            </tr>
-            </tbody>
+        <tbody>
+        <td th:text="${author.getName()}"></td>
+        <td th:text="${author.getAge()}"></td>
+        <td th:text="${author.getGender()}"></td>
+        </tbody>
+
     </table>
-    <a th:href="@{/authors/addauthor}">
-        <button class="btn btn-dark btn-outline-danger" type="button">
-            Add author
-        </button>
-    </a>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>
 </body>

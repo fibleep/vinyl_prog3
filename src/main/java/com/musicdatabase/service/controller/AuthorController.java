@@ -55,6 +55,13 @@ public class AuthorController {
         return new ModelAndView("redirect:/author/authors");
     }
 
+    @GetMapping("/{author}")
+    public ModelAndView showAuthor(@PathVariable String author, HttpServletRequest request) {
+        logger.info("showAuthor called");
+        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
+        return new ModelAndView("/author/author-details", "author", authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+    }
+
     @GetMapping
     public ModelAndView getAuthors(HttpServletRequest request) {
         logger.info("getAuthors called");
