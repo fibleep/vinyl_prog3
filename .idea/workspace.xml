@@ -4,21 +4,29 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="working on css -&gt; improved forms but broke everything else">
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="added checklist + author-details">
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/ServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/ServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/vinyldb.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.trace.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/JsonDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/JsonDataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAuthorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListSongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListSongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +35,11 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="c3496a0c-adc7-4700-aa81-7aee636237e4" value="DeepPurple" />
+    </colors>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -78,26 +91,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;7f7a70f7ac858bab20ef779d83a81388&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Projects/programming_3_projecty",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
+    "spring.configuration.checksum": "7f7a70f7ac858bab20ef779d83a81388",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
+    ],
+    "RunConfigurationTargetLRU": [
+      "c3496a0c-adc7-4700-aa81-7aee636237e4"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.musicdatabase.service.configuration" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\programming_3_projecty" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Repositories\programming_3_project\src\main\resources" />
@@ -121,6 +153,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="data.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/data.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="c3496a0c-adc7-4700-aa81-7aee636237e4" />
+      <method v="2" />
+    </configuration>
+    <configuration name="schema.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/schema.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="c3496a0c-adc7-4700-aa81-7aee636237e4" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.musicdatabase.service.ServiceApplication" />
@@ -130,6 +185,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.data.sql" />
+        <item itemvalue="Database Script.schema.sql" />
         <item itemvalue="Application.ServiceApplication" />
       </list>
     </recent_temporary>
@@ -170,7 +227,18 @@
       <workItem from="1671093489548" duration="12000" />
       <workItem from="1671205714553" duration="3832000" />
       <workItem from="1671538704287" duration="1592000" />
+      <workItem from="1671712912576" duration="4707000" />
+      <workItem from="1671787647231" duration="6129000" />
+      <workItem from="1671813631770" duration="8310000" />
     </task>
+    <task id="LOCAL-00001" summary="added checklist + author-details">
+      <created>1671718661779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671718661779</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +257,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="working on css -&gt; improved forms but broke everything else" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on css -&gt; improved forms but broke everything else" />
+    <MESSAGE value="added checklist + author-details" />
+    <option name="LAST_COMMIT_MESSAGE" value="added checklist + author-details" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

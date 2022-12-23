@@ -1,37 +1,41 @@
 package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.model.Song;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Profile("collections")
 @Repository
-public class ListSongRepository implements SongRepository {
-    static final List<Song> songs = new ArrayList<>();
+@Profile("JDBC")
+public class SongRepositoryJDBC implements SongRepository {
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<Song> readSongs() {
-        return songs;
+        return null;
     }
 
     @Override
     public Song createSong(Song song) {
-        songs.add(song);
-        return song;
+        return null;
     }
 
     @Override
     public void deleteSong(Song song) {
-        songs.remove(song);
+
     }
 
     @Override
     public void updateSong(Song song, Song newSong) {
 
     }
-
-
 }

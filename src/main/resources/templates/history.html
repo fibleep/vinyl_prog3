@@ -9,25 +9,26 @@
     <title>Vinyl</title>
 </head>
 <body>
-<div th:insert="fragments/fragments :: navbar"></div>
-
-<table class="table table-borderless text-white">
-    <h1 class="table-header">Page Visits</h1>
-    <tr>
-        <th>URL</th>
-        <th>Timestamp</th>
-    </tr>
-    <tr>
-        <tbody>
-        <tr th:each="visit : ${pageVisits}">
-            <td th:text="${visit.getUrl()}"></td>
-            <td th:text="${visit.getTimestampString()}"></td>
+<main>
+    <div th:insert="fragments/fragments :: navbar"></div>
+    <table class="table table-borderless text-white">
+        <h1 class="d-flex justify-content-center p-3" th:text="#{home.history}">Page Visits</h1>
+        <tr>
+            <th>URL</th>
+            <th>Timestamp</th>
         </tr>
-        </tbody>
-    </tr>
-</table>
+        <tr>
+            <tbody>
+            <tr th:each="visit : ${pageVisits}">
+                <td th:text="${visit.getUrl()}"></td>
+                <td th:text="${visit.getTimestampString()}"></td>
+            </tr>
+            </tbody>
+        </tr>
+    </table>
 
 
-<div th:insert="~{fragments/fragments::footer}">No footer</div>
+    <div th:insert="~{fragments/fragments::footer}">No footer</div>
+</main>
 </body>
 </html>

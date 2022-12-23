@@ -10,10 +10,7 @@
 </head>
 <body>
 <main>
-    <div th:insert="fragments/fragments :: navbar"></div>
-
-    <p> Welcome to Vinyl! This is the home page for a project I made for KDG in 2022!</p>
-
+    <h1 class="d-flex justify-content-center p-5"> ERROR:<a th:text="${error}"></a></h1>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>
 </body>

@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface AlbumRepository {
     Album createAlbum(Album album);
+
     List<Album> readAlbums();
 
     void deleteAlbum(Album album);
+
+    void updateAlbum(Album album, Album newAlbum);
 }

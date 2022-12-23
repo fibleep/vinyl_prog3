@@ -6,13 +6,13 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
     <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
-    <title>Music Service - AUTHOR</title>
+    <title>Vinyl</title>
 </head>
 <body>
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <table>
-        <h1 class="table-header">Authors</h1>
+        <h1 class="d-flex justify-content-center p-3" th:text="#{home.authors}">Authors</h1>
         <tr>
             <th>Name</th>
             <th>Age</th>

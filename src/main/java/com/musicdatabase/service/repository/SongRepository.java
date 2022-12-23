@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface SongRepository {
     List<Song> readSongs();
+
     Song createSong(Song song);
 
     void deleteSong(Song song);
+
+    void updateSong(Song song, Song newSong);
 }

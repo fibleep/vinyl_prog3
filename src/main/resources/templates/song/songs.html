@@ -6,12 +6,12 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
     <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
-    <title>Music Service - SONGS</title>
+    <title>Vinyl</title>
 </head>
 <body>
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
-    <h1 class="table-header">Songs</h1>
+    <h1 class="d-flex justify-content-center p-3" th:text="#{home.songs}">Songs</h1>
     <table>
         <tr>
             <th>Title</th>
@@ -19,8 +19,6 @@
             <th>Index</th>
             <th>Album</th>
             <th>Author</th>
-
-
         </tr>
         <tr>
             <tbody>

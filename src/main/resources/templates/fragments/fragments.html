@@ -1,38 +1,39 @@
 <div th:fragment="navbar">
-    <header>
-        <div class="px-3 py-3">
+    <header class="bg-black">
+
+        <div class="p-3">
             <a class="navbar-brand position-absolute left-0 top-0" href="../"><h1>Vinyl</h1>
                 <p th:text="#{home.welcome}"></p></a>
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <div class="d-flex flex-wrap justify-content-center">
                     <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
                        href="@{/}">
                     </a>
 
-                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <ul class="nav col-12 col-lg-auto my-0 justify-content-center text-small">
                         <li>
-                            <a class="nav-link text-white" th:href="@{/}">
-                                Home
+                            <a class="nav-link text-white ui-button" th:href="@{/}">
+                                <p th:text="#{home.home}"></p>
                             </a>
                         </li>
                         <li>
                             <a class="nav-link text-white" th:href="@{/albums}">
-                                Albums
+                                <p th:text="#{home.albums}"></p>
                             </a>
                         </li>
                         <li>
                             <a class="nav-link text-white" th:href="@{/authors}">
-                                Authors
+                                <p th:text="#{home.authors}"></p>
                             </a>
                         </li>
                         <li>
                             <a class="nav-link text-white" th:href="@{/songs}">
-                                Songs
+                                <p th:text="#{home.songs}"></p>
                             </a>
                         </li>
                         <li>
                             <a class="nav-link text-white" th:href="@{/history}">
-                                History
+                                <p th:text="#{home.history}"></p>
                             </a>
                         </li>
                     </ul>

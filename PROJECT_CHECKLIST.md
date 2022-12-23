@@ -35,7 +35,7 @@
             - use validation messages, show them in your views [X]
             - some minimal client side validation
 - repository layer: 4 implementations
-    - using collections [X]
+    - using collections
     - using JdbcTemplate
     - using ORM (JPA)
     - using JpaRepository (Spring Data)

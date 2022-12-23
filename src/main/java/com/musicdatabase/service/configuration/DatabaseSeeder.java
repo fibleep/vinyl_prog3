@@ -5,22 +5,26 @@ import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.SongRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Profile("collections")
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
     private AlbumRepository albumRepository;
     private AuthorRepository authorRepository;
     private SongRepository songRepository;
+
     public DatabaseSeeder(AlbumRepository albumRepository, AuthorRepository authorRepository, SongRepository songRepository) {
         this.albumRepository = albumRepository;
         this.authorRepository = authorRepository;
         this.songRepository = songRepository;
     }
+
     @Override
     public void run(String... args) throws Exception {
         ArrayList<Song> songs = new ArrayList<>();

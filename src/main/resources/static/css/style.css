@@ -14,16 +14,6 @@ ol {
     list-style-type: none;
 }
 
-header {
-    background-color: black;
-    -webkit-text-stroke-color: #c42a44;
-    -webkit-text-stroke: 1px;
-    -webkit-text-fill-color: black;
-    color: #cdcbd4;
-    padding: 10px;
-    text-align: left;
-}
-
 footer {
     -webkit-text-stroke-color: #c42a44;
     -webkit-text-stroke: 1px;
