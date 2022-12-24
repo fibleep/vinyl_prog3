@@ -75,6 +75,31 @@ public class AlbumController {
         return new ModelAndView("/album/album-details", "album", albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get());
     }
 
+    @PutMapping("/{album}/edit")
+    public ModelAndView showEditAlbum(@PathVariable String album, Model model, HttpServletRequest request) {
+        logger.info("showEditAlbum called");
+        Album album1 = albumService.getAlbums().stream().filter(album2 -> album2.getName().equals(album)).findFirst().get();
+        AlbumViewModel albumViewModel = new AlbumViewModel();
+        albumViewModel.setName(album1.getName());
+        albumViewModel.setYear(album1.getYear().getYear() + "");
+        albumViewModel.setGenre(album1.getGenre().toString());
+        albumViewModel.setAuthor(album1.getAuthor().getName());
+        model.addAttribute("albumViewModel", albumViewModel);
+        model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
+        return new ModelAndView("/album/editalbum", "genres", Genre.values());
+    }
+
+    @PostMapping("/{album}")
+    public ModelAndView deleteAlbum(@PathVariable String album, HttpServletRequest request) {
+        logger.info("deleteAlbum called");
+        logger.info(album);
+        Album albumObject = albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get();
+        albumService.removeAlbum(albumObject);
+        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
+        return new ModelAndView("/albums");
+    }
+
     @GetMapping
     public ModelAndView getAlbums(HttpServletRequest request) {
         logger.info("getAlbums called");

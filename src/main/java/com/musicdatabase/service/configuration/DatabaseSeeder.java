@@ -74,10 +74,10 @@ public class DatabaseSeeder implements CommandLineRunner {
         malomiasteczkowy.setSongs(List.of(malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal));
         romanticpsycho.setSongs(List.of(romanticpsychoSong, jesien, tokyo2020, bubbletea));
         // add albums to authors
-        tacoH.setAlbum(List.of(pocztowka, wosk));
-        dawidP.setAlbum(List.of(malomiasteczkowy));
-        dariaZ.setAlbum(List.of(wojnyNoce));
-        quebo.setAlbum(List.of(romanticpsycho));
+        tacoH.setAlbums(List.of(pocztowka, wosk));
+        dawidP.setAlbums(List.of(malomiasteczkowy));
+        dariaZ.setAlbums(List.of(wojnyNoce));
+        quebo.setAlbums(List.of(romanticpsycho));
         // add authors to songs
         zaKrotkiSen.setAuthors(List.of(dariaZ, dawidP));
         flowerNight.setAuthors(List.of(dariaZ));
@@ -100,10 +100,10 @@ public class DatabaseSeeder implements CommandLineRunner {
         tokyo2020.setAuthors(List.of(quebo, tacoH));
         bubbletea.setAuthors(List.of(quebo, dariaZ));
         // add songs to authors
-        dariaZ.setSong(List.of(zaKrotkiSen, flowerNight, serce, hollow));
-        tacoH.setSong(List.of(wanna, future, sanatorium, wwa, woskSong, bxl, szczerze, wiatr));
-        dawidP.setSong(List.of(malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal));
-        quebo.setSong(List.of(romanticpsychoSong, jesien, tokyo2020, bubbletea));
+        dariaZ.setSongs(List.of(zaKrotkiSen, flowerNight, serce, hollow));
+        tacoH.setSongs(List.of(wanna, future, sanatorium, wwa, woskSong, bxl, szczerze, wiatr));
+        dawidP.setSongs(List.of(malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal));
+        quebo.setSongs(List.of(romanticpsychoSong, jesien, tokyo2020, bubbletea));
 
 
         // fill songs

@@ -12,38 +12,42 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <h1 class="d-flex justify-content-center p-3" th:text="#{home.songs}">Songs</h1>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Duration</th>
-            <th>Index</th>
-            <th>Album</th>
-            <th>Author</th>
-        </tr>
-        <tr>
-            <tbody>
-            <tr th:each="song : ${songs}">
-                <td><a th:href="@{/songs/{song}(song=${song.getTitle()})}" th:text="${song.getTitle()}"></a></td>
-                <td th:text="${song.getLength()}"></td>
-                <td th:text="${song.getIndex()}"></td>
-                <td><a th:href="@{/albums/{album}(album=${song.getAlbum().getName()})}"
-                       th:text="${song.getAlbum().getName()}"></a></td>
-                <td>
-                    <ul class="d-inline p-1" th:each="author : ${song.getAuthors()}">
-                        <a th:href="@{/authors/{author}(author=${author.getName()})}">
-                            <li th:text="${author.getName()}"></li>
-                        </a>
-                    </ul>
-                </td>
+    <hr>
+    <div class="d-flex flex-column align-items-center table-responsive">
+        <table class="table table-striped table-dark table-hover w-75">
+            <tr>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Index</th>
+                <th>Album</th>
+                <th>Author</th>
             </tr>
-            </tbody>
-    </table>
-    <a th:href="@{/songs/addsong}">
-        <button class="btn btn-dark btn-outline-danger" type="button">
-            Add song
-        </button>
-    </a>
-
+            <tr>
+                <tbody>
+                <tr th:each="song : ${songs}">
+                    <td><a th:href="@{/songs/{song}(song=${song.getTitle()})}" th:text="${song.getTitle()}"></a></td>
+                    <td th:text="${song.getLength()}"></td>
+                    <td th:text="${song.getIndex()}"></td>
+                    <td><a th:href="@{/albums/{album}(album=${song.getAlbum().getName()})}"
+                           th:text="${song.getAlbum().getName()}"></a></td>
+                    <td>
+                        <hr>
+                        <ul class="d-inline p-1" th:each="author : ${song.getAuthors()}">
+                            <a th:href="@{/authors/{author}(author=${author.getName()})}">
+                                <li th:text="${author.getName()}"></li>
+                            </a>
+                            <hr>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+        </table>
+        <a th:href="@{/songs/addsong}">
+            <button class="btn btn-dark btn-outline-danger" type="button">
+                Add song
+            </button>
+        </a>
+    </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>
 </body>
