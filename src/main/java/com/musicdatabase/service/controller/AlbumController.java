@@ -75,8 +75,8 @@ public class AlbumController {
         return new ModelAndView("/album/album-details", "album", albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get());
     }
 
-    @PutMapping("/{album}/edit")
-    public ModelAndView showEditAlbum(@PathVariable String album, Model model, HttpServletRequest request) {
+    @PutMapping("/{album}")
+    public ModelAndView editAlbum(@PathVariable String album, Model model, HttpServletRequest request) {
         logger.info("showEditAlbum called");
         Album album1 = albumService.getAlbums().stream().filter(album2 -> album2.getName().equals(album)).findFirst().get();
         AlbumViewModel albumViewModel = new AlbumViewModel();
@@ -90,14 +90,14 @@ public class AlbumController {
         return new ModelAndView("/album/editalbum", "genres", Genre.values());
     }
 
-    @PostMapping("/{album}")
+    @DeleteMapping("/{album}")
     public ModelAndView deleteAlbum(@PathVariable String album, HttpServletRequest request) {
         logger.info("deleteAlbum called");
         logger.info(album);
         Album albumObject = albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get();
         albumService.removeAlbum(albumObject);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return new ModelAndView("/albums");
+        return new ModelAndView("redirect:/albums");
     }
 
     @GetMapping

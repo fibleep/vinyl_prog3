@@ -37,14 +37,43 @@
                     <i class="bi bi-pencil-square"></i>
                 </button>
             </a>
+            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editLabel">Edit album</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                            <form method="post" th:action="@{/albums/{album}/edit(album=${album.name})}">
+                        <div class="modal-body">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" th:value="${album.name}" required>
+                                <label for="genre">Genre</label>
+                                <input type="text" name="genre" id="genre" th:value="${album.genre}" required>
+                                <label for="author">Author</label>
+                                <input type="text" name="author" id="author" th:value="${album.author.name}" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit">Edit</button>
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
 
+
+            </div>
 
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">
                 <i class="bi bi-trash"></i>
             </button>
             <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog"
                  aria-labelledby="confirmDeleteLabel"
-                 aria-hidden="false">
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content bg-black">
                         <div class="modal-header">
