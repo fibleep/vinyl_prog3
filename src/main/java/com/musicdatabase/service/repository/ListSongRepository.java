@@ -30,7 +30,7 @@ public class ListSongRepository implements SongRepository {
 
     @Override
     public void updateSong(Song song, Song newSong) {
-
+        songs.set(songs.indexOf(song), newSong);
     }
 
 

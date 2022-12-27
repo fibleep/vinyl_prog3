@@ -72,22 +72,36 @@ public class AlbumController {
     public ModelAndView showAlbum(@PathVariable String album, HttpServletRequest request) {
         logger.info("showAlbum called");
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return new ModelAndView("/album/album-details", "album", albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get());
+        ModelAndView modelAndView = new ModelAndView("/album/album-details");
+        Album albumObject = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
+        AlbumViewModel albumViewModel = new AlbumViewModel();
+        albumViewModel.setName(albumObject.getName());
+        albumViewModel.setYear(albumObject.getYear() + "");
+
+        modelAndView.addObject("album", albumObject);
+        modelAndView.addObject("authors", authorService.getAuthors());
+        modelAndView.addObject("genres", Genre.values());
+        modelAndView.addObject("albumViewModel", albumViewModel);
+        return modelAndView;
     }
 
     @PutMapping("/{album}")
-    public ModelAndView editAlbum(@PathVariable String album, Model model, HttpServletRequest request) {
-        logger.info("showEditAlbum called");
-        Album album1 = albumService.getAlbums().stream().filter(album2 -> album2.getName().equals(album)).findFirst().get();
-        AlbumViewModel albumViewModel = new AlbumViewModel();
-        albumViewModel.setName(album1.getName());
-        albumViewModel.setYear(album1.getYear().getYear() + "");
-        albumViewModel.setGenre(album1.getGenre().toString());
-        albumViewModel.setAuthor(album1.getAuthor().getName());
-        model.addAttribute("albumViewModel", albumViewModel);
-        model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+    public ModelAndView editAlbum(@Valid @ModelAttribute("albumViewModel") AlbumViewModel albumViewModel, @PathVariable String album, HttpServletRequest request, BindingResult bindingResult) {
+        logger.info("editAlbum called");
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
+            return new ModelAndView("/album/album-details");
+        }
+        Album originalAlbum = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
+        Album newAlbum = originalAlbum;
+        newAlbum.setName(albumViewModel.getName());
+        newAlbum.setYear(LocalDateTime.of(parseInt(albumViewModel.getYear()), 1, 1, 0, 0));
+        newAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
+        albumViewModel.getAuthor();
+        newAlbum.setAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(albumViewModel.getAuthor())).findFirst().get());
+        albumService.updateAlbum(originalAlbum, newAlbum);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return new ModelAndView("/album/editalbum", "genres", Genre.values());
+        return new ModelAndView("redirect:/albums");
     }
 
     @DeleteMapping("/{album}")

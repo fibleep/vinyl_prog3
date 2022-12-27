@@ -27,7 +27,9 @@
             <td>
                 <ul th:each="author : ${song.getAuthors()}">
                     <hr>
-                    <li th:text="${author.getName()}"></li>
+                    <a th:href="@{/authors/{author}(author=${album.author.name})}">
+                        <li th:text="${author.getName()}"></li>
+                    </a>
                     <hr>
                 </ul>
             </td>

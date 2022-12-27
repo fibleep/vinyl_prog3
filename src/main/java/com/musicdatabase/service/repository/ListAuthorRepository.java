@@ -26,11 +26,11 @@ public class ListAuthorRepository implements AuthorRepository {
 
     @Override
     public void deleteAuthor(Author author) {
-
+        authors.remove(author);
     }
 
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
-
+        authors.set(authors.indexOf(author), newAuthor);
     }
 }

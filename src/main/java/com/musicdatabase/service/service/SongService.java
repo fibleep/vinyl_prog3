@@ -8,10 +8,14 @@ import java.util.List;
 public interface SongService {
 
     List<Song> getSongs();
+
     List<Song> readSongsByAuthor(String author);
 
     void addSong(Song song);
+
     void removeSong(Song song);
+
+    void updateSong(Song originalSong, Song newSong);
 
     void writeSongsToJSON(SongRepository songs);
 }

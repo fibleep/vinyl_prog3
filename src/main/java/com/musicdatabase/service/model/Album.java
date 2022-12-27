@@ -17,8 +17,10 @@ public class Album {
         this.author = author;
         this.songs = songs;
     }
+
     public Album() {
     }
+
     public String getName() {
         return name;
     }
@@ -27,13 +29,14 @@ public class Album {
         this.name = name;
     }
 
-    public LocalDateTime getYear() {
-        return year;
+    public int getYear() {
+        return year.getYear();
     }
 
     public String getYearString() {
         return year.getYear() + "";
     }
+
     public void setYear(LocalDateTime year) {
         this.year = year;
     }
@@ -59,7 +62,7 @@ public class Album {
     }
 
     public void addSong(Song song) {
-        this.songs.add(song);
+        songs.add(song);
     }
 
     public void removeSong(Song song) {

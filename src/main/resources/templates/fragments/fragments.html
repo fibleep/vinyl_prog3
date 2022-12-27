@@ -1,43 +1,47 @@
 <div th:fragment="navbar">
-    <header class="bg-black">
+    <header class="bg-black rounded border-danger w-50 justify-content-center m-auto">
 
         <div class="p-3">
             <a class="navbar-brand position-absolute left-0 top-0" href="../"><h1>Vinyl</h1>
                 <p th:text="#{home.welcome}"></p></a>
-            <div class="container">
-                <div class="d-flex flex-wrap justify-content-center">
-                    <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
-                       href="@{/}">
-                    </a>
-
-                    <ul class="nav col-12 col-lg-auto my-0 justify-content-center text-small">
-                        <li>
-                            <a class="nav-link text-white ui-button" th:href="@{/}">
-                                <p th:text="#{home.home}"></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-white" th:href="@{/albums}">
-                                <p th:text="#{home.albums}"></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-white" th:href="@{/authors}">
-                                <p th:text="#{home.authors}"></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-white" th:href="@{/songs}">
-                                <p th:text="#{home.songs}"></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-white" th:href="@{/history}">
-                                <p th:text="#{home.history}"></p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="d-flex flex-nowrap justify-content-end">
+                <ul class="nav text-small d-inline-flex">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">
+                            <button type="button" class="btn btn-dark">
+                                <span th:text="#{home.home}"></span>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/albums}">
+                            <button type="button" class="btn btn-dark">
+                                <span th:text="#{home.albums}"></span>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/authors}">
+                            <button type="button" class="btn btn-dark">
+                                <span th:text="#{home.authors}"></span>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/songs}">
+                            <button type="button" class="btn btn-dark">
+                                <span th:text="#{home.songs}"></span>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/history}">
+                            <button type="button" class="btn btn-dark">
+                                <span th:text="#{home.history}"></span>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>

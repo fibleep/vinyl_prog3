@@ -3,11 +3,8 @@ html, main {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     font-size: 16px;
     color: #cdcbd4;
-    background-color: #140c3c;
-}
-
-form {
-    background: #400c3c;
+    background: rgb(40, 0, 9);
+    background: linear-gradient(90deg, rgba(40, 0, 9, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(40, 0, 9, 1) 99%);
 }
 
 ol {
@@ -16,11 +13,6 @@ ol {
 
 footer {
     color: #cdcbd4;
-}
-
-li {
-    display: inline;
-    padding: 10px;
 }
 
 a {

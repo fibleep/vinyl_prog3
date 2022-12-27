@@ -11,5 +11,5 @@ public interface AlbumRepository {
 
     void deleteAlbum(Album album);
 
-    void updateAlbum(Album album, Album newAlbum);
+    void updateAlbum(Album originalAlbum, Album newAlbum);
 }

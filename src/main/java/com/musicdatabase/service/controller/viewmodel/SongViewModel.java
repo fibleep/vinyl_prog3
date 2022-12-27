@@ -15,7 +15,8 @@ public class SongViewModel {
     @NotNull
     private int index;
     @NotNull
-    private double length;
+    private int minutes;
+    private int seconds;
     @NotBlank
     private String author;
     private String album;

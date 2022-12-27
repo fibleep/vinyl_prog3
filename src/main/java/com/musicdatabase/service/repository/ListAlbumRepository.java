@@ -25,7 +25,7 @@ public class ListAlbumRepository implements AlbumRepository {
 
     @Override
     public void updateAlbum(Album album, Album newAlbum) {
-
+        albums.set(albums.indexOf(album), newAlbum);
     }
 
     @Override

@@ -1,12 +1,16 @@
 package com.musicdatabase.service.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Author {
     String name;
     int age;
@@ -14,15 +18,8 @@ public class Author {
     transient List<Album> albums;
     transient List<Song> songs;
 
-    public Author(String name, int age, Gender gender, List<Album> albums, List<Song> songs) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.albums = albums;
-        this.songs = songs;
-    }
-
-    public Author() {
+    public String getName() {
+        return name;
     }
 
     public void addSong(Song song) {

@@ -4,23 +4,27 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="h2 data inserting, basic translations, error controller basics">
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="addidng edit and delete buttons to album page">
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AlbumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AlbumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListAlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListSongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/ListSongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home_pl.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,11 +130,11 @@
       <recent name="D:\Projects\programming_3_projecty" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\programming_3_projecty\src\main\resources\templates" />
       <recent name="D:\Repositories\programming_3_project\src\main\resources" />
       <recent name="D:\Repositories\programming_3_project\src\main\resources\templates\song" />
       <recent name="D:\Repositories\programming_3_project\src\main\resources\templates\author" />
       <recent name="D:\Repositories\programming_3_project\src\main\resources\templates\album" />
-      <recent name="D:\Repositories\programming_3_project\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ServiceApplication">
@@ -224,7 +228,8 @@
       <workItem from="1671712912576" duration="4707000" />
       <workItem from="1671787647231" duration="6129000" />
       <workItem from="1671813631770" duration="8670000" />
-      <workItem from="1671871895311" duration="9990000" />
+      <workItem from="1671871895311" duration="11112000" />
+      <workItem from="1672132763822" duration="18131000" />
     </task>
     <task id="LOCAL-00001" summary="added checklist + author-details">
       <created>1671718661779</created>
@@ -240,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671828840981</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="addidng edit and delete buttons to album page">
+      <created>1671882707982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671882707982</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +273,8 @@
     <MESSAGE value="working on css -&gt; improved forms but broke everything else" />
     <MESSAGE value="added checklist + author-details" />
     <MESSAGE value="h2 data inserting, basic translations, error controller basics" />
-    <option name="LAST_COMMIT_MESSAGE" value="h2 data inserting, basic translations, error controller basics" />
+    <MESSAGE value="addidng edit and delete buttons to album page" />
+    <option name="LAST_COMMIT_MESSAGE" value="addidng edit and delete buttons to album page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -57,7 +57,8 @@ public class SongController {
         Song song = new Song();
         song.setTitle(songViewModel.getTitle());
         song.setIndex(songViewModel.getIndex());
-        song.setLength(songViewModel.getLength());
+        double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);
+        song.setLength(length);
         song.addAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
         song.setAlbum(albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get());
         albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get().addSong(song);

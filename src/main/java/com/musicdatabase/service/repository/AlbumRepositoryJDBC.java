@@ -46,6 +46,6 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
 
     @Override
     public void updateAlbum(Album album, Album newAlbum) {
-
+        
     }
 }

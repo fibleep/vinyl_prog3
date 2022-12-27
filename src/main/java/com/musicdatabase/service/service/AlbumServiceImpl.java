@@ -1,8 +1,10 @@
 package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +16,13 @@ public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
     private final JsonDataWriter jsonDataWriter;
+    private final SongService songService;
     private final Logger logger = Logger.getLogger(AlbumServiceImpl.class.getName());
 
-    public AlbumServiceImpl(AlbumRepository albumRepository, JsonDataWriter jsonDataWriter) {
+    @Autowired
+    public AlbumServiceImpl(AlbumRepository albumRepository, SongService songService, JsonDataWriter jsonDataWriter) {
         this.albumRepository = albumRepository;
+        this.songService = songService;
         this.jsonDataWriter = jsonDataWriter;
     }
 
@@ -40,13 +45,24 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public void removeAlbum(Album album) {
+        album.getSongs().forEach(songService::removeSong);
         albumRepository.deleteAlbum(album);
     }
 
     @Override
     public List<Album> readAlbumsByAuthorAndYear(String name, int year) {
         logger.info("readAlbumsByAuthorAndYear called");
-        return albumRepository.readAlbums().stream().filter(album -> album.getAuthor().getName().equals(name) && album.getYear().getYear() == year).collect(Collectors.toList());
+        return albumRepository.readAlbums().stream().filter(album -> album.getAuthor().getName().equals(name) && album.getYear() == year).collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateAlbum(Album originalAlbum, Album newAlbum) {
+        for (Song song : originalAlbum.getSongs()) {
+            Song newSong = song;
+            newSong.setAlbum(newAlbum);
+            songService.updateSong(song, newSong);
+        }
+        albumRepository.updateAlbum(originalAlbum, newAlbum);
     }
 
     @Override

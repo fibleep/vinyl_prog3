@@ -37,9 +37,15 @@ public class SongServiceImpl implements SongService {
     public void addSong(Song song) {
         songRepository.createSong(song);
     }
+
     @Override
     public void removeSong(Song song) {
         songRepository.deleteSong(song);
+    }
+
+    @Override
+    public void updateSong(Song originalSong, Song newSong) {
+        songRepository.updateSong(originalSong, newSong);
     }
 
     @Override

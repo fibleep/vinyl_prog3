@@ -13,27 +13,38 @@
     <div th:insert="fragments/fragments :: navbar"></div>
     <div class="m-auto d-flex justify-content-center mt-5">
         <form th:object="${songViewModel}" method="post"
-              class="text-white border-danger d-flex flex-column p-5 border rounded">
+              class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
             <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
                 <p>The form contains errors</p>
             </div>
 
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" th:field="*{title}" placeholder="Enter title">
+            <label th:for="title">Title</label>
+            <input class="text-white form-control border-danger bg-black" type="text" th:value="${title}"
+                   th:field="*{title}">
             <label for="authors">Authors</label>
-            <select name="author" id="authors" th:field="*{author}">
+            <select class="text-white form-control border-danger bg-black" name="author" id="authors"
+                    th:field="*{author}">
                 <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
             </select>
             <label for="album">Album</label>
-            <select name="album" id="album" th:field="*{album}">
+            <select class="text-white form-control border-danger bg-black" name="album" id="album" th:field="*{album}">
                 <option th:each="album : ${albums}" th:value="${album}" th:text="${album}"></option>
             </select>
-            <label for="length">Length</label>
-            <input type="number" name="length" id="length" th:field="*{length}">
+            <label th:for="minutes">Minutes</label>
+            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{minutes}" min="0"
+                   max="59"
+                   step="1"
+                   th:field="*{minutes}">
+            <label th:for="seconds">Seconds</label>
+            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{seconds}" min="0"
+                   max="59"
+                   step="1"
+                   th:field="*{seconds}">
             <label for="index">Index</label>
-            <input type="text" name="index" id="index" th:field="*{index}">
+            <input class="text-white form-control border-danger bg-black" type="text" name="index" id="index"
+                   th:field="*{index}">
 
-            <button type="submit" class="mt-5">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit">Add</button>
         </form>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>

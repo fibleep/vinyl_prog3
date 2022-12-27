@@ -7,11 +7,16 @@ import java.util.List;
 
 public interface AlbumService {
     List<Album> getAlbums();
+
     List<Album> readAlbumsByAuthor(String author);
+
     List<Album> readAlbumsByAuthorAndYear(String title, int year);
 
     void addAlbum(Album album);
+
     void removeAlbum(Album album);
+
+    void updateAlbum(Album originalAlbum, Album newAlbum);
 
     void writeAlbumsToJSON(AlbumRepository albums);
 }
