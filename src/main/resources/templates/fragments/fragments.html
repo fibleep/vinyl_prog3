@@ -1,11 +1,15 @@
 <div th:fragment="navbar">
-    <header class="bg-black rounded border-danger w-50 justify-content-center m-auto">
+    <header class="bg-black rounded border-danger w-50 justify-content-center m-auto p-3">
 
-        <div class="p-3">
-            <a class="navbar-brand position-absolute left-0 top-0" href="../"><h1>Vinyl</h1>
+        <div class="navbar navbar-expand-lg">
+            <a class="navbar-brand text-white" href="../"><h1>Vinyl</h1>
                 <p th:text="#{home.welcome}"></p></a>
-            <div class="d-flex flex-nowrap justify-content-end">
-                <ul class="nav text-small d-inline-flex">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-secondary rounded"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/}">
                             <button type="button" class="btn btn-dark">

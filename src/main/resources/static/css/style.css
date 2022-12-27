@@ -4,7 +4,7 @@ html, main {
     font-size: 16px;
     color: #cdcbd4;
     background: rgb(40, 0, 9);
-    background: linear-gradient(90deg, rgba(40, 0, 9, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(40, 0, 9, 1) 99%);
+    background: linear-gradient(90deg, rgba(40, 0, 9, 1) 0%, rgba(42, 48, 134, 1) 100%);
 }
 
 ol {
