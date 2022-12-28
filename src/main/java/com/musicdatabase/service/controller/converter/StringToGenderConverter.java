@@ -8,11 +8,11 @@ public class StringToGenderConverter implements Converter<String, Gender> {
 
     @Override
     public Gender convert(String source) {
-        switch(source){
-            case "M" -> {
+        switch (source) {
+            case "MALE" -> {
                 return Gender.MALE;
             }
-            case "F" -> {
+            case "FEMALE" -> {
                 return Gender.FEMALE;
             }
             default -> {

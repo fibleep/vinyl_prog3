@@ -11,18 +11,20 @@
 <body>
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
-    <h1 class="d-flex justify-content-center p-3" th:text="${album.name}"></h1>
-    <a th:href="@{/authors/{author}(author=${album.author.name})}"> <h3 class="d-flex justify-content-center p-3"> <p th:text="${album.author.name}"></p> </h3> </a>
+    <div class="d-flex flex-column m-auto mt-5 bg-black rounded w-25">
+    <h1 class="d-flex justify-content-center p-3" th:text="${album.getName()}"></h1>
+    <a th:href="@{/authors/{author}(author=${album.getAuthor().getName()})}"> <h3 class="d-flex justify-content-center p-3"> <p th:text="${album.getAuthor().getName()}"></p> </h3> </a>
+    </div>
     <hr>
     <div class="d-flex flex-column align-items-center table-responsive">
-        <table class="table table-striped table-dark table-hover w-75">
+        <table class="table table-striped table-dark table-hover border-dark rounded rounded-3 overflow-hidden w-75">
             <tr>
                 <th><p th:text="#{albums.songs}"></p></th>
                 <th><p th:text="#{albums.genre}"></p></th>
                 <th><p th:text="#{albums.year}"></p></th>
             </tr>
             <tbody>
-            <tr th:each="song : ${album.songs}">
+            <tr th:each="song : ${album.getSongs()}">
                 <td>
                 <a th:href="@{/songs/{song}(song=${song.getTitle()})}">
                     <p th:text="${song.getTitle()}"></p>
@@ -52,25 +54,25 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form th:method="put" th:action="@{/albums/{album}(album=${album.name})}" th:object="${albumViewModel}">
+                    <form th:method="put" th:action="@{/albums/{album}(album=${album.getName()})}" th:object="${albumViewModel}">
                         <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
                             <p>The form contained errors!</p>
                         </div>
                         <div class="modal-body d-flex flex-wrap">
                             <label class="form-label" th:for="name">Name</label>
-                            <input class="form-control" type="text" th:field="*{name}" th:value="${album.name}" th:placeholder="${album.name}" th:default="${album.name}"/>
+                            <input class="form-control" type="text" th:field="*{name}" th:value="${album.getName()}" th:placeholder="${album.getName()}" th:default="${album.getName()}"/>
                             <label th:for="genre">Genre</label>
-                            <select class="form-control" th:field="*{genre}" th:value="${album.genre}" th:placeholder="${album.genre}" required>
-                                <option selected="selected" th:value="${album.genre}" th:text="${album.genre}"></option>
+                            <select class="form-control" th:field="*{genre}" th:value="${album.getGenre()}" th:placeholder="${album.getGenre()}" required>
+                                <option selected="selected" th:value="${album.getGenre()}" th:text="${album.getGenre()}"></option>
                                 <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
                             </select>
                             <label class="form-label" th:for="author">Author</label>
                             <select class="form-control" th:field="*{author}">
-                                <option selected="selected" th:value="${album.author.name}" th:text="${album.author.name}"></option>
-                                <span th:each="author : ${authors}" th:if="${author.getName()!=album.author.name}"> <option th:value="${author.getName()}" th:text="${author.getName()}"></option> </span>
+                                <option selected="selected" th:value="${album.getAuthor().getName()}" th:text="${album.getAuthor().getName()}"></option>
+                                <span th:each="author : ${authors}" th:if="${author.getName()!=album.getAuthor().getName()}"> <option th:value="${author.getName()}" th:text="${author.getName()}"></option> </span>
                             </select>
                             <label class="form-label" th:for="year">Year</label>
-                            <input class="form-control" type="number" th:field="*{year}" th:value="${album.year}" th:placeholder="${album.year}" th:default="${album.year}" min="1900" max="2023" step="1"/>
+                            <input class="form-control" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1900" max="2023" step="1"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -97,7 +99,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <form th:method="delete" th:action="@{/albums/{album}(album=${album.name})}">
+                            <form th:method="delete" th:action="@{/albums/{album}(album=${album.getName()})}">
                                 <button type="submit" class="btn btn-danger">Delete
                                 </button>
                             </form>

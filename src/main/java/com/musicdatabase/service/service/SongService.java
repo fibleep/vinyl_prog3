@@ -11,7 +11,7 @@ public interface SongService {
 
     List<Song> readSongsByAuthor(String author);
 
-    void addSong(Song song);
+    void createSong(Song song);
 
     void removeSong(Song song);
 

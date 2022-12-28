@@ -8,7 +8,13 @@ import java.util.List;
 public interface AuthorService {
     List<Author> getAuthors();
 
+    Author getAuthorByName(String name);
+
     void writeAuthorsToJSON(AuthorRepository authors);
 
     void addAuthor(Author author);
+
+    void updateAuthor(Author originalAuthor, Author newAuthor);
+
+    void removeAuthor(Author author);
 }

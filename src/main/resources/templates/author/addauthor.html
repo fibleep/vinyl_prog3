@@ -12,16 +12,25 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <div class="m-auto d-flex justify-content-center mt-5">
-        <form method="post" class="text-white border-danger d-flex flex-column p-5 border rounded">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
-            <label for="age">Age</label>
-            <input type="number" min="0" max="200" step="1" name="age" id="age" required>
-            <label>Gender</label>
-            <input type="radio" id="M" name="gender" value="M"> MALE
-            <input type="radio" id="F" name="gender" value="F"> FEMALE
-            <input type="radio" id="Other" name="gender" value="OTHER"> OTHER
-            <button type="submit">Add</button>
+        <form th:object="${authorViewModel}" method="post"
+              class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
+            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
+                <p>The form contains errors</p>
+            </div>
+            <label th:for="name">Name</label>
+            <input class="text-white form-control border-danger bg-black" type="text" th:value="${name}"
+                   th:field="*{name}">
+            <label th:for="age">Age</label>
+            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{age}" min="1"
+                   max="120"
+                   step="1"
+                   th:field="*{age}">
+            <label th:for="gender">Gender</label>
+            <select class="text-white form-control border-danger bg-black" th:value="*{gender}" th:field="*{gender}">
+                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender}"></option>
+            </select>
+
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit">Add</button>
         </form>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>

@@ -34,7 +34,10 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public void addSong(Song song) {
+    public void createSong(Song song) {
+        if (song.getAlbum() != null) {
+            song.getAlbum().addSong(song);
+        }
         songRepository.createSong(song);
     }
 

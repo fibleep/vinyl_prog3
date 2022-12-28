@@ -11,11 +11,10 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class AuthorViewModel {
-    @NotBlank(message = "name is required")
-    @Size(min = 2, max = 40)
+    @Size(max = 40)
     private String name;
     @NotBlank
-    @Size(min = 1, max = 10,message = "oopsie error")
+    @Size(min = 1, max = 10, message = "oopsie error")
     private String gender;
     @NotNull
     @Max(120)

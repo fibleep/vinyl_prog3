@@ -12,8 +12,10 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
 
-    <p> Welcome to Vinyl! This is the home page for a project I made for KDG in 2022!</p>
-
+    <div class="d-flex flex-column m-auto mt-5 bg-black rounded w-50 h-50">
+        <h1 class="d-flex justify-content-center p-3" th:text="#{home.introduction}"></h1>
+        <p th:text="#{home.content}" class="m-auto mb-5"></p>
+    </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>
 </body>

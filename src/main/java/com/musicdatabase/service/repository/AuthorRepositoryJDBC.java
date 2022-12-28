@@ -30,7 +30,7 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
     }
 
     @Override
-    public void deleteAuthor(Author author) {
+    public void removeAuthor(Author author) {
 
     }
 

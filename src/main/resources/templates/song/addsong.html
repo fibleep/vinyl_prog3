@@ -21,13 +21,13 @@
             <label th:for="title">Title</label>
             <input class="text-white form-control border-danger bg-black" type="text" th:value="${title}"
                    th:field="*{title}">
-            <label for="authors">Authors</label>
-            <select class="text-white form-control border-danger bg-black" name="author" id="authors"
+            <label th:for="authors">Authors</label>
+            <select class="text-white form-control border-danger bg-black" th:value="${authors}"
                     th:field="*{author}">
                 <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
             </select>
-            <label for="album">Album</label>
-            <select class="text-white form-control border-danger bg-black" name="album" id="album" th:field="*{album}">
+            <label th:for="album">Album</label>
+            <select class="text-white form-control border-danger bg-black" th:value="*{album}" th:field="*{album}">
                 <option th:each="album : ${albums}" th:value="${album}" th:text="${album}"></option>
             </select>
             <label th:for="minutes">Minutes</label>
@@ -40,8 +40,10 @@
                    max="59"
                    step="1"
                    th:field="*{seconds}">
-            <label for="index">Index</label>
-            <input class="text-white form-control border-danger bg-black" type="text" name="index" id="index"
+            <label th:for="index">Index</label>
+            <input class="text-white form-control border-danger bg-black" type="number" min="1"
+                   max="99"
+                   step="1" th:value="*{index}"
                    th:field="*{index}">
 
             <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit">Add</button>

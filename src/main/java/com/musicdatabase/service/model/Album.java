@@ -1,13 +1,21 @@
 package com.musicdatabase.service.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class Album {
-    String name;
-    List<Song> songs;
-    LocalDateTime year;
-    Genre genre;
+    private String name;
+    private List<Song> songs = new ArrayList<>();
+    private LocalDateTime year;
+    private Genre genre;
     transient Author author;
 
     public Album(String name, LocalDateTime year, Genre genre, Author author, List<Song> songs) {
@@ -18,51 +26,13 @@ public class Album {
         this.songs = songs;
     }
 
-    public Album() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getYear() {
         return year.getYear();
     }
 
-    public String getYearString() {
-        return year.getYear() + "";
-    }
-
-    public void setYear(LocalDateTime year) {
-        this.year = year;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public List<Song> getSongs() {
-        return songs;
-    }
-
     public void addSong(Song song) {
-        songs.add(song);
+        this.songs.add(song);
     }
 
     public void removeSong(Song song) {

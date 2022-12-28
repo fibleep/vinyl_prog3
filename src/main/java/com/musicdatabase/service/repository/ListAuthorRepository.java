@@ -25,7 +25,7 @@ public class ListAuthorRepository implements AuthorRepository {
     }
 
     @Override
-    public void deleteAuthor(Author author) {
+    public void removeAuthor(Author author) {
         authors.remove(author);
     }
 

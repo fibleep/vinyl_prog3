@@ -22,6 +22,7 @@ public class Song {
         this.authors = authors;
         this.album = album;
     }
+
     public Song() {
     }
 
@@ -30,7 +31,9 @@ public class Song {
     }
 
     public void removeAuthor(Author author) {
-        this.authors.remove(author);
+        List<Author> updatedAuthors = new ArrayList<>(authors);
+        updatedAuthors.remove(author);
+        authors = updatedAuthors;
     }
 
     public void setAuthors(List<Author> authors) {
@@ -49,8 +52,8 @@ public class Song {
                 "\n [ TITLE : " + title +
                 " | INDEX : " + index +
                 " | LENGTH : " + length +
-                " | AUTHOR : " + authorNames+
-                "ALBUM : " + album.getName()+" ]" +
+                " | AUTHOR : " + authorNames +
+                "ALBUM : " + album.getName() + " ]" +
                 "\n------------------";
     }
 }

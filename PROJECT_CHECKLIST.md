@@ -25,7 +25,7 @@
             - is used to work out the views [X]
             - is loaded using webjars [X]
             - use bootstrap to
-                - make pages are responsive
+                - make pages are responsive [X]
                 - design the tables [X]
                 - add navbars (thymeleaf fragments!) [X]
                 - add footers (thymeleaf fragments!) [X]

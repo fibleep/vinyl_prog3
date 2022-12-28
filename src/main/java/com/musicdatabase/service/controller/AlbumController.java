@@ -44,6 +44,7 @@ public class AlbumController {
         logger.info("addAlbum called");
         model.addAttribute("albumViewModel", new AlbumViewModel());
         model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+        model.addAttribute("genres", Genre.values());
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
 
         return new ModelAndView("/album/addalbum", "genres", Genre.values());
@@ -100,7 +101,6 @@ public class AlbumController {
         albumViewModel.getAuthor();
         newAlbum.setAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(albumViewModel.getAuthor())).findFirst().get());
         albumService.updateAlbum(originalAlbum, newAlbum);
-        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/albums");
     }
 
@@ -110,7 +110,6 @@ public class AlbumController {
         logger.info(album);
         Album albumObject = albumService.getAlbums().stream().filter(album1 -> album1.getName().equals(album)).findFirst().get();
         albumService.removeAlbum(albumObject);
-        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/albums");
     }
 

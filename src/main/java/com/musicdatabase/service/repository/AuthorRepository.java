@@ -9,7 +9,7 @@ public interface AuthorRepository {
 
     Author createAuthor(Author author);
 
-    void deleteAuthor(Author author);
+    void removeAuthor(Author author);
 
     void updateAuthor(Author author, Author newAuthor);
 }

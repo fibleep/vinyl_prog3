@@ -10,7 +10,7 @@ import java.util.List;
 @Profile("collections")
 @Repository
 public class ListSongRepository implements SongRepository {
-    static final List<Song> songs = new ArrayList<>();
+    static List<Song> songs = new ArrayList<>();
 
     @Override
     public List<Song> readSongs() {
@@ -31,6 +31,10 @@ public class ListSongRepository implements SongRepository {
     @Override
     public void updateSong(Song song, Song newSong) {
         songs.set(songs.indexOf(song), newSong);
+//        List<Song> newSongs = new ArrayList<>(songs);
+//        newSongs.remove(song);
+//        newSongs.add(newSong);
+//        songs = newSongs;
     }
 
 

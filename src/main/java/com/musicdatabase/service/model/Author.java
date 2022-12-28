@@ -12,15 +12,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author {
-    String name;
-    int age;
-    Gender gender;
+    private String name;
+    private int age;
+    private Gender gender;
     transient List<Album> albums;
     transient List<Song> songs;
-
-    public String getName() {
-        return name;
-    }
 
     public void addSong(Song song) {
         this.songs.add(song);
