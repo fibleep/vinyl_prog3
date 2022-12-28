@@ -39,12 +39,14 @@ public class SongController {
     }
 
     @GetMapping("/addsong")
-    public ModelAndView addSong(Model model, HttpServletRequest request) {
+    public ModelAndView addSong(HttpServletRequest request) {
         logger.info("addSong called");
-        model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
-        model.addAttribute("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
+        ModelAndView modelAndView = new ModelAndView("/song/addsong");
+        modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+        modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
+        modelAndView.addObject("songViewModel", new SongViewModel());
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return new ModelAndView("/song/addsong", "songViewModel", new SongViewModel());
+        return modelAndView;
     }
 
     @PostMapping("/addsong")
@@ -71,8 +73,13 @@ public class SongController {
     @GetMapping("/{song}")
     public ModelAndView getSong(@PathVariable String song, HttpServletRequest request) {
         logger.info("getSong called");
+        ModelAndView modelAndView = new ModelAndView("/song/song-details");
+        modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+        modelAndView.addObject("song", songService.getSong(song));
+        modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
+        modelAndView.addObject("songViewModel", new SongViewModel());
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return new ModelAndView("/song/song-details", "song", songService.getSongs().stream().filter(s -> s.getTitle().equals(song)).findFirst().get());
+        return modelAndView;
     }
 
     @GetMapping

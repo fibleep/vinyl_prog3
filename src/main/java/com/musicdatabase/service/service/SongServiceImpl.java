@@ -27,6 +27,11 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
+    public Song getSong(String title) {
+        return songRepository.getSong(title);
+    }
+
+    @Override
     public List<Song> readSongsByAuthor(String author) {
         logger.info("readSongsByAuthor called");
         return songRepository.readSongs().stream()

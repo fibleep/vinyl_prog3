@@ -26,6 +26,15 @@ public class Song {
     public Song() {
     }
 
+    public int getMinutes() {
+        return (int) this.length;
+    }
+
+    public int getSeconds() {
+        return (int) ((this.length - this.getMinutes()) * 100);
+    }
+
+
     public void addAuthor(Author author) {
         this.authors.add(author);
     }

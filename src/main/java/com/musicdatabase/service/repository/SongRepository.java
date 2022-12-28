@@ -7,6 +7,8 @@ import java.util.List;
 public interface SongRepository {
     List<Song> readSongs();
 
+    Song getSong(String title);
+
     Song createSong(Song song);
 
     void deleteSong(Song song);

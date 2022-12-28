@@ -25,6 +25,11 @@ public class SongRepositoryJDBC implements SongRepository {
     }
 
     @Override
+    public Song getSong(String title) {
+        return null;
+    }
+
+    @Override
     public Song createSong(Song song) {
         return null;
     }

@@ -15,9 +15,9 @@ import java.util.List;
 @Profile("collections")
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
-    private AlbumRepository albumRepository;
-    private AuthorRepository authorRepository;
-    private SongRepository songRepository;
+    private final AlbumRepository albumRepository;
+    private final AuthorRepository authorRepository;
+    private final SongRepository songRepository;
 
     public DatabaseSeeder(AlbumRepository albumRepository, AuthorRepository authorRepository, SongRepository songRepository) {
         this.albumRepository = albumRepository;

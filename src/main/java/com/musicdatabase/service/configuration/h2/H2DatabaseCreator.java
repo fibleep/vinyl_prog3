@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 @Component
 @Profile("JDBC")
 public class H2DatabaseCreator {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public H2DatabaseCreator(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
