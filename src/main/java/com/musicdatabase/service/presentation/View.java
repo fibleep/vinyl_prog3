@@ -31,7 +31,7 @@ public class View {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         while(true) {
-            switch (presentation.GUI.menu()) {
+            switch (com.musicdatabase.service.presentation.GUI.menu()) {
                 case SHOW_SONGS -> {
                     songService.getSongs().forEach(System.out::println);
                 }

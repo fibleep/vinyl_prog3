@@ -10,14 +10,13 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class SongViewModel {
 
-    @NotBlank
     private String title;
     @NotNull
     private int index;
     @NotNull
     private int minutes;
+    @NotNull
     private int seconds;
-    @NotBlank
     private String author;
     private String album;
 

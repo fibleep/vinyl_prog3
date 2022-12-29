@@ -42,6 +42,12 @@ public class Album {
     public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
+    public void updateSong(Song originalSong, Song newSong) {
+        List<Song> updatedSongs = new ArrayList<>(this.songs);
+        updatedSongs.remove(originalSong);
+        updatedSongs.add(newSong);
+        this.songs = updatedSongs;
+    }
 
     @Override
     public String toString() {

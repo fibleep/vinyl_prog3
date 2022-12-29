@@ -48,6 +48,9 @@ public class Song {
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
+    public boolean hasAuthor(String author) {
+        return this.authors.stream().anyMatch(a -> a.getName().equals(author));
+    }
 
     @Override
     public String toString() {

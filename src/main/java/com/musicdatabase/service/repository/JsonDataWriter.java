@@ -19,7 +19,7 @@ public class JsonDataWriter {
     public JsonDataWriter() {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-        builder.registerTypeAdapter(LocalDateTime.class, new presentation.LocalDateTimeSerializer());
+        builder.registerTypeAdapter(LocalDateTime.class, new com.musicdatabase.service.presentation.LocalDateTimeSerializer());
         this.gson = builder.create();
     }
 

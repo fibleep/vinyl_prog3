@@ -1,5 +1,10 @@
 # Checklist for the project for programming 3
 
+TODO: Once a song is assigned to an album, automatically check the creator
+TODO: Index validating
+TODO: Split up put for songs because its chonky and bad, validator class?
+
+
 - Deadline: *Friday January 13th 23:59*
 - 3 entities according to specs in assignment 1 [X]
 - Option to save data to a JSON file [X]

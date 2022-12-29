@@ -1,5 +1,7 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import com.musicdatabase.service.repository.SongRepository;
@@ -35,7 +37,8 @@ public class SongServiceImpl implements SongService {
     public List<Song> readSongsByAuthor(String author) {
         logger.info("readSongsByAuthor called");
         return songRepository.readSongs().stream()
-                .filter(song -> song.getAuthors().stream().anyMatch(songAuthor -> songAuthor.getName().equals(author))).toList();
+                .filter(song -> song.getAuthors().stream().anyMatch(songAuthor -> songAuthor.getName().equals(author)))
+                .toList();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package presentation;
+package com.musicdatabase.service.presentation;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;

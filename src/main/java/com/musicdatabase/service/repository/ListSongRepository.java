@@ -36,10 +36,6 @@ public class ListSongRepository implements SongRepository {
     @Override
     public void updateSong(Song song, Song newSong) {
         songs.set(songs.indexOf(song), newSong);
-//        List<Song> newSongs = new ArrayList<>(songs);
-//        newSongs.remove(song);
-//        newSongs.add(newSong);
-//        songs = newSongs;
     }
 
 
