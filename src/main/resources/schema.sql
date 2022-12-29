@@ -26,9 +26,9 @@ CREATE TABLE song
 CREATE TABLE entry
 (
     id        INTEGER PRIMARY KEY AUTO_INCREMENT,
-    author_id VARCHAR(50) NOT NULL REFERENCES author (id),
-    song_id   INT         NOT NULL REFERENCES song (id),
-    album_id  INT         NOT NULL REFERENCES album (id),
+    author_id VARCHAR(50) NOT NULL REFERENCES author (id) ON DELETE CASCADE,
+    song_id   INT         NOT NULL REFERENCES song (id) ON DELETE CASCADE,
+    album_id  INT         NOT NULL REFERENCES album (id) ON DELETE CASCADE,
     co_author BOOL DEFAULT FALSE
 );
 

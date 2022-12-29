@@ -4,7 +4,6 @@ TODO: Once a song is assigned to an album, automatically check the creator
 TODO: Index validating
 TODO: Split up put for songs because its chonky and bad, validator class?
 
-
 - Deadline: *Friday January 13th 23:59*
 - 3 entities according to specs in assignment 1 [X]
 - Option to save data to a JSON file [X]
@@ -17,10 +16,10 @@ TODO: Split up put for songs because its chonky and bad, validator class?
 - presentation layer:
     - spring MVC application
         - pages:
-            - to show 2 main entities in some overview (table)
+            - to show 2 main entities in some overview (table) [X]? songs page kinda does this
             - to show details of main entities [X]
             - to show relationships between the entities [X]
-        - possibility to add entities - delete entities
+        - possibility to add entities - delete entities [X]
         - add session history page to show history of visited pages in the session [X]
         - Menu on top using fragments [X]
         - Footer at the bottom using fragments [X]
@@ -56,7 +55,7 @@ TODO: Split up put for songs because its chonky and bad, validator class?
     - Implement a custom Exception for your application (extends RuntimeException)
     - Use a @ControllerAdvise class to handle all database exceptions
     - Handle the custom Exception at the Controller level
-    - Be sure to log all exceptions using the logging framework
+    - Be sure to log all exceptions using the logging framework [X]0
 - Add a README.MD file to the root of the project
     - In this file:
         - Your name

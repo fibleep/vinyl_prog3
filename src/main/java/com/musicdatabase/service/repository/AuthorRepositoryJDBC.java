@@ -5,9 +5,12 @@ import com.musicdatabase.service.model.Gender;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Profile("JDBC")
@@ -19,9 +22,13 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
     @Value("${spring.datasource.password}")
     private String password;
     private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert jdbcInsert;
 
     public AuthorRepositoryJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        jdbcInsert = new SimpleJdbcInsert(jdbcTemplate)
+                .withTableName("author")
+                .usingGeneratedKeyColumns("id");
     }
 
     @Override
@@ -37,11 +44,16 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
 
     @Override
     public Author createAuthor(Author author) {
-        return null;
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", author.getName());
+        parameters.put("age", author.getAge());
+        parameters.put("gender", author.getGender().toString());
+        return author;
     }
 
     @Override
     public void removeAuthor(Author author) {
+        jdbcTemplate.update("DELETE FROM author WHERE name = ?", author.getName());
 
     }
 

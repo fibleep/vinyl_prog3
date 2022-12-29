@@ -1,19 +1,39 @@
 package com.musicdatabase.service.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
+@Entity
 public class Song {
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Column(name = "title", nullable = false, unique = true, length = 40)
     private String title;
+    @Column(name = "index", nullable = false)
     private int index;
+    @Column(name = "length", nullable = false)
     private double length;
     private transient List<Author> authors = new ArrayList<>();
     private transient Album album = null;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Song(String title, int index, double length, List<Author> authors, Album album) {
         this.title = title;
@@ -48,6 +68,7 @@ public class Song {
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
+
     public boolean hasAuthor(String author) {
         return this.authors.stream().anyMatch(a -> a.getName().equals(author));
     }
