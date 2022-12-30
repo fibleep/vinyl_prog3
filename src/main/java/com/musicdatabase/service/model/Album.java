@@ -14,23 +14,25 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-
+@Table(name = "album")
 public class Album {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
-    transient private List<Song> songs = new ArrayList<>();
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Song> songs = new ArrayList<>();
     @Column(name = "year", nullable = false)
     private LocalDateTime year;
     @Enumerated(EnumType.STRING)
     private Genre genre;
-    @Column(name = "author", nullable = false)
-    transient Author author;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = true)
+    private Author author;
 
     public Long getId() {
         return id;

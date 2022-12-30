@@ -31,10 +31,10 @@ public class DatabaseSeeder implements CommandLineRunner {
         ArrayList<Author> authors = new ArrayList<>();
         ArrayList<Album> albums = new ArrayList<>();
         //create authors
-        Author tacoH = new Author("Taco Hemingway", 32, Gender.MALE, null, null);
-        Author dawidP = new Author("Dawid Podsiadło", 29, Gender.MALE, null, null);
-        Author dariaZ = new Author("Daria Zawiałow", 30, Gender.FEMALE, null, null);
-        Author quebo = new Author("Quebonafide", 31, Gender.MALE, null, null);
+        Author tacoH = new Author("Taco Hemingway", 32, Gender.MALE);
+        Author dawidP = new Author("Dawid Podsiadło", 29, Gender.MALE);
+        Author dariaZ = new Author("Daria Zawiałow", 30, Gender.FEMALE);
+        Author quebo = new Author("Quebonafide", 31, Gender.MALE);
         // create albums
         Album wojnyNoce = new Album("Wojny i noce", LocalDateTime.parse("2021-01-01T00:00:00"), Genre.ALT, dariaZ, null);
         Album pocztowka = new Album("POCZTÓWKA Z WWA, LATO '19", LocalDateTime.parse("2019-01-01T00:00:00"), Genre.RAP, tacoH, null);

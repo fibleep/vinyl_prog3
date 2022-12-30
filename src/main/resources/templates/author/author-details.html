@@ -18,8 +18,8 @@
     <div class="d-flex flex-column align-items-center table-responsive">
         <table class="table table-striped table-dark table-hover border-dark rounded rounded-3 overflow-hidden w-75">
             <tr>
-                <th>Age</th>
-                <th>Gender</th>
+                <th th:text="#{form.age}">Age</th>
+                <th th:text="#{form.gender}">Gender</th>
             </tr>
             <tbody>
             <td th:text="${author.getAge()}"></td>
@@ -40,7 +40,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content bg-black">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editLabel">Edit author</h5>
+                        <h5 class="modal-title" id="editLabel" th:text="#{form.edit}">Edit author</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -52,11 +52,11 @@
                             <p>The form contained errors!</p>
                         </div>
                         <div class="modal-body d-flex flex-wrap">
-                            <label class="form-label" th:for="name">Name</label>
+                            <label class="form-label" th:for="name" th:text="#{form.name}">Name</label>
                             <input class="text-white form-control border-danger bg-black" type="text" th:field="*{name}"
                                    th:value="${author.getName()}"
                                    th:placeholder="${author.getName()}" th:default="${author.getName()}"/>
-                            <label th:for="gender">Gender</label>
+                            <label th:for="gender" th:text="#{form.gender}">Gender</label>
                             <select class="text-white form-control border-danger bg-black" th:field="*{gender}"
                                     th:value="${author.getGender()}"
                                     th:placeholder="${author.getGender()}" required>
@@ -66,15 +66,17 @@
                                         th:value="${gender}"
                                         th:text="${gender}"></option> </span>
                             </select>
-                            <label class="form-label" th:for="age">Age</label>
+                            <label class="form-label" th:for="age" th:text="#{form.age}">Age</label>
                             <!--                            TODO: This is default 0 for some reason, figure it out-->
                             <input class="text-white form-control border-danger bg-black" type="number"
                                    th:field="*{age}" th:value="${author.getAge()}"
                                    th:placeholder="${author.getAge()}" th:default="${author.getAge()}" step="1"/>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Edit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{form.close}">Close
+                            </button>
+                            <button type="submit" class="btn btn-success" th:text="#{form.edit}">Edit</button>
                         </div>
                     </form>
                 </div>
@@ -87,18 +89,21 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content bg-black">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="confirmDeleteLabel">Confirm Delete?</h5>
+                        <h5 class="modal-title" id="confirmDeleteLabel" th:text="#{form.delete.confirm}">Confirm
+                            Delete?</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" th:text="#{form.delete.prompt}">
                         Do you wish to delete this author?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{form.close}">
+                            Close
+                        </button>
                         <form th:method="delete" th:action="@{/authors/{author}(author=${author.getName()})}">
-                            <button type="submit" class="btn btn-danger">Delete
+                            <button type="submit" class="btn btn-danger" th:text="#{form.delete}">Delete
                             </button>
                         </form>
                     </div>

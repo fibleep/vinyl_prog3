@@ -47,7 +47,7 @@ TODO: Split up put for songs because its chonky and bad, validator class?
         - at least one custom query
     - database: H2 or Postgresql
     - profiles
-        - to switch between repository implementations
+        - to switch between repository implementations [X]
 - service layer:
     - 2 implementations (springdata and other) --> use profiles or git tag
 - exception handling:

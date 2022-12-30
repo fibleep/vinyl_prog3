@@ -49,34 +49,34 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content bg-black">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editLabel">Edit album</h5>
+                        <h5 class="modal-title" id="editLabel"  th:text="#{form.edit}">Edit album</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form th:method="put" th:action="@{/albums/{album}(album=${album.getName()})}" th:object="${albumViewModel}">
                         <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
-                            <p>The form contained errors!</p>
+                            <p  th:text="#{form.error}">The form contained errors!</p>
                         </div>
                         <div class="modal-body d-flex flex-wrap">
-                            <label class="form-label" th:for="name">Name</label>
+                            <label class="form-label" th:for="name"  th:text="#{form.name}">Name</label>
                             <input class="form-control" type="text" th:field="*{name}" th:value="${album.getName()}" th:placeholder="${album.getName()}" th:default="${album.getName()}"/>
-                            <label th:for="genre">Genre</label>
+                            <label th:for="genre"  th:text="#{form.genre}">Genre</label>
                             <select class="form-control" th:field="*{genre}" th:value="${album.getGenre()}" th:placeholder="${album.getGenre()}" required>
                                 <option selected="selected" th:value="${album.getGenre()}" th:text="${album.getGenre()}"></option>
                                 <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
                             </select>
-                            <label class="form-label" th:for="author">Author</label>
+                            <label class="form-label" th:for="author"  th:text="#{form.author}">Author</label>
                             <select class="form-control" th:field="*{author}">
                                 <option selected="selected" th:value="${album.getAuthor().getName()}" th:text="${album.getAuthor().getName()}"></option>
                                 <span th:each="author : ${authors}" th:if="${author.getName()!=album.getAuthor().getName()}"> <option th:value="${author.getName()}" th:text="${author.getName()}"></option> </span>
                             </select>
-                            <label class="form-label" th:for="year">Year</label>
+                            <label class="form-label" th:for="year"  th:text="#{form.year}">Year</label>
                             <input class="form-control" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1900" max="2023" step="1"/>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Edit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  th:text="#{form.close}">Close</button>
+                            <button type="submit" class="btn btn-success"  th:text="#{form.edit}">Edit</button>
                         </div>
                     </form>
                 </div>
@@ -89,18 +89,18 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content bg-black">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="confirmDeleteLabel">Confirm Delete?</h5>
+                            <h5 class="modal-title" id="confirmDeleteLabel"  th:text="#{form.delete.prompt}">Confirm Delete?</h5>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body"  th:text="#{form.delete.confirm}">
                             Do you wish to delete this album?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  th:text="#{form.close}">Close</button>
                             <form th:method="delete" th:action="@{/albums/{album}(album=${album.getName()})}">
-                                <button type="submit" class="btn btn-danger">Delete
+                                <button type="submit" class="btn btn-danger"  th:text="#{form.delete}">Delete
                                 </button>
                             </form>
                         </div>

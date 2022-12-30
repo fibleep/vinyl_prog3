@@ -14,23 +14,23 @@
     <div class="m-auto d-flex justify-content-center mt-5">
         <form th:object="${authorViewModel}" method="post"
               class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
-            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
+            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger" th:text="#{form.error}">
                 <p>The form contains errors</p>
             </div>
-            <label th:for="name">Name</label>
+            <label th:for="name" th:text="#{form.name}">Name</label>
             <input class="text-white form-control border-danger bg-black" type="text" th:value="${name}"
                    th:field="*{name}">
-            <label th:for="age">Age</label>
+            <label th:for="age" th:text="#{form.age}">Age</label>
             <input class="text-white form-control border-danger bg-black" type="number" th:value="*{age}" min="1"
                    max="120"
                    step="1"
                    th:field="*{age}">
-            <label th:for="gender">Gender</label>
+            <label th:for="gender" th:text="#{form.gender}">Gender</label>
             <select class="text-white form-control border-danger bg-black" th:value="*{gender}" th:field="*{gender}">
                 <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender}"></option>
             </select>
 
-            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit" th:text="#{form.submit}">Add</button>
         </form>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>

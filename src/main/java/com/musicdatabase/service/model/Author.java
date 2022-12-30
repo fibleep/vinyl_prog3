@@ -10,11 +10,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "author")
 public class Author {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
@@ -23,8 +24,25 @@ public class Author {
     private int age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    transient private List<Album> albums;
-    transient private List<Song> songs;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Album> albums = null;
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "author_song",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id"))
+    private List<Song> songs = null;
+
+
+    public Author(String name, int age, Gender gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
 
     public Long getId() {
         return id;
@@ -51,6 +69,25 @@ public class Author {
         updatedSongs.remove(originalSong);
         updatedSongs.add(newSong);
         this.songs = updatedSongs;
+    }
+
+    public void addAlbum(Album album) {
+        this.albums.add(album);
+    }
+
+    public void removeAlbum(Album album) {
+        this.albums.remove(album);
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
+
+    public void updateAlbum(Album originalAlbum, Album newAlbum) {
+        List<Album> updatedAlbums = this.albums;
+        updatedAlbums.remove(originalAlbum);
+        updatedAlbums.add(newAlbum);
+        this.albums = updatedAlbums;
     }
 
     @Override

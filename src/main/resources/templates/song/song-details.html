@@ -1,302 +1,302 @@
 <!DOCTYPE html>
 <html
-	lang="en"
-	xmlns:th="http://www.thymeleaf.org"
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
 >
-	<head>
-		<link
-			rel="stylesheet"
-			th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-		/>
-		<script
-			defer
-			th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"
-		></script>
-		<link
-			rel="stylesheet"
-			th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} "
-		/>
-		<link
-			href="../../static/css/style.css"
-			rel="stylesheet"
-			th:href="@{/css/style.css}"
-			type="text/css"
-		/>
-		<meta charset="UTF-8" />
-		<title>Vinyl</title>
-	</head>
-	<body>
-		<main>
-			<div th:insert="fragments/fragments :: navbar"></div>
-			<div class="d-flex flex-column m-auto mt-5 bg-black rounded w-25">
-				<h1
-					class="d-flex justify-content-center p-3"
-					th:text="${song.getTitle()}"
-				></h1>
-			</div>
-			<hr />
-			<div class="d-flex flex-column align-items-center table-responsive">
-				<table
-					class="table table-striped table-dark table-hover border-dark rounded rounded-3 overflow-hidden w-75"
-				>
-					<tr>
-						<th>Index</th>
-						<th>Length</th>
-						<th>Author</th>
-						<th>Album</th>
-					</tr>
-					<tbody>
-						<td th:text="${song.getIndex()}"></td>
-						<td th:text="${song.getLength()}"></td>
-						<td>
-							<ul
-								class="d-inline p-1 list-unstyled"
-								th:each="author : ${song.getAuthors()}"
-							>
-								<button
-									class="btn btn-outline-white btn-sm"
-									type="button"
-								>
-									<a th:href="@{/authors/{author}(author=${author.getName()})}">
-										<li th:text="${author.getName()}"></li>
-									</a>
-								</button>
-							</ul>
-						</td>
-						<td th:text="${song.getAlbum().getName()}"></td>
-					</tbody>
-				</table>
-				<div class="d-inline p-3">
-					<button
-						class="btn btn-primary"
-						type="button"
-						data-bs-toggle="modal"
-						data-bs-target="#edit"
-					>
-						<i class="bi bi-pencil-square"></i>
-					</button>
-					<button
-						type="button"
-						class="btn btn-danger"
-						data-bs-toggle="modal"
-						data-bs-target="#confirmDelete"
-					>
-						<i class="bi bi-trash"></i>
-					</button>
-				</div>
-				<div
-					class="modal fade"
-					id="edit"
-					tabindex="-1"
-					role="dialog"
-					aria-labelledby="editLabel"
-					aria-hidden="true"
-				>
-					<div
-						class="modal-dialog"
-						role="document"
-					>
-						<div class="modal-content bg-black">
-							<div class="modal-header">
-								<h5
-									class="modal-title"
-									id="editLabel"
-								>
-									Edit song
-								</h5>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								>
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<form
-								th:method="put"
-								th:action="@{/songs/{song}(song=${song.getTitle()})}"
-								th:object="${songViewModel}"
-								class="text-danger bg-black p-5"
-							>
-								<div
-									th:if="${#fields.hasAnyErrors()}"
-									class="alert alert-danger"
-								>
-									<p>The form contained errors!</p>
-								</div>
-								<div class="modal-body d-flex flex-wrap">
-									<label
-										class="form-label"
-										th:for="title"
-										>title</label
-									>
-									<input
-										class="text-white form-control border-danger bg-black"
-										type="text"
-										th:field="*{title}"
-										th:value="${song.getTitle()}"
-										th:placeholder="${song.getTitle()}"
-										th:default="${song.getTitle()}"
-									/>
-									<label th:for="author">Author</label>
-									<select
-										class="text-white form-control border-danger bg-black select"
-										th:field="*{author}"
-										multiple
-									>
-										<option
-											selected="selected"
-											th:if="${song.getAuthors().size() != 0}"
-											th:each="author : ${song.getAuthors()}"
-											th:value="${author.getName()}"
-											th:text="${author.getName()}"
-										></option>
-										<span th:each="author : ${authors}">
+<head>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <script
+            defer
+            th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} "
+    />
+    <link
+            href="../../static/css/style.css"
+            rel="stylesheet"
+            th:href="@{/css/style.css}"
+            type="text/css"
+    />
+    <meta charset="UTF-8"/>
+    <title>Vinyl</title>
+</head>
+<body>
+<main>
+    <div th:insert="fragments/fragments :: navbar"></div>
+    <div class="d-flex flex-column m-auto mt-5 bg-black rounded w-25">
+        <h1
+                class="d-flex justify-content-center p-3"
+                th:text="${song.getTitle()}"
+        ></h1>
+    </div>
+    <hr/>
+    <div class="d-flex flex-column align-items-center table-responsive">
+        <table
+                class="table table-striped table-dark table-hover border-dark rounded rounded-3 overflow-hidden w-75"
+        >
+            <tr>
+                <th th:text="#{form.index}">Index</th>
+                <th th:text="#{form.length}">Length</th>
+                <th th:text="#{form.author}">Author</th>
+                <th th:text="#{form.album}">Album</th>
+            </tr>
+            <tbody>
+            <td th:text="${song.getIndex()}"></td>
+            <td th:text="${song.getLength()}"></td>
+            <td>
+                <ul
+                        class="d-inline p-1 list-unstyled"
+                        th:each="author : ${song.getAuthors()}"
+                >
+                    <button
+                            class="btn btn-outline-white btn-sm"
+                            type="button"
+                    >
+                        <a th:href="@{/authors/{author}(author=${author.getName()})}">
+                            <li th:text="${author.getName()}"></li>
+                        </a>
+                    </button>
+                </ul>
+            </td>
+            <td th:text="${song.getAlbum().getName()}"></td>
+            </tbody>
+        </table>
+        <div class="d-inline p-3">
+            <button
+                    class="btn btn-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit"
+            >
+                <i class="bi bi-pencil-square"></i>
+            </button>
+            <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#confirmDelete"
+            >
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+        <div
+                class="modal fade"
+                id="edit"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="editLabel"
+                aria-hidden="true"
+        >
+            <div
+                    class="modal-dialog"
+                    role="document"
+            >
+                <div class="modal-content bg-black">
+                    <div class="modal-header">
+                        <h5
+                                class="modal-title"
+                                id="editLabel"
+                                th:text="#{form.edit}">
+                            Edit song
+                        </h5>
+                        <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form
+                            th:method="put"
+                            th:action="@{/songs/{song}(song=${song.getTitle()})}"
+                            th:object="${songViewModel}"
+                            class="text-danger bg-black p-5"
+                    >
+                        <div
+                                th:if="${#fields.hasAnyErrors()}"
+                                class="alert alert-danger"
+                                th:text="#{form.error}">
+                            <p>The form contained errors!</p>
+                        </div>
+                        <div class="modal-body d-flex flex-wrap">
+                            <label
+                                    class="form-label"
+                                    th:for="title"
+                                    th:text="#{form.title}">title</label
+                            >
+                            <input
+                                    class="text-white form-control border-danger bg-black"
+                                    type="text"
+                                    th:field="*{title}"
+                                    th:value="${song.getTitle()}"
+                                    th:placeholder="${song.getTitle()}"
+                                    th:default="${song.getTitle()}"
+                            />
+                            <label th:for="author" th:text="#{form.author}">Author</label>
+                            <select
+                                    class="text-white form-control border-danger bg-black select"
+                                    th:field="*{author}"
+                                    multiple
+                            >
+                                <option
+                                        selected="selected"
+                                        th:if="${song.getAuthors().size() != 0}"
+                                        th:each="author : ${song.getAuthors()}"
+                                        th:value="${author.getName()}"
+                                        th:text="${author.getName()}"
+                                ></option>
+                                <span th:each="author : ${authors}">
 											<option
-												th:if="${!song.hasAuthor(author)}"
-												th:value="${author}"
-												th:text="${author}"
-											></option>
+                                                    th:if="${!song.hasAuthor(author)}"
+                                                    th:value="${author}"
+                                                    th:text="${author}"
+                                            ></option>
 										</span>
-									</select>
-									<label
-										class="form-label"
-										th:for="index"
-										>Index</label
-									>
-									<!--                            TODO: This is default 0 for some reason, figure it out-->
-									<input
-										class="text-white form-control border-danger bg-black"
-										type="number"
-										th:field="*{index}"
-										th:value="${song.getIndex()}"
-										th:placeholder="${song.getIndex()}"
-										th:default="${song.getIndex()}"
-										step="1"
-									/>
-									<label th:for="album">Album</label>
-									<select
-										class="text-white form-control border-danger bg-black"
-										th:value="*{album}"
-										th:field="*{album}"
-									>
-										<option
-											selected="selected"
-											th:value="${song.getAlbum().getName()}"
-											th:text="${song.getAlbum().getName()}"
-										></option>
-										<span
-											th:each="album : ${albums}"
-											th:if="${album!=song.getAlbum().getName()}"
-										>
+                            </select>
+                            <label
+                                    class="form-label"
+                                    th:for="index"
+                                    th:text="#{form.index}">Index</label
+                            >
+                            <!--                            TODO: This is default 0 for some reason, figure it out-->
+                            <input
+                                    class="text-white form-control border-danger bg-black"
+                                    type="number"
+                                    th:field="*{index}"
+                                    th:value="${song.getIndex()}"
+                                    th:placeholder="${song.getIndex()}"
+                                    th:default="${song.getIndex()}"
+                                    step="1"
+                            />
+                            <label th:for="album" th:text="#{form.album}">Album</label>
+                            <select
+                                    class="text-white form-control border-danger bg-black"
+                                    th:value="*{album}"
+                                    th:field="*{album}"
+                            >
+                                <option
+                                        selected="selected"
+                                        th:value="${song.getAlbum().getName()}"
+                                        th:text="${song.getAlbum().getName()}"
+                                ></option>
+                                <span
+                                        th:each="album : ${albums}"
+                                        th:if="${album!=song.getAlbum().getName()}"
+                                >
 											<option
-												th:value="${album}"
-												th:text="${album}"
-											></option>
+                                                    th:value="${album}"
+                                                    th:text="${album}"
+                                            ></option>
 										</span>
-									</select>
-									<label th:for="minutes">Minutes</label>
-									<input
-										class="text-white form-control border-danger bg-black"
-										type="number"
-										th:value="*{minutes}"
-										min="0"
-										max="59"
-										step="1"
-										th:field="*{minutes}"
-										th:placeholder="${song.getMinutes()}"
-										th:default="${song.getMinutes()}"
-									/>
-									<label th:for="seconds">Seconds</label>
-									<input
-										class="text-white form-control border-danger bg-black"
-										type="number"
-										th:value="*{seconds}"
-										min="0"
-										max="59"
-										step="1"
-										th:field="*{seconds}"
-										th:placeholder="${song.getSeconds()}"
-										th:default="${song.getSeconds()}"
-									/>
-								</div>
-								<div class="modal-footer">
-									<button
-										type="button"
-										class="btn btn-secondary"
-										data-bs-dismiss="modal"
-									>
-										Close
-									</button>
-									<button
-										type="submit"
-										class="btn btn-success"
-									>
-										Edit
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
+                            </select>
+                            <label th:for="minutes" th:text="#{form.minutes}">Minutes</label>
+                            <input
+                                    class="text-white form-control border-danger bg-black"
+                                    type="number"
+                                    th:value="*{minutes}"
+                                    min="0"
+                                    max="59"
+                                    step="1"
+                                    th:field="*{minutes}"
+                                    th:placeholder="${song.getMinutes()}"
+                                    th:default="${song.getMinutes()}"
+                            />
+                            <label th:for="seconds" th:text="#{form.seconds}">Seconds</label>
+                            <input
+                                    class="text-white form-control border-danger bg-black"
+                                    type="number"
+                                    th:value="*{seconds}"
+                                    min="0"
+                                    max="59"
+                                    step="1"
+                                    th:field="*{seconds}"
+                                    th:placeholder="${song.getSeconds()}"
+                                    th:default="${song.getSeconds()}"
+                            />
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                    th:text="#{form.close}">
+                                Close
+                            </button>
+                            <button
+                                    type="submit"
+                                    class="btn btn-success"
+                                    th:text="#{form.edit}">
+                                Edit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-				<div
-					class="modal fade"
-					id="confirmDelete"
-					tabindex="-1"
-					role="dialog"
-					aria-labelledby="confirmDeleteLabel"
-					aria-hidden="true"
-				>
-					<div
-						class="modal-dialog"
-						role="document"
-					>
-						<div class="modal-content bg-black">
-							<div class="modal-header">
-								<h5
-									class="modal-title"
-									id="confirmDeleteLabel"
-								>
-									Confirm Delete?
-								</h5>
-								<button
-									type="button"
-									class="close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								>
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">Do you wish to delete this song?</div>
-							<div class="modal-footer">
-								<button
-									type="button"
-									class="btn btn-secondary"
-									data-bs-dismiss="modal"
-								>
-									Close
-								</button>
-								<form
-									th:method="delete"
-									th:action="@{/songs/{song}(song=${song.getTitle()})}"
-								>
-									<button
-										type="submit"
-										class="btn btn-danger"
-									>
-										Delete
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        <div
+                class="modal fade"
+                id="confirmDelete"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="confirmDeleteLabel"
+                aria-hidden="true"
+        >
+            <div
+                    class="modal-dialog"
+                    role="document"
+            >
+                <div class="modal-content bg-black">
+                    <div class="modal-header">
+                        <h5
+                                class="modal-title"
+                                id="confirmDeleteLabel"
+                                th:text="#{form.delete.confirm}">
+                            Confirm Delete?
+                        </h5>
+                        <button
+                                type="button"
+                                class="close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" th:text="#{form.delete.prompt}">Do you wish to delete this song?</div>
+                    <div class="modal-footer">
+                        <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                                th:text="#{form.close}">
+                            Close
+                        </button>
+                        <form
+                                th:method="delete"
+                                th:action="@{/songs/{song}(song=${song.getTitle()})}"
+                        >
+                            <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    th:text="#{form.delete}">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div th:insert="~{fragments/fragments::footer}">No footer</div>
-		</main>
-	</body>
+    <div th:insert="~{fragments/fragments::footer}">No footer</div>
+</main>
+</body>
 </html>

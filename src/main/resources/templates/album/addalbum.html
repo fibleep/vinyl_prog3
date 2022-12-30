@@ -16,26 +16,26 @@
         <form th:object="${albumViewModel}" method="post"
               class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
             <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
-                <p>The form contains errors</p>
+                <p th:text="#{form.error}">The form contains errors</p>
             </div>
-            <label th:for="name">Name</label>
+            <label th:for="name" th:text="#{form.name}">Name</label>
             <input class="text-white form-control border-danger bg-black" type="text" th:value="${name}"
                    th:field="*{name}">
-            <label th:for="year">Year</label>
+            <label th:for="year" th:text="#{form.year}">Year</label>
             <input class="text-white form-control border-danger bg-black" type="number" th:value="*{year}" min="1000"
                    max="2023"
                    step="1"
                    th:field="*{year}">
-            <label th:for="genre">Genre</label>
+            <label th:for="genre" th:text="#{form.genre}">Genre</label>
             <select class="text-white form-control border-danger bg-black" th:value="*{genre}" th:field="*{genre}">
                 <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
             </select>
-            <label th:for="author">Author</label>
+            <label th:for="author" th:text="#{form.author}">Author</label>
             <select class="text-white form-control border-danger bg-black" th:value="*{author}" th:field="*{author}">
                 <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
             </select>
 
-            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit" th:text="#{form.submit}">Add</button>
         </form>
     </div>
 

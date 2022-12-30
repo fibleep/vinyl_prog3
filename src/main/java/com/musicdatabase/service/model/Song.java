@@ -11,11 +11,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name = "song")
 public class Song {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "title", nullable = false, unique = true, length = 40)
@@ -24,8 +25,12 @@ public class Song {
     private int index;
     @Column(name = "length", nullable = false)
     private double length;
-    private transient List<Author> authors = new ArrayList<>();
-    private transient Album album = null;
+    @ManyToMany(mappedBy = "songs", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Author> authors = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = true)
+    private Album album = null;
 
     public Long getId() {
         return id;

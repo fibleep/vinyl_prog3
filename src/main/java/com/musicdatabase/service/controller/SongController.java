@@ -9,15 +9,12 @@ import com.musicdatabase.service.service.AlbumService;
 import com.musicdatabase.service.service.AuthorService;
 import com.musicdatabase.service.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -55,7 +52,7 @@ public class SongController {
 
     @PostMapping("/addsong")
     public ModelAndView addSong(@Valid @ModelAttribute("songViewModel") SongViewModel songViewModel,
-            BindingResult bindingResult, HttpServletRequest request) {
+                                BindingResult bindingResult, HttpServletRequest request) {
         logger.info("addSong called");
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
@@ -105,39 +102,38 @@ public class SongController {
         }
         Song originalSong = songService.getSong(song);
         Song songToUpdate = originalSong;
-        if(songViewModel.getTitle() != null && !songViewModel.getTitle().equals("")){
+        if (songViewModel.getTitle() != null && !songViewModel.getTitle().equals("")) {
             songToUpdate.setTitle(songViewModel.getTitle());
         }
-        if(songViewModel.getIndex() != 0){
+        if (songViewModel.getIndex() != 0) {
             songToUpdate.setIndex(songViewModel.getIndex());
         }
-        if(songViewModel.getMinutes() != 0 && songViewModel.getSeconds() != 0){
+        if (songViewModel.getMinutes() != 0 && songViewModel.getSeconds() != 0) {
             double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);
             songToUpdate.setLength(length);
         }
-        if(songViewModel.getAuthor() != null && !songViewModel.getAuthor().equals("")){
-        String[] authorsArray = songViewModel.getAuthor().split(",");
-        List<Author> authors = new ArrayList<>();
-        for (String author : authorsArray) {
-            authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+        if (songViewModel.getAuthor() != null && !songViewModel.getAuthor().equals("")) {
+            String[] authorsArray = songViewModel.getAuthor().split(",");
+            List<Author> authors = new ArrayList<>();
+            for (String author : authorsArray) {
+                authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+            }
+            songToUpdate.setAuthors(authors);
         }
-        songToUpdate.setAuthors(authors);
-    }
         if (songViewModel.getAlbum() != null) {
             songToUpdate.setAlbum(albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get());
             Album originaAlbum = originalSong.getAlbum();
             Album updatedAlbum = originaAlbum;
             updatedAlbum.updateSong(originalSong, songToUpdate);
-            albumService.updateAlbum(originaAlbum,updatedAlbum);
+            albumService.updateAlbum(originaAlbum, updatedAlbum);
         }
-        songService.updateSong(originalSong,songToUpdate);
+        songService.updateSong(originalSong, songToUpdate);
         return new ModelAndView("redirect:/songs");
     }
 
     @GetMapping
-    public ModelAndView getSongs(Model model, HttpServletRequest request) {
+    public ModelAndView getSongs(HttpServletRequest request) {
         logger.info("getSongs called");
-        model.addAttribute("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("/song/songs", "songs", songService.getSongs());
     }
