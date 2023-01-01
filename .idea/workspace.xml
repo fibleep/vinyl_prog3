@@ -5,31 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="jpa entities start + translation done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/DatabaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/EntryNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/vinyldb.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/addalbum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/album-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/album/albums.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/addauthor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/authors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home_pl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/addsong.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/song-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/song/songs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/ErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/ErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/DatabaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/DatabaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/EntryNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/exceptions/EntryNotFoundException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +230,8 @@
       <workItem from="1672309062953" duration="745000" />
       <workItem from="1672310442331" duration="4474000" />
       <workItem from="1672329577008" duration="5313000" />
-      <workItem from="1672387668232" duration="4783000" />
+      <workItem from="1672387668232" duration="5996000" />
+      <workItem from="1672408697986" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="added checklist + author-details">
       <created>1671718661779</created>
@@ -293,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672337914191</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="jpa entities start + translation done">
+      <created>1672393597827</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672393597827</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -33,10 +33,10 @@ TODO: Split up put for songs because its chonky and bad, validator class?
                 - design the tables [X]
                 - add navbars (thymeleaf fragments!) [X]
                 - add footers (thymeleaf fragments!) [X]
-        - support for second language
+        - support for second language [X]
         - validation:
             - use viewmodels for the forms, add validation there [X]
-            - use validation messages, show them in your views [X]
+            - use validation messages, show them in your views
             - some minimal client side validation
 - repository layer: 4 implementations
     - using collections [X]
