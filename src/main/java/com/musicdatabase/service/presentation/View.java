@@ -7,7 +7,6 @@ import com.musicdatabase.service.service.AuthorService;
 import com.musicdatabase.service.service.SongService;
 import org.springframework.stereotype.Component;
 
-
 import java.util.Scanner;
 
 @Component
@@ -21,16 +20,16 @@ public class View {
         this.authorService = authorService;
         this.songService = songService;
     }
-    public void initialize() {
-        AlbumRepository albumRepository = new ListAlbumRepository();
-        AuthorRepository authorRepository = new ListAuthorRepository();
-        SongRepository songRepository = new ListSongRepository();
 
+    public void initialize() {
+        AlbumRepository albumRepository = new AlbumRepositoryList();
+        AuthorRepository authorRepository = new AuthorRepositoryList();
+        SongRepository songRepository = new SongRepositoryList();
 
 
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
-        while(true) {
+        while (true) {
             switch (com.musicdatabase.service.presentation.GUI.menu()) {
                 case SHOW_SONGS -> {
                     songService.getSongs().forEach(System.out::println);
@@ -53,7 +52,7 @@ public class View {
                     String authorName = scanner.nextLine();
                     System.out.println("Enter year: ");
                     int year = scanner.nextInt();
-                    albumService.readAlbumsByAuthorAndYear(authorName,year).forEach(System.out::println);
+                    albumService.readAlbumsByAuthorAndYear(authorName, year).forEach(System.out::println);
                 }
             }
         }

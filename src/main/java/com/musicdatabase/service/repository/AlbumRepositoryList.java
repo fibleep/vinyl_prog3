@@ -9,7 +9,7 @@ import java.util.List;
 
 @Profile("collections")
 @Repository
-public class ListAlbumRepository implements AlbumRepository {
+public class AlbumRepositoryList implements AlbumRepository {
     static final List<Album> albums = new ArrayList<>();
 
     @Override

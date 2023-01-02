@@ -9,7 +9,7 @@ import java.util.List;
 
 @Profile("collections")
 @Repository
-public class ListAuthorRepository implements AuthorRepository {
+public class AuthorRepositoryList implements AuthorRepository {
 
     static final List<Author> authors = new ArrayList<>();
 

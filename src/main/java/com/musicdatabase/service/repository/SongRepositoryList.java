@@ -9,7 +9,7 @@ import java.util.List;
 
 @Profile("collections")
 @Repository
-public class ListSongRepository implements SongRepository {
+public class SongRepositoryList implements SongRepository {
     static List<Song> songs = new ArrayList<>();
 
     @Override
