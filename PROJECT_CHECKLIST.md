@@ -45,15 +45,15 @@ TODO: Split up put for songs because its chonky and bad, validator class?
     - using JpaRepository (Spring Data)
         - at least two method queries
         - at least one custom query
-    - database: H2 or Postgresql
+    - database: H2 or Postgresql [X]
     - profiles
         - to switch between repository implementations [X]
 - service layer:
     - 2 implementations (springdata and other) --> use profiles or git tag
 - exception handling:
     - Provide two custom error pages
-    - Implement a custom Exception for your application (extends RuntimeException)
-    - Use a @ControllerAdvise class to handle all database exceptions
+    - Implement a custom Exception for your application (extends RuntimeException) [X]
+    - Use a @ControllerAdvise class to handle all database exceptions [X]
     - Handle the custom Exception at the Controller level
     - Be sure to log all exceptions using the logging framework [X]0
 - Add a README.MD file to the root of the project

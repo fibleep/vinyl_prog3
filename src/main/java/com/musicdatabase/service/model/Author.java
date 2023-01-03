@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "author")
+@Table(name = "AUTHOR")
 public class Author {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)

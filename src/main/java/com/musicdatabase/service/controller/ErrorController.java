@@ -1,5 +1,6 @@
 package com.musicdatabase.service.controller;
 
+import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -29,6 +30,9 @@ public class ErrorController {
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 modelAndView.addObject("error", "500");
                 modelAndView.addObject("message", "Internal server error");
+            } else {
+                modelAndView.addObject("error", "Unknown error");
+                modelAndView.addObject("message", "Unknown error");
             }
         }
         return modelAndView;
@@ -40,8 +44,21 @@ public class ErrorController {
         if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
             throw e;
         }
-        modelAndView.addObject("error", e);
+        modelAndView.addObject("error", "Unknown error");
         modelAndView.addObject("message", e.getMessage());
+        return modelAndView;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(DatabaseException.class)
+    public ModelAndView handleDatabaseException(Exception ex) throws Exception {
+        logger.info("DatabaseExceptionHandler called");
+        if (AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null) {
+            throw ex;
+        }
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("error", "Database error");
+        modelAndView.addObject("message", ex);
         return modelAndView;
     }
 }

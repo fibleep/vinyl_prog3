@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "album")
+@Table(name = "ALBUM")
 public class Album {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)

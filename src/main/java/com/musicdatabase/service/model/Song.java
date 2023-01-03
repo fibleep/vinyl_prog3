@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "song")
+@Table(name = "SONG")
 public class Song {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -26,11 +26,11 @@ public class Song {
     @Column(name = "length", nullable = false)
     private double length;
     @ManyToMany(mappedBy = "songs", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<Author> authors = new ArrayList<>();
+    private List<Author> authors;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = true)
-    private Album album = null;
+    private Album album;
 
     public Long getId() {
         return id;

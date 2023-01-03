@@ -1,49 +1,52 @@
 package com.musicdatabase.service.repository;
 
+import com.musicdatabase.service.controller.AlbumController;
+import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Author;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Repository
 @Profile("JPA")
+@Transactional
 public class AuthorRepositoryJPA implements AuthorRepository {
     @PersistenceContext
     private EntityManager entityManager;
+    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
 
     @Override
     public List<Author> readAuthors() {
-        return entityManager.createQuery("SELECT a FROM Author a", Author.class).getResultList();
+        try {
+            return entityManager.createQuery("SELECT a FROM Author a", Author.class).getResultList();
+        } catch (Exception e) {
+            logger.severe(e.getMessage());
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public Author createAuthor(Author author) {
-        entityManager.getTransaction().begin();
         entityManager.persist(author);
-        entityManager.getTransaction().commit();
         return author;
     }
 
     @Override
     public void removeAuthor(Author author) {
-        entityManager.getTransaction().begin();
         entityManager.remove(author);
-        entityManager.getTransaction().commit();
     }
 
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
-        entityManager.getTransaction().begin();
         // TODO: mmmm prototype design pattern?
         author.setName(newAuthor.getName());
         author.setGender(newAuthor.getGender());
-        author.setAlbums(newAuthor.getAlbums());
         author.setName(newAuthor.getName());
-        author.setSongs(newAuthor.getSongs());
         author.setAge(newAuthor.getAge());
-        entityManager.getTransaction().commit();
     }
 }

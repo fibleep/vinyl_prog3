@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Profile("collections")
+@Profile({"collections", "JPA"})
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
     private final AlbumRepository albumRepository;
