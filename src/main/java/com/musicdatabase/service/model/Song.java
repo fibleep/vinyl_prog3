@@ -25,8 +25,8 @@ public class Song {
     private int index;
     @Column(name = "length", nullable = false)
     private double length;
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "author_song",
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "song_author",
             joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private transient List<Author> authors;
@@ -81,9 +81,14 @@ public class Song {
         this.authors = authors;
     }
 
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
     public boolean hasAuthor(String author) {
         return this.authors.stream().anyMatch(a -> a.getName().equals(author));
     }
+
 
     @Override
     public String toString() {

@@ -11,7 +11,10 @@ public interface SongService {
 
     Song getSong(String title);
 
-    List<Song> readSongsByAuthor(String author);
+    List<Song> findSongsByAuthorName(String author);
+
+    List<Song> findSongsByAlbumName(String album);
+
 
     void createSong(Song song);
 

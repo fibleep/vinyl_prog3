@@ -46,7 +46,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void removeAuthor(Author author) {
-        for (Song song : songService.readSongsByAuthor(author.getName())) {
+        for (Song song : songService.findSongsByAuthorName(author.getName())) {
             Song updatedSong = song;
             updatedSong.removeAuthor(author);
             if (updatedSong.getAuthors().size() == 0) {

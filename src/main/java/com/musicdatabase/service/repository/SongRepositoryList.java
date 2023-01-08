@@ -38,5 +38,9 @@ public class SongRepositoryList implements SongRepository {
         songs.set(songs.indexOf(song), newSong);
     }
 
+    @Override
+    public List<Song> findSongByAlbumName(String albumName) {
+        return songs.stream().filter(song -> song.getAlbum().getName().equals(albumName)).toList();
+    }
 
 }

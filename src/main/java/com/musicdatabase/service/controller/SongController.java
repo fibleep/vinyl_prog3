@@ -79,6 +79,7 @@ public class SongController {
         logger.info("getSong called");
         ModelAndView modelAndView = new ModelAndView("/song/song-details");
         modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+        logger.info("song: " + song);
         modelAndView.addObject("song", songService.getSong(song));
         modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
         modelAndView.addObject("songViewModel", new SongViewModel());

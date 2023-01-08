@@ -22,7 +22,7 @@ public class Album {
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
-    @OneToMany(mappedBy = "album", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.MERGE, orphanRemoval = true)
     private transient List<Song> songs = new ArrayList<>();
     @Column(name = "year", nullable = false)
     private LocalDateTime year = LocalDateTime.now();

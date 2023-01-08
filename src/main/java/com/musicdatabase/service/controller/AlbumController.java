@@ -75,6 +75,7 @@ public class AlbumController {
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         ModelAndView modelAndView = new ModelAndView("/album/album-details");
         Album albumObject = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
+        albumObject.setSongs(albumService.getAlbumSongs(albumObject.getName()));
         AlbumViewModel albumViewModel = new AlbumViewModel();
         albumViewModel.setName(albumObject.getName());
         albumViewModel.setYear(albumObject.getYear() + "");

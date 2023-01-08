@@ -14,4 +14,6 @@ public interface SongRepository {
     void deleteSong(Song song);
 
     void updateSong(Song song, Song newSong);
+
+    List<Song> findSongByAlbumName(String albumName);
 }

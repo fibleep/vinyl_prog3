@@ -55,4 +55,9 @@ public class SongRepositoryJDBC implements SongRepository {
     public void updateSong(Song song, Song newSong) {
 
     }
+
+    @Override
+    public List<Song> findSongByAlbumName(String albumName) {
+        return null;
+    }
 }

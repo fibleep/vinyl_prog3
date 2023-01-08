@@ -70,4 +70,9 @@ public class AlbumServiceImpl implements AlbumService {
         logger.info("writeAlbumsToJSON called");
         jsonDataWriter.writeAlbums(album);
     }
+
+    @Override
+    public List<Song> getAlbumSongs(String albumName) {
+        return songService.findSongsByAlbumName(albumName);
+    }
 }

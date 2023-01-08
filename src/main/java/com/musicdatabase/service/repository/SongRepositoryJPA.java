@@ -43,6 +43,12 @@ public class SongRepositoryJPA implements SongRepository {
         return song;
     }
 
+    public List<Song> findSongByAlbumName(String albumName) {
+        return entityManager.createQuery("SELECT s FROM Song s WHERE s.album.name = :albumName", Song.class)
+                .setParameter("albumName", albumName)
+                .getResultList();
+    }
+
     @Override
     public void deleteSong(Song song) {
         entityManager.remove(song);

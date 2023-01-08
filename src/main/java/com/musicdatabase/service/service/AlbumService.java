@@ -1,6 +1,7 @@
 package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface AlbumService {
     void updateAlbum(Album originalAlbum, Album newAlbum);
 
     void writeAlbumsToJSON(AlbumRepository albums);
+
+    List<Song> getAlbumSongs(String albumName);
 }

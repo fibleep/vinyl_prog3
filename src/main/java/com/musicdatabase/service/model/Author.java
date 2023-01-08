@@ -27,8 +27,7 @@ public class Author {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
     private transient List<Album> albums;
-    @ManyToMany(mappedBy = "author", cascade = {CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(mappedBy = "authors")
     private transient List<Song> songs;
 
 

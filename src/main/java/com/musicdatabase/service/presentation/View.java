@@ -44,7 +44,7 @@ public class View {
                     System.out.println("Enter author name: ");
                     Scanner scanner = new Scanner(System.in);
                     String authorName = scanner.nextLine();
-                    songService.readSongsByAuthor(authorName).forEach(System.out::println);
+                    songService.findSongsByAuthorName(authorName).forEach(System.out::println);
                 }
                 case SHOW_ALBUMS_OF_AUTHOR_FROM_YEAR -> {
                     System.out.println("Enter author name: ");
