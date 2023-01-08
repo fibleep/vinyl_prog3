@@ -25,11 +25,14 @@ public class Song {
     private int index;
     @Column(name = "length", nullable = false)
     private double length;
-    @ManyToMany(mappedBy = "songs", cascade = {CascadeType.MERGE})
-    private List<Author> authors;
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "author_song",
+            joinColumns = @JoinColumn(name = "song_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private transient List<Author> authors;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 
     public Long getId() {

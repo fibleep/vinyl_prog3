@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "album")
+@Table(name = "author")
 public class Author {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -21,17 +21,15 @@ public class Author {
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
     @Column(name = "age")
-    private int age;
+    private int age = 0;
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Album> albums = null;
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "author_song",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "song_id"))
-    private List<Song> songs = null;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
+    private transient List<Album> albums;
+    @ManyToMany(mappedBy = "author", cascade = {CascadeType.DETACH,
+            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private transient List<Song> songs;
 
 
     public Author(String name, int age, Gender gender) {

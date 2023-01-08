@@ -22,13 +22,13 @@ public class Album {
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Song> songs = new ArrayList<>();
-    @Column(name = "year", nullable = true)
-    private LocalDateTime year;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private transient List<Song> songs = new ArrayList<>();
+    @Column(name = "year", nullable = false)
+    private LocalDateTime year = LocalDateTime.now();
     @Enumerated(EnumType.STRING)
     private Genre genre;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Author author;
 

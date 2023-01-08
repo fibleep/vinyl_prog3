@@ -114,7 +114,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         albums.addAll(List.of(wojnyNoce, pocztowka, wosk, malomiasteczkowy, romanticpsycho));
 
         authors.forEach(authorRepository::createAuthor);
-//        albums.forEach(albumRepository::createAlbum);
-//        songs.forEach(songRepository::createSong);
+        albums.forEach(albumRepository::createAlbum);
+        songs.forEach(songRepository::createSong);
     }
 }
