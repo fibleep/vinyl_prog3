@@ -23,9 +23,7 @@ public class AlbumRepositoryJPA implements AlbumRepository {
 
     @Override
     public Album createAlbum(Album album) {
-        entityManager.getTransaction().begin();
         entityManager.persist(album);
-        entityManager.getTransaction().commit();
         return album;
     }
 
@@ -41,17 +39,14 @@ public class AlbumRepositoryJPA implements AlbumRepository {
 
     @Override
     public void deleteAlbum(Album album) {
-        entityManager.getTransaction().begin();
         entityManager.remove(album);
-        entityManager.getTransaction().commit();
     }
 
     @Override
     public void updateAlbum(Album originalAlbum, Album newAlbum) {
-        entityManager.getTransaction().begin();
         originalAlbum.setName(newAlbum.getName());
         originalAlbum.setYear(LocalDate.of(newAlbum.getYear(), 1, 1).atStartOfDay());
         originalAlbum.setGenre(newAlbum.getGenre());
-        entityManager.getTransaction().commit();
+        entityManager.merge(originalAlbum);
     }
 }

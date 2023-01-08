@@ -1,8 +1,6 @@
 package com.musicdatabase.service.model;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "SONG")
+@Table(name = "song")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Song {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -25,10 +25,10 @@ public class Song {
     private int index;
     @Column(name = "length", nullable = false)
     private double length;
-    @ManyToMany(mappedBy = "songs", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(mappedBy = "songs", cascade = {CascadeType.MERGE})
     private List<Author> authors;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = true)
     private Album album;
 
@@ -48,7 +48,11 @@ public class Song {
         this.album = album;
     }
 
-    public Song() {
+    public Song(String title, int index, double length) {
+        this.title = title;
+        this.index = index;
+        this.length = length;
+        this.authors = new ArrayList<>();
     }
 
     public int getMinutes() {

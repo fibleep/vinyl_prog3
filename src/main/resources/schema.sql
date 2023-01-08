@@ -14,7 +14,8 @@ CREATE TABLE album
 (
     id           INTEGER PRIMARY KEY AUTO_INCREMENT,
     title        TEXT    NOT NULL,
-    release_year INTEGER NOT NULL
+    release_year INTEGER NOT NULL,
+    genre        TEXT    NOT NULL CHECK (genre in ('ALT', 'RAP', 'POP'))
 );
 CREATE TABLE song
 (

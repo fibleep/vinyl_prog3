@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AUTHOR")
+@Table(name = "album")
 public class Author {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -20,7 +20,7 @@ public class Author {
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private int age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -38,6 +38,10 @@ public class Author {
         this.name = name;
         this.age = age;
         this.gender = gender;
+    }
+
+    public Author(String name) {
+        this.name = name;
     }
 
     public List<Song> getSongs() {

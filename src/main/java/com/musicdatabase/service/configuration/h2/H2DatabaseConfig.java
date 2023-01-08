@@ -19,7 +19,7 @@ public class H2DatabaseConfig implements CommandLineRunner {
     public DataSource dataSource() {
         DataSource dataSource = DataSourceBuilder.create()
                 .driverClassName("org.h2.Driver")
-                .url("jdbc:h2:mem:testdb")
+                .url("jdbc:h2:file:./db/vinyldb")
                 .username("")
                 .password("")
                 .build();

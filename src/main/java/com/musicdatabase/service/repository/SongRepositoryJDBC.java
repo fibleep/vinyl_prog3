@@ -1,6 +1,7 @@
 package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.model.Song;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,11 +18,22 @@ public class SongRepositoryJDBC implements SongRepository {
     private String username;
     @Value("${spring.datasource.password}")
     private String password;
+    @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private AuthorRepository authorRepository;
 
     @Override
     public List<Song> readSongs() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM song", (resultSet, i) -> {
+            Song song = new Song();
+            song.setTitle(resultSet.getString("title"));
+            // TODO: PLS FIX
+            song.setAuthors(null);
+            song.setLength(resultSet.getInt("duration"));
+            song.setIndex(resultSet.getInt("album_index"));
+            return song;
+        });
     }
 
     @Override
@@ -36,7 +48,7 @@ public class SongRepositoryJDBC implements SongRepository {
 
     @Override
     public void deleteSong(Song song) {
-        
+
     }
 
     @Override

@@ -15,11 +15,12 @@ public class H2DatabaseCreator {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // TODO: Figure out why this doesnt work
     @PostConstruct
     public void loadData() {
-        jdbcTemplate.execute("DROP TABLE IF EXISTS entry");
-        jdbcTemplate.execute("DROP TABLE IF EXISTS album");
-        jdbcTemplate.execute("DROP TABLE IF EXISTS song");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS entry CASCADE");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS album CASCADE");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS song CASCADE");
         jdbcTemplate.execute("DROP TABLE IF EXISTS author");
         jdbcTemplate.execute("CREATE TABLE album(id INTEGER PRIMARY KEY AUTO_INCREMENT, title TEXT    NOT NULL, release_year INTEGER NOT NULL)");
         jdbcTemplate.execute("CREATE TABLE song(" +

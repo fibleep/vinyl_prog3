@@ -12,4 +12,5 @@ public interface AuthorRepository {
     void removeAuthor(Author author);
 
     void updateAuthor(Author author, Author newAuthor);
+
 }

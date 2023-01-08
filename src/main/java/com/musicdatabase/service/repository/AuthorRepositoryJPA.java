@@ -49,4 +49,5 @@ public class AuthorRepositoryJPA implements AuthorRepository {
         author.setName(newAuthor.getName());
         author.setAge(newAuthor.getAge());
     }
+
 }

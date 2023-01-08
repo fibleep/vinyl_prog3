@@ -1,9 +1,6 @@
 package com.musicdatabase.service.model;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,7 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "ALBUM")
+@AllArgsConstructor
+@Table(name = "album")
 public class Album {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -26,21 +24,13 @@ public class Album {
     private String name;
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Song> songs = new ArrayList<>();
-    @Column(name = "year", nullable = false)
+    @Column(name = "year", nullable = true)
     private LocalDateTime year;
     @Enumerated(EnumType.STRING)
     private Genre genre;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Author author;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Album(String name, LocalDateTime year, Genre genre, Author author, List<Song> songs) {
         this.name = name;

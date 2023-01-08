@@ -4,12 +4,12 @@ VALUES ('Taco Hemingway', 32, 'MALE'),
        ('Daria Zawiałow', 30, 'FEMALE'),
        ('Quebonafide', 31, 'MALE');
 
-INSERT INTO ALBUM(title, release_year)
-VALUES ('Wojny i Noce', 2021),
-       ('POCZTÓWKA Z WWA, LATO ''19', 2019),
-       ('Wosk', 2016),
-       ('Małomiasteczkowy', 2018),
-       ('ROMANTICPSYCHO', 2020);
+INSERT INTO ALBUM(title, release_year, genre)
+VALUES ('Wojny i Noce', 2021, 'ALT'),
+       ('POCZTÓWKA Z WWA, LATO ''19', 2019, 'RAP'),
+       ('Wosk', 2016, 'RAP'),
+       ('Małomiasteczkowy', 2018, 'RAP'),
+       ('ROMANTICPSYCHO', 2020, 'POP');
 INSERT INTO SONG(title, duration, album_index)
 VALUES
     -- WOJNY I NOCE
