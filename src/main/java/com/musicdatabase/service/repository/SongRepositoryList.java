@@ -17,10 +17,6 @@ public class SongRepositoryList implements SongRepository {
         return songs;
     }
 
-    @Override
-    public Song getSong(String title) {
-        return songs.stream().filter(song -> song.getTitle().equals(title)).findFirst().orElse(null);
-    }
 
     @Override
     public Song createSong(Song song) {

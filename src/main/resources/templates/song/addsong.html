@@ -34,11 +34,13 @@
             <input class="text-white form-control border-danger bg-black" type="number" th:value="*{minutes}" min="0"
                    max="59"
                    step="1"
+                   th:default="3"
                    th:field="*{minutes}">
             <label th:for="seconds" th:text="#{form.seconds}">Seconds</label>
             <input class="text-white form-control border-danger bg-black" type="number" th:value="*{seconds}" min="0"
                    max="59"
                    step="1"
+                   th:default="30"
                    th:field="*{seconds}">
             <label th:for="index" th:text="#{form.index}">Index</label>
             <input class="text-white form-control border-danger bg-black" type="number" min="1"

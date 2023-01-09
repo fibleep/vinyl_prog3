@@ -78,9 +78,10 @@ public class SongController {
     public ModelAndView getSong(@PathVariable String song, HttpServletRequest request) {
         logger.info("getSong called");
         ModelAndView modelAndView = new ModelAndView("/song/song-details");
+
         modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
-        logger.info("song: " + song);
-        modelAndView.addObject("song", songService.getSong(song));
+        modelAndView.addObject("song", songService.getSongs().stream()
+                .filter(song1 -> song1.getTitle().equals(song)).findFirst().get());
         modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
         modelAndView.addObject("songViewModel", new SongViewModel());
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));

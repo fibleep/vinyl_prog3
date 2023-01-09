@@ -72,7 +72,7 @@
                                 <span th:each="author : ${authors}" th:if="${author.getName()!=album.getAuthor().getName()}"> <option th:value="${author.getName()}" th:text="${author.getName()}"></option> </span>
                             </select>
                             <label class="form-label" th:for="year"  th:text="#{form.year}">Year</label>
-                            <input class="form-control" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1900" max="2023" step="1"/>
+                            <input class="form-control" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1888" max="2023" step="1"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  th:text="#{form.close}">Close</button>

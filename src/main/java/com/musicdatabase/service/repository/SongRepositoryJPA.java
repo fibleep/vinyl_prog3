@@ -23,18 +23,11 @@ public class SongRepositoryJPA implements SongRepository {
     @Override
     public List<Song> readSongs() {
         try {
-            return entityManager.createQuery("SELECT s FROM Song s", Song.class).getResultList();
+            return entityManager.createQuery("from Song", Song.class).getResultList();
         } catch (Exception e) {
             logger.severe(e.getMessage());
             throw new DatabaseException(e.getMessage());
         }
-    }
-
-    @Override
-    public Song getSong(String title) {
-        return entityManager.createQuery("SELECT s FROM Song s WHERE s.title = :title", Song.class)
-                .setParameter("title", title)
-                .getSingleResult();
     }
 
     @Override
