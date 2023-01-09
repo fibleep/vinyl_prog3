@@ -49,4 +49,9 @@ public class AlbumRepositoryJPA implements AlbumRepository {
         originalAlbum.setGenre(newAlbum.getGenre());
         entityManager.merge(originalAlbum);
     }
+
+    @Override
+    public Album findAlbumBySongTitle(String title) {
+        return null;
+    }
 }

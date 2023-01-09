@@ -29,6 +29,11 @@ public class AlbumRepositoryList implements AlbumRepository {
     }
 
     @Override
+    public Album findAlbumBySongTitle(String title) {
+        return null;
+    }
+
+    @Override
     public List<Album> readAlbums() {
         return albums;
     }

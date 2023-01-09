@@ -33,4 +33,9 @@ public class AuthorRepositoryList implements AuthorRepository {
     public void updateAuthor(Author author, Author newAuthor) {
         authors.set(authors.indexOf(author), newAuthor);
     }
+
+    @Override
+    public List<Author> findAuthorBySongTitle(String title) {
+        return null;
+    }
 }

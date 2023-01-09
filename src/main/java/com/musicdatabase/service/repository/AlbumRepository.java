@@ -12,4 +12,6 @@ public interface AlbumRepository {
     void deleteAlbum(Album album);
 
     void updateAlbum(Album originalAlbum, Album newAlbum);
+
+    Album findAlbumBySongTitle(String title);
 }

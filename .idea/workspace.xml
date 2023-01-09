@@ -4,24 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="jpa works for songs only, something with jdbc">
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="jpa cant see authors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AlbumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AlbumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/presentation/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/presentation/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/vinyldb.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/h2/H2DatabaseCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/h2/H2DatabaseCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositoryList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryJPA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositoryList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AuthorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AuthorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-JDBC.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-JDBC.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,8 +192,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Database Script.data.sql" />
         <item itemvalue="Database Script.schema.sql" />
+        <item itemvalue="Database Script.data.sql" />
         <item itemvalue="Application.ServiceApplication" />
       </list>
     </recent_temporary>
@@ -248,7 +247,7 @@
       <workItem from="1672408697986" duration="1198000" />
       <workItem from="1672680121538" duration="4109000" />
       <workItem from="1673164170389" duration="4065000" />
-      <workItem from="1673175025144" duration="6253000" />
+      <workItem from="1673175025144" duration="14230000" />
     </task>
     <task id="LOCAL-00001" summary="added checklist + author-details">
       <created>1671718661779</created>
@@ -313,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673166970055</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="jpa cant see authors">
+      <created>1673189974284</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673189974284</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +347,8 @@
     <MESSAGE value="jpa entities start + translation done" />
     <MESSAGE value="jpa syntax but the db is borked" />
     <MESSAGE value="jpa works for songs only, something with jdbc" />
-    <option name="LAST_COMMIT_MESSAGE" value="jpa works for songs only, something with jdbc" />
+    <MESSAGE value="jpa cant see authors" />
+    <option name="LAST_COMMIT_MESSAGE" value="jpa cant see authors" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -27,9 +27,6 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ArrayList<Song> songs = new ArrayList<>();
-        ArrayList<Author> authors = new ArrayList<>();
-        ArrayList<Album> albums = new ArrayList<>();
         //create authors
         Author tacoH = new Author("Taco Hemingway", 32, Gender.MALE);
         Author dawidP = new Author("Dawid Podsiadło", 29, Gender.MALE);
@@ -107,11 +104,11 @@ public class DatabaseSeeder implements CommandLineRunner {
 
 
         // fill songs
-        songs.addAll(List.of(zaKrotkiSen, flowerNight, serce, hollow, wanna, future, sanatorium, wwa, woskSong, bxl, szczerze, wiatr, malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal, romanticpsychoSong, jesien, tokyo2020, bubbletea));
+        ArrayList<Song> songs = new ArrayList<>(List.of(zaKrotkiSen, flowerNight, serce, hollow, wanna, future, sanatorium, wwa, woskSong, bxl, szczerze, wiatr, malomiasteczkowySong, najnowszyKlip, trofea, nieMaFal, romanticpsychoSong, jesien, tokyo2020, bubbletea));
         // fill authors
-        authors.addAll(List.of(tacoH, dawidP, dariaZ, quebo));
+        ArrayList<Author> authors = new ArrayList<>(List.of(tacoH, dawidP, dariaZ, quebo));
         // fill albums
-        albums.addAll(List.of(wojnyNoce, pocztowka, wosk, malomiasteczkowy, romanticpsycho));
+        ArrayList<Album> albums = new ArrayList<>(List.of(wojnyNoce, pocztowka, wosk, malomiasteczkowy, romanticpsycho));
 
         authors.forEach(authorRepository::createAuthor);
         albums.forEach(albumRepository::createAlbum);

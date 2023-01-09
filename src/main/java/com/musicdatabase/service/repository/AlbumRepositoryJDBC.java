@@ -1,9 +1,7 @@
 package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.model.Album;
-import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Genre;
-import com.musicdatabase.service.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
@@ -36,15 +34,13 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
     @Override
     public List<Album> readAlbums() {
         // TODO: THIS DOESNT WORK, AUTHOR ISNT DISPLAYED PROPERLY, SONGS
-        return jdbcTemplate.query("SELECT *,name" +
-                " FROM album,author where (select name from AUTHOR where id in (select AUTHOR_ID from ENTRY as e,ALBUM as a where e.ALBUM_ID=a.id) LIMIT 1) = name", (resultSet, i) -> {
+
+        return jdbcTemplate.query("SELECT * FROM album", (resultSet, i) -> {
             Album album = new Album();
             album.setName(resultSet.getString("title"));
-            album.setAuthor(new Author(resultSet.getString("name")));
-            album.setGenre(Genre.valueOf(resultSet.getString("genre")));
             album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
-            List<Song> songs = null;
-            album.setSongs(songs);
+            album.setSongs(songRepository.findSongByAlbumName(album.getName()));
+            album.setGenre(Genre.valueOf(resultSet.getString("genre")));
             return album;
         });
     }
@@ -57,6 +53,20 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
 
     @Override
     public void updateAlbum(Album album, Album newAlbum) {
-
+        jdbcTemplate.update("UPDATE album SET title = ?, release_year = ? WHERE title = ?", newAlbum.getName(), newAlbum.getYear(), album.getName());
     }
+
+    @Override
+    public Album findAlbumBySongTitle(String title) {
+        return jdbcTemplate.queryForObject("SELECT * FROM album WHERE id = (select album_id from entry where song_id = (select id from song where title=?))", (resultSet, i) -> {
+            Album album = new Album();
+            album.setName(resultSet.getString("title"));
+            album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
+            album.setSongs(songRepository.findSongByAlbumName(album.getName()));
+            album.setGenre(Genre.valueOf(resultSet.getString("genre")));
+            return album;
+        }, title);
+    }
+
+
 }

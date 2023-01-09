@@ -28,7 +28,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public Song getSong(String title) {
-        return songRepository.getSong(title);
+        return songRepository.readSongs().stream().filter(song -> song.getTitle().equals(title)).findFirst().orElse(null);
     }
 
     @Override

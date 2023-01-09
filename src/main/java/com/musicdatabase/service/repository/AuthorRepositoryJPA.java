@@ -50,4 +50,9 @@ public class AuthorRepositoryJPA implements AuthorRepository {
         author.setAge(newAuthor.getAge());
     }
 
+    @Override
+    public List<Author> findAuthorBySongTitle(String title) {
+        return null;
+    }
+
 }
