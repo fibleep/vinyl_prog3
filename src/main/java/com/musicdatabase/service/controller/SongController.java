@@ -1,5 +1,6 @@
 package com.musicdatabase.service.controller;
 
+import com.musicdatabase.service.controller.exceptions.EntryNotFoundException;
 import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Author;
@@ -66,8 +67,12 @@ public class SongController {
         song.addAuthor(authorService.getAuthors().stream()
                 .filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
         if (songViewModel.getAlbum() != null) {
-            song.setAlbum(albumService.getAlbums().stream()
-                    .filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get());
+            Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
+            song.setAlbum(album);
+            if (songViewModel.getIndex() != 0 && songViewModel.getIndex() != song.getIndex() && !album.getSongIndexes().contains(songViewModel.getIndex())) {
+                song.setIndex(songViewModel.getIndex());
+            }
+
         }
         songService.createSong(song);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
@@ -75,17 +80,21 @@ public class SongController {
     }
 
     @GetMapping("/{song}")
-    public ModelAndView getSong(@PathVariable String song, HttpServletRequest request) {
+    public ModelAndView getSong(@PathVariable String song, HttpServletRequest request) throws EntryNotFoundException {
         logger.info("getSong called");
         ModelAndView modelAndView = new ModelAndView("/song/song-details");
-
-        modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
-        modelAndView.addObject("song", songService.getSongs().stream()
-                .filter(song1 -> song1.getTitle().equals(song)).findFirst().get());
-        modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
-        modelAndView.addObject("songViewModel", new SongViewModel());
-        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
-        return modelAndView;
+        try {
+            Song songObject = songService.getSongs().stream()
+                    .filter(song1 -> song1.getTitle().equals(song)).findFirst().get();
+            modelAndView.addObject("authors", authorService.getAuthors().stream().map(Author::getName).toArray());
+            modelAndView.addObject("song", songObject);
+            modelAndView.addObject("albums", albumService.getAlbums().stream().map(Album::getName).toArray());
+            modelAndView.addObject("songViewModel", new SongViewModel());
+            historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
+            return modelAndView;
+        } catch (Exception e) {
+            throw new EntryNotFoundException("Song not found");
+        }
     }
 
     @DeleteMapping("/{song}")
@@ -104,26 +113,26 @@ public class SongController {
         }
         Song originalSong = songService.getSong(song);
         Song songToUpdate = originalSong;
-        if (songViewModel.getTitle() != null && !songViewModel.getTitle().equals("")) {
-            songToUpdate.setTitle(songViewModel.getTitle());
+        // set title
+        songToUpdate.setTitle(songViewModel.getTitle());
+        // add authors
+        String[] authorsArray = songViewModel.getAuthor().split(",");
+        List<Author> authors = new ArrayList<>();
+        for (String author : authorsArray) {
+            authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
         }
-        if (songViewModel.getIndex() != 0) {
-            songToUpdate.setIndex(songViewModel.getIndex());
-        }
+        songToUpdate.setAuthors(authors);
+        // set index
         if (songViewModel.getMinutes() != 0 && songViewModel.getSeconds() != 0) {
             double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);
             songToUpdate.setLength(length);
         }
-        if (songViewModel.getAuthor() != null && !songViewModel.getAuthor().equals("")) {
-            String[] authorsArray = songViewModel.getAuthor().split(",");
-            List<Author> authors = new ArrayList<>();
-            for (String author : authorsArray) {
-                authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
-            }
-            songToUpdate.setAuthors(authors);
-        }
         if (songViewModel.getAlbum() != null) {
-            songToUpdate.setAlbum(albumService.getAlbums().stream().filter(album -> album.getName().equals(songViewModel.getAlbum())).findFirst().get());
+            Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
+            songToUpdate.setAlbum(album);
+            if (songViewModel.getIndex() != 0 && songViewModel.getIndex() != originalSong.getIndex() && !album.getSongIndexes().contains(songViewModel.getIndex())) {
+                songToUpdate.setIndex(songViewModel.getIndex());
+            }
             Album originaAlbum = originalSong.getAlbum();
             Album updatedAlbum = originaAlbum;
             updatedAlbum.updateSong(originalSong, songToUpdate);

@@ -32,26 +32,38 @@ public class AlbumRepositoryJPA implements AlbumRepository {
         try {
             return entityManager.createQuery("SELECT a FROM Album a", Album.class).getResultList();
         } catch (Exception e) {
-            logger.severe(e.getMessage());
             throw new DatabaseException(e.getMessage());
         }
     }
 
     @Override
     public void deleteAlbum(Album album) {
-        entityManager.remove(album);
+        try {
+            entityManager.remove(album);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void updateAlbum(Album originalAlbum, Album newAlbum) {
-        originalAlbum.setName(newAlbum.getName());
-        originalAlbum.setYear(LocalDate.of(newAlbum.getYear(), 1, 1).atStartOfDay());
-        originalAlbum.setGenre(newAlbum.getGenre());
-        entityManager.merge(originalAlbum);
+        try {
+            originalAlbum.setName(newAlbum.getName());
+            originalAlbum.setYear(LocalDate.of(newAlbum.getYear(), 1, 1).atStartOfDay());
+            originalAlbum.setGenre(newAlbum.getGenre());
+            originalAlbum.setSongs(newAlbum.getSongs());
+            entityManager.merge(originalAlbum);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public Album findAlbumBySongTitle(String title) {
-        return null;
+        try {
+            return entityManager.createQuery("SELECT a FROM Album a JOIN a.songs s WHERE s.title = :title", Album.class).setParameter("title", title).getSingleResult();
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 }

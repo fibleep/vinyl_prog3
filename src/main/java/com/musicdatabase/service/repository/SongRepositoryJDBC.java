@@ -1,5 +1,6 @@
 package com.musicdatabase.service.repository;
 
+import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Song;
 import org.slf4j.Logger;
@@ -30,22 +31,26 @@ public class SongRepositoryJDBC implements SongRepository {
 
     @Override
     public List<Song> readSongs() {
-        return jdbcTemplate.query("SELECT * FROM song", (resultSet, i) -> {
-            Song song = new Song();
-            song.setTitle(resultSet.getString("title"));
-            song.setAuthors(authorRepository.findAuthorBySongTitle(song.getTitle()));
-            int albumId = jdbcTemplate.query("select album_id from entry where song_id =?", (resultSet1, i1) -> resultSet1.getInt("album_id"), resultSet.getInt("id")).get(0);
+        try {
+            return jdbcTemplate.query("SELECT * FROM song", (resultSet, i) -> {
+                Song song = new Song();
+                song.setTitle(resultSet.getString("title"));
+                song.setAuthors(authorRepository.findAuthorBySongTitle(song.getTitle()));
+                int albumId = jdbcTemplate.query("select album_id from entry where song_id =?", (resultSet1, i1) -> resultSet1.getInt("album_id"), resultSet.getInt("id")).get(0);
 
-            song.setAlbum(jdbcTemplate.queryForObject("select * from album where id = ?", (resultSet1, i1) -> {
-                Album album = new Album();
-                album.setName(resultSet1.getString("title"));
-                return album;
-            }, albumId));
-            song.setLength(resultSet.getInt("duration"));
-            song.setIndex(resultSet.getInt("album_index"));
-            logger.info("Song: " + song);
-            return song;
-        });
+                song.setAlbum(jdbcTemplate.queryForObject("select * from album where id = ?", (resultSet1, i1) -> {
+                    Album album = new Album();
+                    album.setName(resultSet1.getString("title"));
+                    return album;
+                }, albumId));
+                song.setLength(resultSet.getInt("duration"));
+                song.setIndex(resultSet.getInt("album_index"));
+                logger.info("Song: " + song);
+                return song;
+            });
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
 

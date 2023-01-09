@@ -53,6 +53,14 @@ public class Album {
         this.songs.remove(song);
     }
 
+    public List<Integer> getSongIndexes() {
+        List<Integer> indexes = new ArrayList<>();
+        for (Song song : songs) {
+            indexes.add(song.getIndex());
+        }
+        return indexes;
+    }
+
     public void setSongs(List<Song> songs) {
         this.songs = songs;
     }

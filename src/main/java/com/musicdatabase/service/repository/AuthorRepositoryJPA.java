@@ -25,34 +25,49 @@ public class AuthorRepositoryJPA implements AuthorRepository {
         try {
             return entityManager.createQuery("SELECT a FROM Author a", Author.class).getResultList();
         } catch (Exception e) {
-            logger.severe(e.getMessage());
             throw new DatabaseException(e.getMessage());
         }
     }
 
     @Override
     public Author createAuthor(Author author) {
-        entityManager.persist(author);
-        return author;
+        try {
+            entityManager.persist(author);
+            return author;
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void removeAuthor(Author author) {
-        entityManager.remove(author);
+        try {
+            entityManager.remove(author);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
-        // TODO: mmmm prototype design pattern?
-        author.setName(newAuthor.getName());
-        author.setGender(newAuthor.getGender());
-        author.setName(newAuthor.getName());
-        author.setAge(newAuthor.getAge());
+        try {
+            author.setName(newAuthor.getName());
+            author.setGender(newAuthor.getGender());
+            author.setName(newAuthor.getName());
+            author.setAge(newAuthor.getAge());
+            entityManager.merge(author);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public List<Author> findAuthorBySongTitle(String title) {
-        return null;
+        try {
+            return null;
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
 }

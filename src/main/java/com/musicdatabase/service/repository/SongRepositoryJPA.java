@@ -25,30 +25,50 @@ public class SongRepositoryJPA implements SongRepository {
         try {
             return entityManager.createQuery("from Song", Song.class).getResultList();
         } catch (Exception e) {
-            logger.severe(e.getMessage());
             throw new DatabaseException(e.getMessage());
         }
     }
 
     @Override
     public Song createSong(Song song) {
-        entityManager.persist(song);
-        return song;
+        try {
+            entityManager.persist(song);
+            return song;
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public List<Song> findSongByAlbumName(String albumName) {
-        return entityManager.createQuery("SELECT s FROM Song s WHERE s.album.name = :albumName", Song.class)
-                .setParameter("albumName", albumName)
-                .getResultList();
+        try {
+            return entityManager.createQuery("SELECT s FROM Song s WHERE s.album.name = :albumName", Song.class)
+                    .setParameter("albumName", albumName)
+                    .getResultList();
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void deleteSong(Song song) {
-        entityManager.remove(song);
+        try {
+            entityManager.remove(song);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void updateSong(Song song, Song newSong) {
-        entityManager.merge(newSong);
+        try {
+            song.setTitle(newSong.getTitle());
+            song.setLength(newSong.getLength());
+            song.setAlbum(newSong.getAlbum());
+            song.setIndex(newSong.getIndex());
+            song.setAuthors(newSong.getAuthors());
+            entityManager.merge(song);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 }

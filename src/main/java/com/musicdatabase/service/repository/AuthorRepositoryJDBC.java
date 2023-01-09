@@ -1,5 +1,6 @@
 package com.musicdatabase.service.repository;
 
+import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Gender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,40 +41,60 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
 
     @Override
     public List<Author> readAuthors() {
-        return jdbcTemplate.query("SELECT * FROM author", (resultSet, i) -> {
-            Author author = new Author();
-            author.setName(resultSet.getString("name"));
-            author.setAge(resultSet.getInt("age"));
-            author.setGender(Gender.valueOf(resultSet.getString("gender")));
-            return author;
-        });
+        try {
+            return jdbcTemplate.query("SELECT * FROM author", (resultSet, i) -> {
+                Author author = new Author();
+                author.setName(resultSet.getString("name"));
+                author.setAge(resultSet.getInt("age"));
+                author.setGender(Gender.valueOf(resultSet.getString("gender")));
+                return author;
+            });
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public Author createAuthor(Author author) {
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("name", author.getName());
-        parameters.put("age", author.getAge());
-        parameters.put("gender", author.getGender().toString());
-        Number id = jdbcInsert.executeAndReturnKey(parameters);
-        author.setId((long) id.intValue());
-        return author;
+        try {
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("name", author.getName());
+            parameters.put("age", author.getAge());
+            parameters.put("gender", author.getGender().toString());
+            Number id = jdbcInsert.executeAndReturnKey(parameters);
+            author.setId((long) id.intValue());
+            return author;
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void removeAuthor(Author author) {
-        jdbcTemplate.update("DELETE FROM author WHERE name = ?", author.getName());
+        try {
+            jdbcTemplate.update("DELETE FROM author WHERE name = ?", author.getName());
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
+        try {
+            logger.info("this should be implemented someday");
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
 
     }
 
     @Override
     public List<Author> findAuthorBySongTitle(String title) {
-        logger.info("findAuthorBySongTitle: " + jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where song_id=(select id from song where title=?))", this::mapRow, title));
-        return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where song_id=(select id from song where title=?))", this::mapRow, title);
+        try {
+            return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where song_id=(select id from song where title=?))", this::mapRow, title);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Author mapRow(ResultSet rs, int rowNum) throws SQLException {

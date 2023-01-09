@@ -12,9 +12,9 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <h1 class="d-flex justify-content-center p-2 mt-5 bg-black rounded w-50 h-50 m-auto"
-        th:text="|#{error} ${error}|"></h1>
-    <div class="d-flex justify-content-center p-2 mt-5 bg-black rounded w-50 h-50 m-auto">
-        <a th:text="${message}" class="bg-black rounded"></a>
+        th:text="#{error.critical}"></h1>
+    <div class="d-flex flex-wrap justify-content-center bg-black rounded p-3 mt-5 mb-3 w-50 h-50 m-auto">
+        <a th:text="${message}"></a>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>

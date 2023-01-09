@@ -1,5 +1,6 @@
 package com.musicdatabase.service.repository;
 
+import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,45 +28,64 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
 
     @Override
     public Album createAlbum(Album album) {
-        jdbcTemplate.update("INSERT INTO album (title,release_year) values (?,?)", album.getName(), album.getYear());
-        return album;
+        try {
+            jdbcTemplate.update("INSERT INTO album (title,release_year,genre) values (?,?,?)", album.getName(), album.getYear(), album.getGenre().toString());
+            return album;
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public List<Album> readAlbums() {
-        // TODO: THIS DOESNT WORK, AUTHOR ISNT DISPLAYED PROPERLY, SONGS
 
-        return jdbcTemplate.query("SELECT * FROM album", (resultSet, i) -> {
-            Album album = new Album();
-            album.setName(resultSet.getString("title"));
-            album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
-            album.setSongs(songRepository.findSongByAlbumName(album.getName()));
-            album.setGenre(Genre.valueOf(resultSet.getString("genre")));
-            return album;
-        });
+        try {
+            return jdbcTemplate.query("SELECT * FROM album", (resultSet, i) -> {
+                Album album = new Album();
+                album.setName(resultSet.getString("title"));
+                album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
+                album.setSongs(songRepository.findSongByAlbumName(album.getName()));
+                album.setGenre(Genre.valueOf(resultSet.getString("genre")));
+                return album;
+            });
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
 
     @Override
     public void deleteAlbum(Album album) {
-        jdbcTemplate.update("DELETE FROM album WHERE title = ?", album.getName());
+        try {
+            jdbcTemplate.update("DELETE FROM album WHERE title = ?", album.getName());
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public void updateAlbum(Album album, Album newAlbum) {
-        jdbcTemplate.update("UPDATE album SET title = ?, release_year = ? WHERE title = ?", newAlbum.getName(), newAlbum.getYear(), album.getName());
+        try {
+            jdbcTemplate.update("UPDATE album SET title = ?, release_year = ?, genre = ? WHERE title = ?", newAlbum.getName(), newAlbum.getYear(), newAlbum.getGenre().toString(), album.getName());
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public Album findAlbumBySongTitle(String title) {
-        return jdbcTemplate.queryForObject("SELECT * FROM album WHERE id = (select album_id from entry where song_id = (select id from song where title=?))", (resultSet, i) -> {
-            Album album = new Album();
-            album.setName(resultSet.getString("title"));
-            album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
-            album.setSongs(songRepository.findSongByAlbumName(album.getName()));
-            album.setGenre(Genre.valueOf(resultSet.getString("genre")));
-            return album;
-        }, title);
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM album WHERE id = (select album_id from entry where song_id = (select id from song where title=?))", (resultSet, i) -> {
+                Album album = new Album();
+                album.setName(resultSet.getString("title"));
+                album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
+                album.setSongs(songRepository.findSongByAlbumName(album.getName()));
+                album.setGenre(Genre.valueOf(resultSet.getString("genre")));
+                return album;
+            }, title);
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
 
