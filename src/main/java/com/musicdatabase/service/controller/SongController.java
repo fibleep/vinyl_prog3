@@ -114,14 +114,18 @@ public class SongController {
         Song originalSong = songService.getSong(song);
         Song songToUpdate = originalSong;
         // set title
-        songToUpdate.setTitle(songViewModel.getTitle());
-        // add authors
-        String[] authorsArray = songViewModel.getAuthor().split(",");
-        List<Author> authors = new ArrayList<>();
-        for (String author : authorsArray) {
-            authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+        if (!songToUpdate.getTitle().equals(songViewModel.getTitle()) && !songViewModel.getTitle().isEmpty()) {
+            songToUpdate.setTitle(songViewModel.getTitle());
         }
-        songToUpdate.setAuthors(authors);
+        // add authors
+        if (songViewModel.getAuthor() != null) {
+            String[] authorsArray = songViewModel.getAuthor().split(",");
+            List<Author> authors = new ArrayList<>();
+            for (String author : authorsArray) {
+                authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+            }
+            songToUpdate.setAuthors(authors);
+        }
         // set index
         if (songViewModel.getMinutes() != 0 && songViewModel.getSeconds() != 0) {
             double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);

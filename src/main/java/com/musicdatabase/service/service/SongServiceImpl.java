@@ -3,12 +3,14 @@ package com.musicdatabase.service.service;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import com.musicdatabase.service.repository.SongRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 @Service
+@Profile({"JPA", "JDBC", "collections"})
 public class SongServiceImpl implements SongService {
 
     private final JsonDataWriter jsonDataWriter;
@@ -23,17 +25,19 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public List<Song> getSongs() {
+        logger.info("getSongs called");
         return songRepository.readSongs();
     }
 
     @Override
     public Song getSong(String title) {
+        logger.info("getSong called with title: " + title);
         return songRepository.readSongs().stream().filter(song -> song.getTitle().equals(title)).findFirst().orElse(null);
     }
 
     @Override
     public List<Song> findSongsByAuthorName(String author) {
-        logger.info("readSongsByAuthor called");
+        logger.info("readSongsByAuthor called with author: " + author);
         return songRepository.readSongs().stream()
                 .filter(song -> song.getAuthors().stream().anyMatch(songAuthor -> songAuthor.getName().equals(author)))
                 .toList();
@@ -41,6 +45,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public void createSong(Song song) {
+        logger.info("createSong called with song: " + song);
         if (song.getAlbum() != null) {
             song.getAlbum().addSong(song);
         }
@@ -49,11 +54,13 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public void removeSong(Song song) {
+        logger.info("removeSong called with song: " + song);
         songRepository.deleteSong(song);
     }
 
     @Override
     public void updateSong(Song originalSong, Song newSong) {
+        logger.info("updateSong called with originalSong: " + originalSong + " and newSong: " + newSong);
         songRepository.updateSong(originalSong, newSong);
     }
 
@@ -66,6 +73,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public List<Song> findSongsByAlbumName(String albumName) {
+        logger.info("findSongsByAlbumName called with albumName: " + albumName);
         return songRepository.findSongByAlbumName(albumName);
     }
 

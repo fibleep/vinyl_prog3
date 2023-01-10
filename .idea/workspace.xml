@@ -4,12 +4,24 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="adding error handling it works i promise!!! some text overflows, need to fix that">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/SongViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/SongViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/model/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositoryJPA.java" afterDir="false" />
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="spring repository kinda works">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/configuration/DatabaseSeederSpring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceSpring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AuthorServiceSpring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceSpring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-spring.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CHECKLIST.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositorySpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AlbumRepositorySpring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositorySpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/AuthorRepositorySpring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositorySpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/repository/SongRepositorySpring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AlbumServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AuthorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/AuthorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-JPA.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-JPA.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +68,8 @@
         <option value="Interface" />
         <option value="CSS File" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -239,6 +251,7 @@
       <workItem from="1673175025144" duration="14230000" />
       <workItem from="1673262282194" duration="3506000" />
       <workItem from="1673284882942" duration="5535000" />
+      <workItem from="1673358134180" duration="6475000" />
     </task>
     <task id="LOCAL-00001" summary="added checklist + author-details">
       <created>1671718661779</created>
@@ -339,7 +352,8 @@
     <MESSAGE value="jpa syntax but the db is borked" />
     <MESSAGE value="jpa works for songs only, something with jdbc" />
     <MESSAGE value="jpa cant see authors" />
-    <option name="LAST_COMMIT_MESSAGE" value="jpa cant see authors" />
+    <MESSAGE value="spring repository kinda works" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring repository kinda works" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

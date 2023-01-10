@@ -4,7 +4,7 @@ import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
+@Profile({"JPA", "JDBC", "collections"})
 public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
@@ -19,7 +20,6 @@ public class AlbumServiceImpl implements AlbumService {
     private final SongService songService;
     private final Logger logger = Logger.getLogger(AlbumServiceImpl.class.getName());
 
-    @Autowired
     public AlbumServiceImpl(AlbumRepository albumRepository, SongService songService, JsonDataWriter jsonDataWriter) {
         this.albumRepository = albumRepository;
         this.songService = songService;
@@ -34,29 +34,32 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public List<Album> readAlbumsByAuthor(String author) {
         // TODO implement me plz
-        logger.info("readAlbumsByAuthor called");
+        logger.info("readAlbumsByAuthor called with author: " + author);
         return albumRepository.readAlbums().stream().filter(album -> album.getAuthor().getName().equals(author)).collect(Collectors.toList());
     }
 
     @Override
     public void addAlbum(Album album) {
+        logger.info("addAlbum called with album: " + album);
         albumRepository.createAlbum(album);
     }
 
     @Override
     public void removeAlbum(Album album) {
+        logger.info("removeAlbum called with album: " + album);
         album.getSongs().forEach(songService::removeSong);
         albumRepository.deleteAlbum(album);
     }
 
     @Override
     public List<Album> readAlbumsByAuthorAndYear(String name, int year) {
-        logger.info("readAlbumsByAuthorAndYear called");
+        logger.info("readAlbumsByAuthorAndYear called with name: " + name + " and year: " + year);
         return albumRepository.readAlbums().stream().filter(album -> album.getAuthor().getName().equals(name) && album.getYear() == year).collect(Collectors.toList());
     }
 
     @Override
     public void updateAlbum(Album originalAlbum, Album newAlbum) {
+        logger.info("updateAlbum called with originalAlbum: " + originalAlbum + " and newAlbum: " + newAlbum);
         for (Song song : originalAlbum.getSongs()) {
             Song newSong = song;
             newSong.setAlbum(newAlbum);
@@ -73,6 +76,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public List<Song> getAlbumSongs(String albumName) {
+        logger.info("getAlbumSongs called with albumName: " + albumName);
         return songService.findSongsByAlbumName(albumName);
     }
 }
