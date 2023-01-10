@@ -1,6 +1,9 @@
 package com.musicdatabase.service.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,16 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "album")
 public class Album {
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.MERGE, orphanRemoval = true)
-    private transient List<Song> songs = new ArrayList<>();
+    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    private List<Song> songs = new ArrayList<>();
     @Column(name = "year", nullable = false)
     private LocalDateTime year = LocalDateTime.now();
     @Enumerated(EnumType.STRING)

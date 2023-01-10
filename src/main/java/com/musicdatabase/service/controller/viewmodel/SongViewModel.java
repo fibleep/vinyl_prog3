@@ -3,15 +3,12 @@ package com.musicdatabase.service.controller.viewmodel;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 public class SongViewModel {
 
-    @NotNull
-    @NotBlank
     private String title;
     private int index;
     @NotNull

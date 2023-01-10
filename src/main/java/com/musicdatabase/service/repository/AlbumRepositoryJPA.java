@@ -52,6 +52,7 @@ public class AlbumRepositoryJPA implements AlbumRepository {
             originalAlbum.setYear(LocalDate.of(newAlbum.getYear(), 1, 1).atStartOfDay());
             originalAlbum.setGenre(newAlbum.getGenre());
             originalAlbum.setSongs(newAlbum.getSongs());
+            originalAlbum.setAuthor(newAlbum.getAuthor());
             entityManager.merge(originalAlbum);
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());

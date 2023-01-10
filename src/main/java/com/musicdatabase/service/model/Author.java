@@ -1,8 +1,12 @@
 package com.musicdatabase.service.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -12,11 +16,8 @@ import java.util.List;
 @Entity
 @Table(name = "author")
 public class Author {
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 40)
     private String name;
@@ -25,10 +26,10 @@ public class Author {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
-    private transient List<Album> albums;
-    @ManyToMany(mappedBy = "authors")
-    private transient List<Song> songs;
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    private List<Album> albums = new ArrayList<>();
+    @ManyToMany(mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    private List<Song> songs = new ArrayList<>();
 
 
     public Author(String name, int age, Gender gender) {
