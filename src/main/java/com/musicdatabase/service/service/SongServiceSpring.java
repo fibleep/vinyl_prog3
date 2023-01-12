@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import com.musicdatabase.service.repository.SongRepository;
@@ -15,10 +16,12 @@ import java.util.logging.Logger;
 public class SongServiceSpring implements SongService {
     private final JsonDataWriter jsonDataWriter;
     private final SongRepositorySpring songRepository;
+    private final AlbumService albumService;
 
-    public SongServiceSpring(SongRepositorySpring songRepository, JsonDataWriter jsonDataWriter) {
+    public SongServiceSpring(SongRepositorySpring songRepository, AlbumService albumService, JsonDataWriter jsonDataWriter) {
         this.songRepository = songRepository;
         this.jsonDataWriter = jsonDataWriter;
+        this.albumService = albumService;
     }
 
     private final Logger logger = Logger.getLogger(SongServiceImpl.class.getName());
@@ -37,8 +40,7 @@ public class SongServiceSpring implements SongService {
 
     @Override
     public List<Song> findSongsByAuthorName(String author) {
-        logger.info("findSongsByAuthorName called with author: " + author);
-        return songRepository.findByAuthor(author);
+        return null;
     }
 
     @Override
@@ -62,6 +64,15 @@ public class SongServiceSpring implements SongService {
     @Override
     public void updateSong(Song originalSong, Song newSong) {
         logger.info("updateSong called with originalSong: " + originalSong + " and newSong: " + newSong);
+    }
+
+    @Override
+    public Song merge(Song originalSong, SongViewModel song) {
+        originalSong.setTitle(song.getTitle());
+        originalSong.setLength(song.getLength());
+        originalSong.setAlbum(albumService.getAlbumByName(song.getAlbum()));
+        originalSong.setIndex(song.getIndex());
+        return originalSong;
     }
 
     @Override

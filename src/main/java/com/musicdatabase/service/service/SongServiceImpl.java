@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import com.musicdatabase.service.repository.SongRepository;
@@ -59,6 +60,14 @@ public class SongServiceImpl implements SongService {
     public void updateSong(Song originalSong, Song newSong) {
         logger.info("updateSong called with originalSong: " + originalSong + " and newSong: " + newSong);
         songRepository.updateSong(originalSong, newSong);
+    }
+
+    @Override
+    public Song merge(Song originalSong, SongViewModel song) {
+        originalSong.setTitle(song.getTitle());
+        originalSong.setLength(song.getLength());
+        originalSong.setIndex(song.getIndex());
+        return originalSong;
     }
 
     @Override

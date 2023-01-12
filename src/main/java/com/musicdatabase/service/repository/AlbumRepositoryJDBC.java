@@ -57,7 +57,9 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
     @Override
     public void deleteAlbum(Album album) {
         try {
-            jdbcTemplate.update("DELETE FROM album WHERE title = ?", album.getName());
+            long id = jdbcTemplate.query("select id from ALBUM where TITLE = ?", (resultSet, i) -> resultSet.getLong("id"), album.getName()).get(0);
+            jdbcTemplate.update("delete from entry where ALBUM_ID = ?", id);
+            jdbcTemplate.update("delete from ALBUM where TITLE = ?", album.getName());
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }
@@ -86,6 +88,11 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }
+    }
+
+    @Override
+    public Album findAlbumByName(String name) {
+        return null;
     }
 
 

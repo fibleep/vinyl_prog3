@@ -28,7 +28,7 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
     private String password;
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcInsert jdbcInsert;
+    private final SimpleJdbcInsert jdbcInsert;
 
     private final Logger logger = Logger.getLogger(AuthorRepositoryJDBC.class.getName());
 
@@ -72,7 +72,9 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
     @Override
     public void removeAuthor(Author author) {
         try {
-            jdbcTemplate.update("DELETE FROM author WHERE name = ?", author.getName());
+            long id = jdbcTemplate.query("select id from AUTHOR where name = ?", (resultSet, i) -> resultSet.getLong("id"), author.getName()).get(0);
+            jdbcTemplate.update("delete from entry where author_id = ?", id);
+            jdbcTemplate.update("delete from author where name = ?", author.getName());
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }

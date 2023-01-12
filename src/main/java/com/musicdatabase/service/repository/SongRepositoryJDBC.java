@@ -27,7 +27,7 @@ public class SongRepositoryJDBC implements SongRepository {
     @Autowired
     private AuthorRepository authorRepository;
 
-    private Logger logger = LoggerFactory.getLogger(SongRepositoryJDBC.class);
+    private final Logger logger = LoggerFactory.getLogger(SongRepositoryJDBC.class);
 
     @Override
     public List<Song> readSongs() {
@@ -61,7 +61,13 @@ public class SongRepositoryJDBC implements SongRepository {
 
     @Override
     public void deleteSong(Song song) {
-
+        try {
+            long id = jdbcTemplate.query("select id from song where title = ?", (resultSet, i) -> resultSet.getLong("id"), song.getTitle()).get(0);
+            jdbcTemplate.update("delete from entry where song_id = ?", id);
+            jdbcTemplate.update("delete from song where title = ?", song.getTitle());
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override

@@ -17,6 +17,8 @@ public interface AuthorService {
 
     void updateAuthor(Author originalAuthor, Author newAuthor);
 
+    Author merge(Author originalAuthor, AuthorViewModel authorViewModel);
+
     void removeAuthor(Author author);
 
     void mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel);

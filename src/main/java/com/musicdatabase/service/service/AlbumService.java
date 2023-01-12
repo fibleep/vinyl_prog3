@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.AlbumViewModel;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
@@ -20,6 +21,10 @@ public interface AlbumService {
     void updateAlbum(Album originalAlbum, Album newAlbum);
 
     void writeAlbumsToJSON(AlbumRepository albums);
+
+    Album merge(Album originalAlbum, AlbumViewModel albumViewModel);
+
+    Album getAlbumByName(String name);
 
     List<Song> getAlbumSongs(String albumName);
 }

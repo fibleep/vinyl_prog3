@@ -22,4 +22,9 @@ public class SongViewModel {
     private String author;
     private String album;
 
+    public double getLength() {
+        if (seconds == 0) return minutes;
+        return minutes + (seconds / 100.0);
+    }
+
 }

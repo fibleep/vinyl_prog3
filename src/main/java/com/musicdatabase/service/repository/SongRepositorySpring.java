@@ -19,9 +19,6 @@ public interface SongRepositorySpring extends JpaRepository<Song, Long> {
 
     Song findByTitle(String title);
 
-    // TODO: to do, but is it really needed?
-    List<Song> findByAuthor(String author);
-
     @Query("SELECT s FROM Song s WHERE s.album.name = ?1")
     List<Song> findByAlbumName(String album);
 }

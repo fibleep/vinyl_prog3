@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.AlbumViewModel;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
@@ -60,6 +61,17 @@ public class AlbumServiceSpring implements AlbumService {
     @Override
     public void writeAlbumsToJSON(AlbumRepository albums) {
 
+    }
+
+    @Override
+    public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
+        return null;
+    }
+
+    @Override
+    public Album getAlbumByName(String name) {
+        logger.info("getAlbumByName called with name: " + name);
+        return albumRepository.findAlbumByName(name);
     }
 
     @Override

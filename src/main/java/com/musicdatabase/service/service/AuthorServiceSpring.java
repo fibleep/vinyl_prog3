@@ -57,6 +57,11 @@ public class AuthorServiceSpring implements AuthorService {
     }
 
     @Override
+    public Author merge(Author originalAuthor, AuthorViewModel authorViewModel) {
+        return null;
+    }
+
+    @Override
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);
         author.getAlbums().forEach(albumService::removeAlbum);

@@ -1,12 +1,15 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.AlbumViewModel;
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Genre;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -72,6 +75,21 @@ public class AlbumServiceImpl implements AlbumService {
     public void writeAlbumsToJSON(AlbumRepository album) {
         logger.info("writeAlbumsToJSON called");
         jsonDataWriter.writeAlbums(album);
+    }
+
+    @Override
+    public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
+        logger.info("merge called with originalAlbum: " + originalAlbum + " and albumViewModel: " + albumViewModel);
+        originalAlbum.setName(albumViewModel.getName());
+        originalAlbum.setYear(LocalDateTime.parse(albumViewModel.getYear()));
+        originalAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
+        return originalAlbum;
+    }
+
+    @Override
+    public Album getAlbumByName(String name) {
+        logger.info("getAlbumByName called with name: " + name);
+        return albumRepository.findAlbumByName(name);
     }
 
     @Override
