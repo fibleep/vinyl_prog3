@@ -15,10 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.logging.Logger;
-
-import static java.lang.Integer.parseInt;
 
 @RestController
 @RequestMapping("/albums")
@@ -57,14 +54,9 @@ public class AlbumController {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
             return new ModelAndView("/album/addalbum");
         }
-        LocalDateTime localDateTime = LocalDateTime.of(parseInt(albumViewModel.getYear()), 1, 1, 0, 0);
-        Genre genreValue = Genre.valueOf(albumViewModel.getGenre());
         Album album = new Album();
-        album.setName(albumViewModel.getName());
-        album.setYear(localDateTime);
-        album.setGenre(genreValue);
-        album.setAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(albumViewModel.getAuthor())).findFirst().get());
-        albumService.addAlbum(album);
+
+        albumService.addAlbum(albumService.merge(album, albumViewModel));
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/albums");
     }
@@ -96,12 +88,7 @@ public class AlbumController {
         }
         Album originalAlbum = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
         Album newAlbum = originalAlbum;
-        newAlbum.setName(albumViewModel.getName());
-        newAlbum.setYear(LocalDateTime.of(parseInt(albumViewModel.getYear()), 1, 1, 0, 0));
-        newAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
-        albumViewModel.getAuthor();
-        newAlbum.setAuthor(authorService.getAuthors().stream().filter(author -> author.getName().equals(albumViewModel.getAuthor())).findFirst().get());
-        albumService.updateAlbum(originalAlbum, newAlbum);
+        albumService.updateAlbum(originalAlbum, albumService.merge(newAlbum, albumViewModel));
         return new ModelAndView("redirect:/albums");
     }
 

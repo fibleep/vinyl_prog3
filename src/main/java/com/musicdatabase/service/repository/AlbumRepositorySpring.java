@@ -22,4 +22,7 @@ public interface AlbumRepositorySpring extends JpaRepository<Album, Long> {
 
     @Query("SELECT a FROM Album a WHERE a.name = ?1 and a.year = ?2")
     List<Album> findByNameAndYear(String title, int year);
+
+    @Query("SELECT a FROM Album a WHERE a.name = ?1")
+    Album findAlbumByName(String name);
 }

@@ -113,10 +113,7 @@ public class SongController {
         Song originalSong = songService.getSong(song);
         Song songToUpdate = originalSong;
         // set title
-        if (!songToUpdate.getTitle().equals(songViewModel.getTitle()) && !songViewModel.getTitle().isEmpty()) {
-            songToUpdate.setTitle(songViewModel.getTitle());
-        }
-        // add authors
+        songToUpdate = songService.merge(originalSong, songViewModel);
         if (songViewModel.getAuthor() != null) {
             String[] authorsArray = songViewModel.getAuthor().split(",");
             List<Author> authors = new ArrayList<>();

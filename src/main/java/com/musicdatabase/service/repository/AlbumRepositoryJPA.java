@@ -67,4 +67,13 @@ public class AlbumRepositoryJPA implements AlbumRepository {
             throw new DatabaseException(e.getMessage());
         }
     }
+
+    @Override
+    public Album findAlbumByName(String name) {
+        try {
+            return entityManager.createQuery("SELECT a FROM Album a WHERE a.name = :name", Album.class).setParameter("name", name).getSingleResult();
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
+    }
 }

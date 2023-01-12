@@ -52,19 +52,6 @@ public class AuthorServiceImpl implements AuthorService {
         logger.info("updateAuthor called with originalAuthor: " + originalAuthor + " and newAuthor: " + newAuthor);
         authorRepository.updateAuthor(originalAuthor, newAuthor);
     }
-
-    public Author mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel) {
-        StringToGenderConverter stringToGenderConverter = new StringToGenderConverter();
-        if (authorViewModel.getName() != null && !authorViewModel.getName().isEmpty()) {
-            originalAuthor.setName(authorViewModel.getName());
-        }
-        if (authorViewModel.getAge() > 0) {
-            originalAuthor.setAge(authorViewModel.getAge());
-        }
-        originalAuthor.setGender(stringToGenderConverter.convert(authorViewModel.getGender()));
-        return originalAuthor;
-    }
-
     @Override
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);

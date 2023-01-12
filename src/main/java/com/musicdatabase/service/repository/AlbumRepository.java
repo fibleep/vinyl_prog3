@@ -14,4 +14,6 @@ public interface AlbumRepository {
     void updateAlbum(Album originalAlbum, Album newAlbum);
 
     Album findAlbumBySongTitle(String title);
+
+    Album findAlbumByName(String name);
 }
