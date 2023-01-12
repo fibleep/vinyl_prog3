@@ -1,5 +1,7 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.converter.StringToGenderConverter;
+import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Song;
@@ -49,6 +51,18 @@ public class AuthorServiceImpl implements AuthorService {
     public void updateAuthor(Author originalAuthor, Author newAuthor) {
         logger.info("updateAuthor called with originalAuthor: " + originalAuthor + " and newAuthor: " + newAuthor);
         authorRepository.updateAuthor(originalAuthor, newAuthor);
+    }
+
+    public Author mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel) {
+        StringToGenderConverter stringToGenderConverter = new StringToGenderConverter();
+        if (authorViewModel.getName() != null && !authorViewModel.getName().isEmpty()) {
+            originalAuthor.setName(authorViewModel.getName());
+        }
+        if (authorViewModel.getAge() > 0) {
+            originalAuthor.setAge(authorViewModel.getAge());
+        }
+        originalAuthor.setGender(stringToGenderConverter.convert(authorViewModel.getGender()));
+        return originalAuthor;
     }
 
     @Override

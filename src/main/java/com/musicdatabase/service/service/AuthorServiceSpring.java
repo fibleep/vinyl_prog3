@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.AuthorRepositorySpring;
@@ -64,5 +65,10 @@ public class AuthorServiceSpring implements AuthorService {
             songService.updateSong(song, song);
         });
         authorRepository.delete(author);
+    }
+
+    @Override
+    public void mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel) {
+
     }
 }

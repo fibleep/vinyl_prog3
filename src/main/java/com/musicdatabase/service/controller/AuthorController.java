@@ -71,20 +71,13 @@ public class AuthorController {
     @PutMapping("/{author}")
     public ModelAndView updateAuthor(@PathVariable String author, @Valid @ModelAttribute("authorViewModel") AuthorViewModel authorViewModel, BindingResult bindingResult, HttpServletRequest request) {
         logger.info("updateAuthor called");
-        StringToGenderConverter stringToGenderConverter = new StringToGenderConverter();
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
             return new ModelAndView("/author/author-details");
         }
         Author originalAuthor = authorService.getAuthorByName(author);
         Author newAuthor = originalAuthor;
-        if (authorViewModel.getName() != null && !authorViewModel.getName().isEmpty()) {
-            newAuthor.setName(authorViewModel.getName());
-        }
-        if (authorViewModel.getAge() > 0) {
-            newAuthor.setAge(authorViewModel.getAge());
-        }
-        newAuthor.setGender(stringToGenderConverter.convert(authorViewModel.getGender()));
+        authorService.mergeAuthorWithModel(originalAuthor, authorViewModel);
         authorService.updateAuthor(originalAuthor, newAuthor);
         return new ModelAndView("redirect:/authors");
     }

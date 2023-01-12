@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.repository.AuthorRepository;
 
@@ -17,4 +18,6 @@ public interface AuthorService {
     void updateAuthor(Author originalAuthor, Author newAuthor);
 
     void removeAuthor(Author author);
+
+    void mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel);
 }
