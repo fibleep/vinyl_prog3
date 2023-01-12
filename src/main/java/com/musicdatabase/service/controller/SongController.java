@@ -62,16 +62,15 @@ public class SongController {
         Song song = new Song();
         song.setTitle(songViewModel.getTitle());
         song.setIndex(songViewModel.getIndex());
-        double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);
+        double seconds = songViewModel.getSeconds() == 0.0 ? 0 : songViewModel.getSeconds() / 100.0;
+        double length = songViewModel.getMinutes() + seconds;
         song.setLength(length);
         song.addAuthor(authorService.getAuthors().stream()
                 .filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             song.setAlbum(album);
-            if (songViewModel.getIndex() != 0 && songViewModel.getIndex() != song.getIndex() && !album.getSongIndexes().contains(songViewModel.getIndex())) {
-                song.setIndex(songViewModel.getIndex());
-            }
+            song.setIndex(songViewModel.getIndex());
 
         }
         songService.createSong(song);

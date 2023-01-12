@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="spring repository kinda works">
+    <list default="true" id="d7ba0f26-9ea9-4695-956e-325861315751" name="Changes" comment="readme added">
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/vinyldb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/vinyldb.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/AuthorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/AlbumViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/AlbumViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/AuthorViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/AuthorViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/SongViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/controller/viewmodel/SongViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/musicdatabase/service/service/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/author/author-details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673189974284</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="readme added">
+      <created>1673515079444</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673515079444</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +354,8 @@
     <MESSAGE value="jpa works for songs only, something with jdbc" />
     <MESSAGE value="jpa cant see authors" />
     <MESSAGE value="spring repository kinda works" />
-    <option name="LAST_COMMIT_MESSAGE" value="spring repository kinda works" />
+    <MESSAGE value="readme added" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

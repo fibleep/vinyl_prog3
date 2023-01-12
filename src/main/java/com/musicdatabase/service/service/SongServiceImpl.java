@@ -46,9 +46,6 @@ public class SongServiceImpl implements SongService {
     @Override
     public void createSong(Song song) {
         logger.info("createSong called with song: " + song);
-        if (song.getAlbum() != null) {
-            song.getAlbum().addSong(song);
-        }
         songRepository.createSong(song);
     }
 

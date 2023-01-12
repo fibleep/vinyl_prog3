@@ -11,12 +11,12 @@ import javax.validation.constraints.Size;
 public class AlbumViewModel {
 
     @NotBlank(message = "name is required")
-    @Size(min = 2, max = 40)
+    @Size(min = 2, max = 40, message = "Name must be between 2 and 40 characters")
     private String name;
-    @NotBlank(message = "year is required")
+    @NotBlank(message = "Year is required")
     private String year;
-    @NotBlank(message = "genre is required")
+    @NotBlank(message = "Genre is required")
     private String genre;
-    @NotBlank(message = "author is required")
+    @NotBlank(message = "Author is required")
     private String author;
 }

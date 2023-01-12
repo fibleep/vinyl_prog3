@@ -81,8 +81,10 @@ public class AuthorController {
         if (authorViewModel.getName() != null && !authorViewModel.getName().isEmpty()) {
             newAuthor.setName(authorViewModel.getName());
         }
+        if (authorViewModel.getAge() > 0) {
+            newAuthor.setAge(authorViewModel.getAge());
+        }
         newAuthor.setGender(stringToGenderConverter.convert(authorViewModel.getGender()));
-        newAuthor.setAge(authorViewModel.getAge());
         authorService.updateAuthor(originalAuthor, newAuthor);
         return new ModelAndView("redirect:/authors");
     }
