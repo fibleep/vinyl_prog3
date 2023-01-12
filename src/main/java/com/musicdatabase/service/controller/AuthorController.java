@@ -76,8 +76,7 @@ public class AuthorController {
             return new ModelAndView("/author/author-details");
         }
         Author originalAuthor = authorService.getAuthorByName(author);
-        Author newAuthor = originalAuthor;
-        authorService.mergeAuthorWithModel(originalAuthor, authorViewModel);
+        Author newAuthor = authorService.merge(originalAuthor, authorViewModel);
         authorService.updateAuthor(originalAuthor, newAuthor);
         return new ModelAndView("redirect:/authors");
     }

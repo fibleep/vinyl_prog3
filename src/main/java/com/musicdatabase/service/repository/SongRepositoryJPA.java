@@ -52,7 +52,7 @@ public class SongRepositoryJPA implements SongRepository {
     @Override
     public void deleteSong(Song song) {
         try {
-            entityManager.remove(song);
+            entityManager.remove(entityManager.contains(song) ? song : entityManager.merge(song));
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }

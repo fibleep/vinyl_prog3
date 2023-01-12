@@ -68,6 +68,7 @@ public class AlbumController {
         ModelAndView modelAndView = new ModelAndView("/album/album-details");
         Album albumObject = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
         albumObject.setSongs(albumService.getAlbumSongs(albumObject.getName()));
+        albumObject.setAuthor(authorService.getAuthorByName(albumObject.getAuthor().getName()));
         AlbumViewModel albumViewModel = new AlbumViewModel();
         albumViewModel.setName(albumObject.getName());
         albumViewModel.setYear(albumObject.getYear() + "");

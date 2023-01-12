@@ -42,7 +42,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
     @Override
     public void removeAuthor(Author author) {
         try {
-            entityManager.remove(author);
+            entityManager.remove(entityManager.contains(author) ? author : entityManager.merge(author));
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }
@@ -68,6 +68,13 @@ public class AuthorRepositoryJPA implements AuthorRepository {
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }
+    }
+
+    @Override
+    public Author findAuthorByAlbumName(String album) {
+        return entityManager.createQuery("Select author from Author author where author.name = (SELECT a.author.name FROM Album a WHERE a.name = :album)", Author.class)
+                .setParameter("album", album)
+                .getSingleResult();
     }
 
 }

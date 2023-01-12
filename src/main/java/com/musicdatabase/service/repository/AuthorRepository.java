@@ -14,4 +14,6 @@ public interface AuthorRepository {
     void updateAuthor(Author author, Author newAuthor);
 
     List<Author> findAuthorBySongTitle(String title);
+
+    Author findAuthorByAlbumName(String album);
 }

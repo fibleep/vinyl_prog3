@@ -19,4 +19,6 @@ public interface AuthorRepositorySpring extends JpaRepository<Author, Long> {
     @Query("SELECT a FROM Author a WHERE a.name = ?1")
     Author findByName(String name);
 
+    @Query("SELECT a.author.name from Album a where a.name = ?1")
+    Author findAuthorByAlbumName(String album);
 }

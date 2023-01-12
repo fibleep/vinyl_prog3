@@ -28,7 +28,7 @@ public class Author {
 
     @OneToMany(mappedBy = "author", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     private List<Album> albums = new ArrayList<>();
-    @ManyToMany(mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Song> songs = new ArrayList<>();
 
 

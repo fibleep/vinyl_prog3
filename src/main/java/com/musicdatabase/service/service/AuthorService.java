@@ -21,5 +21,5 @@ public interface AuthorService {
 
     void removeAuthor(Author author);
 
-    void mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel);
+    Author getAuthorByAlbumName(String album);
 }

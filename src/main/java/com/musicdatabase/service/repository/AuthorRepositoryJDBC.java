@@ -99,6 +99,11 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
         }
     }
 
+    @Override
+    public Author findAuthorByAlbumName(String album) {
+        return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where album_id=(select id from album where name=?))", this::mapRow, album).get(0);
+    }
+
     public Author mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Author(rs.getString("name"), rs.getInt("age"), Gender.valueOf(rs.getString("gender")));
     }

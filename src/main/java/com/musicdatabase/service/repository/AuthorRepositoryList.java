@@ -38,4 +38,13 @@ public class AuthorRepositoryList implements AuthorRepository {
     public List<Author> findAuthorBySongTitle(String title) {
         return null;
     }
+
+    @Override
+    public Author findAuthorByAlbumName(String album) {
+        return authors.stream()
+                .filter(author -> author.getAlbums().stream()
+                        .anyMatch(album1 -> album1.getName().equals(album)))
+                .findFirst()
+                .orElse(null);
+    }
 }

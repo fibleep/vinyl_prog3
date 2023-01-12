@@ -73,7 +73,8 @@ public class AuthorServiceSpring implements AuthorService {
     }
 
     @Override
-    public void mergeAuthorWithModel(Author originalAuthor, AuthorViewModel authorViewModel) {
-
+    public Author getAuthorByAlbumName(String album) {
+        return authorRepository.findAuthorByAlbumName(album);
     }
+
 }
