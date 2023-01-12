@@ -42,9 +42,9 @@ TODO: Split up put for songs because its chonky and bad, validator class?
     - using collections [X]
     - using JdbcTemplate
     - using ORM (JPA) [X]
-    - using JpaRepository (Spring Data)
-        - at least two method queries
-        - at least one custom query
+    - using JpaRepository (Spring Data) [X]
+        - at least two method queries [X]
+        - at least one custom query [X]
     - database: H2 or Postgresql [X]
     - profiles [X]
         - to switch between repository implementations [X]
@@ -56,10 +56,10 @@ TODO: Split up put for songs because its chonky and bad, validator class?
     - Use a @ControllerAdvise class to handle all database exceptions [X]
     - Handle the custom Exception at the Controller level [X]
     - Be sure to log all exceptions using the logging framework [X]
-- Add a README.MD file to the root of the project
+- Add a README.MD file to the root of the project [X]
     - In this file:
-        - Your name
-        - Explanation of your domain and the relations between the entities (high level explanation)
-        - Explanation of your profiles
-        - What database do you use
-        - Any extra information needed to be able to run the project smoothly
+        - Your name [X]
+        - Explanation of your domain and the relations between the entities (high level explanation) [X]
+        - Explanation of your profiles [X]
+        - What database do you use [X]
+        - Any extra information needed to be able to run the project smoothly [X]
