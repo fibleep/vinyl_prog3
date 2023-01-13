@@ -84,22 +84,6 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
     }
 
     @Override
-    public Album findAlbumBySongTitle(String title) {
-        try {
-            return jdbcTemplate.queryForObject("SELECT * FROM album WHERE id = (select album_id from entry where song_id = (select id from song where title=?))", (resultSet, i) -> {
-                Album album = new Album();
-                album.setName(resultSet.getString("title"));
-                album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
-                album.setSongs(songRepository.findSongByAlbumName(album.getName()));
-                album.setGenre(Genre.valueOf(resultSet.getString("genre")));
-                return album;
-            }, title);
-        } catch (Exception e) {
-            throw new DatabaseException(e.getMessage());
-        }
-    }
-
-    @Override
     public Album findAlbumByName(String name) {
         return null;
     }

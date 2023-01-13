@@ -5,7 +5,7 @@ import com.musicdatabase.service.model.Action;
 import java.util.Scanner;
 
 public class GUI {
-    public static Action menu(){
+    public static Action menu() {
         System.out.println("\n\n------------------");
         System.out.println("1. Close application");
         System.out.println("2. Show all songs");

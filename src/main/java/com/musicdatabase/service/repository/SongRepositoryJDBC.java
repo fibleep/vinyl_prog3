@@ -2,6 +2,7 @@ package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Song;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import java.util.List;
 @Repository
 @Profile("JDBC")
 public class SongRepositoryJDBC implements SongRepository {
+    private final Logger logger = LoggerFactory.getLogger(SongRepositoryJDBC.class);
     @Value("${spring.datasource.url}")
     private String url;
     @Value("${spring.datasource.username}")
@@ -27,10 +29,9 @@ public class SongRepositoryJDBC implements SongRepository {
     @Autowired
     private AuthorRepository authorRepository;
 
-    private final Logger logger = LoggerFactory.getLogger(SongRepositoryJDBC.class);
-
     @Override
     public List<Song> readSongs() {
+        logger.info("Reading songs from database");
         try {
             return jdbcTemplate.query("SELECT * FROM song", (resultSet, i) -> {
                 Song song = new Song();
@@ -55,7 +56,14 @@ public class SongRepositoryJDBC implements SongRepository {
 
     @Override
     public Song createSong(Song song) {
-        return null;
+        jdbcTemplate.update("INSERT INTO song (title, duration, album_index) VALUES (?, ?, ?)", song.getTitle(), song.getLength(), song.getIndex());
+        for (Author author : song.getAuthors()) {
+            long albumId = jdbcTemplate.query("select id from album where title = ?", (resultSet, i) -> resultSet.getLong("id"), song.getAlbum().getName()).get(0);
+            long authorId = jdbcTemplate.query("select id from author where name = ?", (resultSet, i) -> resultSet.getLong("id"), author.getName()).get(0);
+            long songId = jdbcTemplate.query("select id from song where title = ?", (resultSet, i) -> resultSet.getLong("id"), song.getTitle()).get(0);
+            jdbcTemplate.update("INSERT INTO entry (song_id, album_id, author_id) VALUES (?, ?, ?)", songId, albumId, authorId);
+        }
+        return song;
     }
 
     @Override

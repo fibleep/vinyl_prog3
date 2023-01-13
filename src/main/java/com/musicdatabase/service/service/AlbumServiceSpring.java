@@ -4,9 +4,7 @@ import com.musicdatabase.service.controller.viewmodel.AlbumViewModel;
 import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Genre;
 import com.musicdatabase.service.model.Song;
-import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.AlbumRepositorySpring;
-import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,25 +17,17 @@ import java.util.logging.Logger;
 @Profile("spring")
 public class AlbumServiceSpring implements AlbumService {
     private final AlbumRepositorySpring albumRepository;
-    private final JsonDataWriter jsonDataWriter;
     private final SongService songService;
     private final Logger logger = Logger.getLogger(AlbumServiceImpl.class.getName());
 
-    public AlbumServiceSpring(AlbumRepositorySpring albumRepository, SongService songService, JsonDataWriter jsonDataWriter) {
+    public AlbumServiceSpring(AlbumRepositorySpring albumRepository, SongService songService) {
         this.albumRepository = albumRepository;
         this.songService = songService;
-        this.jsonDataWriter = jsonDataWriter;
     }
 
     @Override
     public List<Album> getAlbums() {
         return albumRepository.findAll();
-    }
-
-    @Override
-    public List<Album> readAlbumsByAuthor(String author) {
-        logger.info("readAlbumsByAuthor called");
-        return albumRepository.findByName(author);
     }
 
     @Override
@@ -63,11 +53,6 @@ public class AlbumServiceSpring implements AlbumService {
     }
 
     @Override
-    public void writeAlbumsToJSON(AlbumRepository albums) {
-
-    }
-
-    @Override
     public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
         logger.info("merge called with originalAlbum: " + originalAlbum + " and albumViewModel: " + albumViewModel.toString());
         originalAlbum.setName(albumViewModel.getName());
@@ -75,12 +60,6 @@ public class AlbumServiceSpring implements AlbumService {
         originalAlbum.setYear(localDateTime);
         originalAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
         return originalAlbum;
-    }
-
-    @Override
-    public Album getAlbumByName(String name) {
-        logger.info("getAlbumByName called with name: " + name);
-        return albumRepository.findAlbumByName(name);
     }
 
     @Override

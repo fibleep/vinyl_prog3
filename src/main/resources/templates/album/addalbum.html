@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}">
@@ -13,29 +13,29 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <div class="m-auto d-flex justify-content-center mt-5">
-        <form th:object="${albumViewModel}" method="post"
-              class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
-            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
+        <form class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded" method="post"
+              th:object="${albumViewModel}">
+            <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
                 <p th:text="#{form.error}">The form contains errors</p>
             </div>
             <label th:for="name" th:text="#{form.name}">Name</label>
-            <input class="text-white form-control border-danger bg-black" type="text" th:value="${name}"
-                   th:field="*{name}">
+            <input class="text-white form-control border-danger bg-black" th:field="*{name}" th:value="${name}"
+                   type="text">
             <label th:for="year" th:text="#{form.year}">Year</label>
-            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{year}" min="1888"
-                   max="2023"
-                   step="1"
-                   th:field="*{year}">
+            <input class="text-white form-control border-danger bg-black" max="2023" min="1888" step="1"
+                   th:field="*{year}"
+                   th:value="*{year}"
+                   type="number">
             <label th:for="genre" th:text="#{form.genre}">Genre</label>
-            <select class="text-white form-control border-danger bg-black" th:value="*{genre}" th:field="*{genre}">
-                <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+            <select class="text-white form-control border-danger bg-black" th:field="*{genre}" th:value="*{genre}">
+                <option th:each="genre : ${genres}" th:text="${genre}" th:value="${genre}"></option>
             </select>
             <label th:for="author" th:text="#{form.author}">Author</label>
-            <select class="text-white form-control border-danger bg-black" th:value="*{author}" th:field="*{author}">
-                <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
+            <select class="text-white form-control border-danger bg-black" th:field="*{author}" th:value="*{author}">
+                <option th:each="author : ${authors}" th:text="${author}" th:value="${author}"></option>
             </select>
 
-            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit" th:text="#{form.submit}">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" th:text="#{form.submit}" type="submit">Add</button>
         </form>
     </div>
 

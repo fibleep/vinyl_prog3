@@ -4,7 +4,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <meta charset="UTF-8">
     <title>Vinyl</title>
 </head>
@@ -14,7 +14,7 @@
     <h1 class="d-flex justify-content-center p-2 mt-5 bg-black rounded w-50 h-50 m-auto"
         th:text="|#{error} ${error}|"></h1>
     <div class="d-flex justify-content-center p-2 mt-5 bg-black rounded w-50 h-50 m-auto">
-        <a th:text="${message}" class="bg-black rounded"></a>
+        <a class="bg-black rounded" th:text="${message}"></a>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>
 </main>

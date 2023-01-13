@@ -16,12 +16,13 @@ import java.util.logging.Logger;
 @Profile("JPA")
 @Transactional
 public class AuthorRepositoryJPA implements AuthorRepository {
+    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
     @PersistenceContext
     private EntityManager entityManager;
-    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
 
     @Override
     public List<Author> readAuthors() {
+        logger.info("Reading authors from database");
         try {
             return entityManager.createQuery("SELECT a FROM Author a", Author.class).getResultList();
         } catch (Exception e) {
@@ -31,6 +32,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
 
     @Override
     public Author createAuthor(Author author) {
+        logger.info("Creating author in database");
         try {
             entityManager.persist(author);
             return author;
@@ -41,6 +43,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
 
     @Override
     public void removeAuthor(Author author) {
+        logger.info("Removing author from database");
         try {
             entityManager.remove(entityManager.contains(author) ? author : entityManager.merge(author));
         } catch (Exception e) {
@@ -50,6 +53,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
 
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
+        logger.info("Updating author in database");
         try {
             author.setName(newAuthor.getName());
             author.setGender(newAuthor.getGender());
@@ -63,6 +67,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
 
     @Override
     public List<Author> findAuthorBySongTitle(String title) {
+        logger.info("Finding author by song title in database");
         try {
             return null;
         } catch (Exception e) {
@@ -72,6 +77,7 @@ public class AuthorRepositoryJPA implements AuthorRepository {
 
     @Override
     public Author findAuthorByAlbumName(String album) {
+        logger.info("Finding author by album name in database");
         return entityManager.createQuery("Select author from Author author where author.name = (SELECT a.author.name FROM Album a WHERE a.name = :album)", Author.class)
                 .setParameter("album", album)
                 .getSingleResult();

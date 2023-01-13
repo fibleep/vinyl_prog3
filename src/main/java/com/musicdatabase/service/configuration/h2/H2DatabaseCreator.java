@@ -15,7 +15,6 @@ public class H2DatabaseCreator {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // TODO: Figure out why this doesnt work
     @PostConstruct
     public void loadData() {
         jdbcTemplate.execute("DROP TABLE IF EXISTS entry CASCADE");
@@ -33,7 +32,7 @@ public class H2DatabaseCreator {
         jdbcTemplate.execute("CREATE TABLE entry(" +
                 "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 "    author_id VARCHAR(50) NOT NULL REFERENCES author (id) ON DELETE CASCADE," +
-                "    song_id   INT         NOT NULL REFERENCES song (id) ON DELETE SET NULL," +
+                "    song_id   INT         NOT NULL REFERENCES song (id) ON DELETE CASCADE ," +
                 "    album_id  INT          NOT NULL REFERENCES album (id) ON DELETE CASCADE," +
                 "    co_author BOOL DEFAULT FALSE)");
 

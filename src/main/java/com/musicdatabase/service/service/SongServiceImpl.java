@@ -78,13 +78,6 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public void writeSongsToJSON(SongRepository song) {
-        logger.info("writeSongsToJSON called");
-        jsonDataWriter.writeSongs(song);
-
-    }
-
-    @Override
     public List<Song> findSongsByAlbumName(String albumName) {
         logger.info("findSongsByAlbumName called with albumName: " + albumName);
         return songRepository.findSongByAlbumName(albumName);

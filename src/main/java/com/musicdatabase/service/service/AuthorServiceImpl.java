@@ -6,7 +6,6 @@ import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Gender;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AuthorRepository;
-import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,14 +20,12 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AlbumService albumService;
     private final SongService songService;
-    private final JsonDataWriter jsonDataWriter;
     private final Logger logger = Logger.getLogger(AuthorServiceImpl.class.getName());
 
-    public AuthorServiceImpl(AuthorRepository authorRepository, JsonDataWriter jsonDataWriter, SongService songService, AlbumService albumService) {
+    public AuthorServiceImpl(AuthorRepository authorRepository, SongService songService, AlbumService albumService) {
         this.albumService = albumService;
         this.songService = songService;
         this.authorRepository = authorRepository;
-        this.jsonDataWriter = jsonDataWriter;
     }
 
     @Override
@@ -41,11 +38,6 @@ public class AuthorServiceImpl implements AuthorService {
     public void addAuthor(Author author) {
         logger.info("addAuthor called with author: " + author);
         authorRepository.createAuthor(author);
-    }
-
-    @Override
-    public void writeAuthorsToJSON(AuthorRepository authors) {
-        jsonDataWriter.writeAuthors(authors);
     }
 
     @Override
@@ -77,11 +69,6 @@ public class AuthorServiceImpl implements AuthorService {
         }
         author.getAlbums().forEach(albumService::removeAlbum);
         authorRepository.removeAuthor(author);
-    }
-
-    @Override
-    public Author getAuthorByAlbumName(String album) {
-        return authorRepository.findAuthorByAlbumName(album);
     }
 
     @Override

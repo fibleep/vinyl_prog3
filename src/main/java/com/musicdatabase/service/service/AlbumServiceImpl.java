@@ -5,7 +5,6 @@ import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Genre;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
-import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,26 +19,17 @@ import java.util.stream.Collectors;
 public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
-    private final JsonDataWriter jsonDataWriter;
     private final SongService songService;
     private final Logger logger = Logger.getLogger(AlbumServiceImpl.class.getName());
 
-    public AlbumServiceImpl(AlbumRepository albumRepository, SongService songService, JsonDataWriter jsonDataWriter) {
+    public AlbumServiceImpl(AlbumRepository albumRepository, SongService songService) {
         this.albumRepository = albumRepository;
         this.songService = songService;
-        this.jsonDataWriter = jsonDataWriter;
     }
 
     @Override
     public List<Album> getAlbums() {
         return albumRepository.readAlbums();
-    }
-
-    @Override
-    public List<Album> readAlbumsByAuthor(String author) {
-        // TODO implement me plz
-        logger.info("readAlbumsByAuthor called with author: " + author);
-        return albumRepository.readAlbums().stream().filter(album -> album.getAuthor().getName().equals(author)).collect(Collectors.toList());
     }
 
     @Override
@@ -73,12 +63,6 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public void writeAlbumsToJSON(AlbumRepository album) {
-        logger.info("writeAlbumsToJSON called");
-        jsonDataWriter.writeAlbums(album);
-    }
-
-    @Override
     public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
         logger.info("merge called with originalAlbum: " + originalAlbum + " and albumViewModel: " + albumViewModel);
         originalAlbum.setName(albumViewModel.getName());
@@ -86,12 +70,6 @@ public class AlbumServiceImpl implements AlbumService {
         originalAlbum.setYear(localDateTime);
         originalAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
         return originalAlbum;
-    }
-
-    @Override
-    public Album getAlbumByName(String name) {
-        logger.info("getAlbumByName called with name: " + name);
-        return albumRepository.findAlbumByName(name);
     }
 
     @Override

@@ -35,14 +35,6 @@ public class Song {
     @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Song(String title, int index, double length, List<Author> authors, Album album) {
         this.title = title;
         this.index = index;
@@ -56,6 +48,14 @@ public class Song {
         this.index = index;
         this.length = length;
         this.authors = new ArrayList<>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getMinutes() {
@@ -77,12 +77,12 @@ public class Song {
         authors = updatedAuthors;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
     public List<Author> getAuthors() {
         return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public boolean hasAuthor(String author) {

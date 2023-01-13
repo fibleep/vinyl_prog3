@@ -10,7 +10,7 @@ spring -> JpaRepository implementation
 
 JPA -> ORM implementation using regular repositories + services
 
-JDBC -> JdbcTemplate implementation
+JDBC -> JdbcTemplate implementation -> around 70% done
 
 collections -> List implementation
 
@@ -19,15 +19,52 @@ collections -> List implementation
 Vinyl uses H2 and postgresql depending on your profile
 
 - {"spring","JPA"} -> postgresql database named "postgres" with user "postgres" and password "postgres"
-- {"collections","JDBC"}->H2 database named "vinyldb" with empty password and username
+- {"JDBC"}->H2 database named "vinyldb" with empty password and username
+- {"collections"} -> local lists
 
-## Entities
+## Domain
+
+### Author
+
+An author is a person who wrote a song or an album
+
+- Name
+- Age
+- Gender
+- Albums
+- Songs
+
+### Album
+
+An album is a collection of songs
+
+- Name
+- Release year
+- Songs
+- Genre
+- Author
+
+### Song
+
+A song is a piece of music
+
+- Title
+- Length
+- Index
+- Authors
+- Album
+
+## Relations
 
 Author -> Album --- One to Many
 
 Album -> Song --- One to Many
 
 Song -> Author --- Many to Many
+
+## Contact
+
+To report any bugs or issues, please contact me at: filip.nowak@student.kdg.be
 
 ## License
 

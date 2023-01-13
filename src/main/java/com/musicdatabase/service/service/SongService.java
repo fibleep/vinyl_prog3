@@ -2,7 +2,6 @@ package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Song;
-import com.musicdatabase.service.repository.SongRepository;
 
 import java.util.List;
 
@@ -24,6 +23,4 @@ public interface SongService {
     void updateSong(Song originalSong, Song newSong);
 
     Song merge(Song originalSong, SongViewModel song);
-
-    void writeSongsToJSON(SongRepository songs);
 }

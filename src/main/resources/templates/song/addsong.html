@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
@@ -12,51 +12,51 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <div class="m-auto d-flex justify-content-center mt-5">
-        <form th:object="${songViewModel}" method="post"
-              class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
-            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger">
+        <form class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded" method="post"
+              th:object="${songViewModel}">
+            <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
                 <p th:text="#{form.error}">The form contains errors</p>
             </div>
 
             <label th:for="title" th:text="#{form.title}">Title</label>
-            <input class="text-white form-control border-danger bg-black" type="text" th:value="${title}"
-                   th:field="*{title}">
+            <input class="text-white form-control border-danger bg-black" th:field="*{title}" th:value="${title}"
+                   type="text">
             <label th:for="author" th:text="#{form.author}">Author</label>
             <select
                     class="text-white form-control border-danger bg-black select"
-                    th:field="*{author}"
                     multiple
+                    th:field="*{author}"
             >
                 <span th:each="author : ${authors}">
 											<option
-                                                    th:value="${author}"
                                                     th:text="${author}"
+                                                    th:value="${author}"
                                             ></option>
 										</span>
             </select>
             <label th:for="album" th:text="#{form.album}">Album</label>
-            <select class="text-white form-control border-danger bg-black" th:value="*{album}" th:field="*{album}">
-                <option th:each="album : ${albums}" th:value="${album}" th:text="${album}"></option>
+            <select class="text-white form-control border-danger bg-black" th:field="*{album}" th:value="*{album}">
+                <option th:each="album : ${albums}" th:text="${album}" th:value="${album}"></option>
             </select>
             <label th:for="minutes" th:text="#{form.minutes}">Minutes</label>
-            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{minutes}" min="0"
-                   max="59"
-                   step="1"
+            <input class="text-white form-control border-danger bg-black" max="59" min="0" step="1"
                    th:default="3"
-                   th:field="*{minutes}">
+                   th:field="*{minutes}"
+                   th:value="*{minutes}"
+                   type="number">
             <label th:for="seconds" th:text="#{form.seconds}">Seconds</label>
-            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{seconds}" min="0"
-                   max="59"
-                   step="1"
+            <input class="text-white form-control border-danger bg-black" max="59" min="0" step="1"
                    th:default="30"
-                   th:field="*{seconds}">
+                   th:field="*{seconds}"
+                   th:value="*{seconds}"
+                   type="number">
             <label th:for="index" th:text="#{form.index}">Index</label>
-            <input class="text-white form-control border-danger bg-black" type="number" min="1"
-                   max="99"
-                   step="1" th:value="*{index}"
-                   th:field="*{index}">
+            <input class="text-white form-control border-danger bg-black" max="99" min="1"
+                   step="1"
+                   th:field="*{index}" th:value="*{index}"
+                   type="number">
 
-            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit" th:text="#{form.submit}">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" th:text="#{form.submit}" type="submit">Add</button>
         </form>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>

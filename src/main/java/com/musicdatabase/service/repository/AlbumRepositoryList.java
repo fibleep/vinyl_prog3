@@ -29,11 +29,6 @@ public class AlbumRepositoryList implements AlbumRepository {
     }
 
     @Override
-    public Album findAlbumBySongTitle(String title) {
-        return null;
-    }
-
-    @Override
     public Album findAlbumByName(String name) {
         return albums.stream().filter(album -> album.getName().equals(name)).findFirst().orElse(null);
     }

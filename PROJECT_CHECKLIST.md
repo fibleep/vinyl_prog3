@@ -2,7 +2,8 @@
 
 - Deadline: *Friday January 13th 23:59*
 - 3 entities according to specs in assignment 1 [X]
-- Option to save data to a JSON file [X]
+- Option to save data to a JSON file [X] -> This was implemented in one of the first commits, the writer class is there
+  but there's no option to save it on the website
 - Layered architecture [X]
 - presentation - service - repository - domain → separate packages [X]
 - Interfaces for loose coupling between layers [X]

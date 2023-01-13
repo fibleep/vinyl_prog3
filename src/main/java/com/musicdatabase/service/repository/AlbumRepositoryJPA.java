@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 @Profile("JPA")
 @Transactional
 public class AlbumRepositoryJPA implements AlbumRepository {
+    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
     @PersistenceContext
     private EntityManager entityManager;
-    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
 
     @Override
     public Album createAlbum(Album album) {
@@ -54,15 +54,6 @@ public class AlbumRepositoryJPA implements AlbumRepository {
             originalAlbum.setSongs(newAlbum.getSongs());
             originalAlbum.setAuthor(newAlbum.getAuthor());
             entityManager.merge(originalAlbum);
-        } catch (Exception e) {
-            throw new DatabaseException(e.getMessage());
-        }
-    }
-
-    @Override
-    public Album findAlbumBySongTitle(String title) {
-        try {
-            return entityManager.createQuery("SELECT a FROM Album a JOIN a.songs s WHERE s.title = :title", Album.class).setParameter("title", title).getSingleResult();
         } catch (Exception e) {
             throw new DatabaseException(e.getMessage());
         }

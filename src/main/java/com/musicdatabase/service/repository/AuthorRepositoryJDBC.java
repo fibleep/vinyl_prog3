@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 @Repository
 @Profile("JDBC")
 public class AuthorRepositoryJDBC implements AuthorRepository {
+    private final SimpleJdbcInsert jdbcInsert;
+    private final Logger logger = Logger.getLogger(AuthorRepositoryJDBC.class.getName());
     @Value("${spring.datasource.url}")
     private String url;
     @Value("${spring.datasource.username}")
@@ -28,9 +30,6 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
     private String password;
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private final SimpleJdbcInsert jdbcInsert;
-
-    private final Logger logger = Logger.getLogger(AuthorRepositoryJDBC.class.getName());
 
     public AuthorRepositoryJDBC(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -80,7 +79,6 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
         }
     }
 
-    // TODO: jdbc updates...
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
         try {
@@ -93,6 +91,7 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
 
     @Override
     public List<Author> findAuthorBySongTitle(String title) {
+        logger.info("findAuthorBySongTitle called");
         try {
             return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where song_id=(select id from song where title=?))", this::mapRow, title);
         } catch (Exception e) {

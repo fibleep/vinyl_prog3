@@ -4,7 +4,6 @@ import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Gender;
 import com.musicdatabase.service.model.Song;
-import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.AuthorRepositorySpring;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
@@ -43,11 +42,6 @@ public class AuthorServiceSpring implements AuthorService {
     }
 
     @Override
-    public void writeAuthorsToJSON(AuthorRepository authors) {
-        jsonDataWriter.writeAuthors(authors);
-    }
-
-    @Override
     public void addAuthor(Author author) {
         logger.info("addAuthor called with author: " + author);
         authorRepository.save(author);
@@ -82,11 +76,6 @@ public class AuthorServiceSpring implements AuthorService {
         }
         author.getAlbums().forEach(albumService::removeAlbum);
         authorRepository.delete(author);
-    }
-
-    @Override
-    public Author getAuthorByAlbumName(String album) {
-        return authorRepository.findAuthorByAlbumName(album);
     }
 
 }

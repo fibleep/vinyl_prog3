@@ -46,6 +46,10 @@ public class Author {
         return songs;
     }
 
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
     public Long getId() {
         return id;
     }
@@ -60,10 +64,6 @@ public class Author {
 
     public void removeSong(Song song) {
         this.songs.remove(song);
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
     }
 
     public void updateSong(Song originalSong, Song newSong) {

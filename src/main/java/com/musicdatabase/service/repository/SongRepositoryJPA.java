@@ -16,9 +16,9 @@ import java.util.logging.Logger;
 @Profile("JPA")
 @Transactional
 public class SongRepositoryJPA implements SongRepository {
+    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
     @PersistenceContext
     private EntityManager entityManager;
-    private final Logger logger = Logger.getLogger(AlbumController.class.getName());
 
     @Override
     public List<Song> readSongs() {

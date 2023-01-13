@@ -2,8 +2,6 @@ package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Song;
-import com.musicdatabase.service.repository.JsonDataWriter;
-import com.musicdatabase.service.repository.SongRepository;
 import com.musicdatabase.service.repository.SongRepositorySpring;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -14,15 +12,12 @@ import java.util.logging.Logger;
 @Service
 @Profile("spring")
 public class SongServiceSpring implements SongService {
-    private final JsonDataWriter jsonDataWriter;
     private final SongRepositorySpring songRepository;
-
-    public SongServiceSpring(SongRepositorySpring songRepository, JsonDataWriter jsonDataWriter) {
-        this.songRepository = songRepository;
-        this.jsonDataWriter = jsonDataWriter;
-    }
-
     private final Logger logger = Logger.getLogger(SongServiceImpl.class.getName());
+
+    public SongServiceSpring(SongRepositorySpring songRepository) {
+        this.songRepository = songRepository;
+    }
 
     @Override
     public List<Song> getSongs() {
@@ -74,10 +69,5 @@ public class SongServiceSpring implements SongService {
             originalSong.setLength(song.getLength());
         }
         return originalSong;
-    }
-
-    @Override
-    public void writeSongsToJSON(SongRepository songs) {
-
     }
 }

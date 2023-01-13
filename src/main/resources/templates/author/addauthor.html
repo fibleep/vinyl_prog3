@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="../../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css} ">
@@ -12,25 +12,25 @@
 <main>
     <div th:insert="fragments/fragments :: navbar"></div>
     <div class="m-auto d-flex justify-content-center mt-5">
-        <form th:object="${authorViewModel}" method="post"
-              class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded">
-            <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger" th:text="#{form.error}">
+        <form class="text-danger bg-black border-danger d-flex flex-column p-5 border rounded" method="post"
+              th:object="${authorViewModel}">
+            <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}" th:text="#{form.error}">
                 <p>The form contains errors</p>
             </div>
             <label th:for="name" th:text="#{form.name}">Name</label>
-            <input class="text-white form-control border-danger bg-black" type="text" th:value="${name}"
-                   th:field="*{name}">
+            <input class="text-white form-control border-danger bg-black" th:field="*{name}" th:value="${name}"
+                   type="text">
             <label th:for="age" th:text="#{form.age}">Age</label>
-            <input class="text-white form-control border-danger bg-black" type="number" th:value="*{age}" min="1"
-                   max="120"
-                   step="1"
-                   th:field="*{age}">
+            <input class="text-white form-control border-danger bg-black" max="120" min="1" step="1"
+                   th:field="*{age}"
+                   th:value="*{age}"
+                   type="number">
             <label th:for="gender" th:text="#{form.gender}">Gender</label>
-            <select class="text-white form-control border-danger bg-black" th:value="*{gender}" th:field="*{gender}">
-                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender}"></option>
+            <select class="text-white form-control border-danger bg-black" th:field="*{gender}" th:value="*{gender}">
+                <option th:each="gender : ${genders}" th:text="${gender}" th:value="${gender}"></option>
             </select>
 
-            <button class="btn btn-bg-dark btn-outline-danger mt-5" type="submit" th:text="#{form.submit}">Add</button>
+            <button class="btn btn-bg-dark btn-outline-danger mt-5" th:text="#{form.submit}" type="submit">Add</button>
         </form>
     </div>
     <div th:insert="~{fragments/fragments::footer}">No footer</div>

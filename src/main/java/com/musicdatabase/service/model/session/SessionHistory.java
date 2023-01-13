@@ -19,10 +19,6 @@ public class SessionHistory {
         pageVisits.add(pageVisit);
     }
 
-    public void clear() {
-        pageVisits.clear();
-    }
-
     public List<PageVisit> getPageVisits() {
         return pageVisits;
     }
