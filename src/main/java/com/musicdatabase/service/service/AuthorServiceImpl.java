@@ -3,11 +3,13 @@ package com.musicdatabase.service.service;
 import com.musicdatabase.service.controller.exceptions.EntryNotFoundException;
 import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
+import com.musicdatabase.service.model.Gender;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -54,11 +56,14 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author merge(Author originalAuthor, AuthorViewModel authorViewModel) {
-        return null;
+        originalAuthor.setName(authorViewModel.getName());
+        originalAuthor.setAge(authorViewModel.getAge());
+        originalAuthor.setGender(Gender.valueOf(authorViewModel.getGender()));
+        return originalAuthor;
     }
 
-    //TODO: deleting authors for jdbc breaks other entities
     @Override
+    @Transactional
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);
         for (Song song : songService.findSongsByAuthorName(author.getName())) {

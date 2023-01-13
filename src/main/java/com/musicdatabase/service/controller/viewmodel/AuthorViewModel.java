@@ -6,7 +6,6 @@ import lombok.ToString;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -14,12 +13,10 @@ import javax.validation.constraints.Size;
 @ToString
 public class AuthorViewModel {
     @Size(max = 40, message = "Name must be less than 40 characters")
-    @NotBlank(message = "Name is required")
+    @NotBlank
     private String name;
-    @NotBlank(message = "Gender is required")
     @Size(min = 1, max = 10)
     private String gender;
-    @NotNull(message = "Age is required")
     @Max(120)
     private int age;
 }

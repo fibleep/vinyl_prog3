@@ -2,6 +2,7 @@ package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
+import com.musicdatabase.service.model.Gender;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.AuthorRepositorySpring;
@@ -43,7 +44,7 @@ public class AuthorServiceSpring implements AuthorService {
 
     @Override
     public void writeAuthorsToJSON(AuthorRepository authors) {
-
+        jsonDataWriter.writeAuthors(authors);
     }
 
     @Override
@@ -60,7 +61,10 @@ public class AuthorServiceSpring implements AuthorService {
 
     @Override
     public Author merge(Author originalAuthor, AuthorViewModel authorViewModel) {
-        return null;
+        originalAuthor.setName(authorViewModel.getName());
+        originalAuthor.setAge(authorViewModel.getAge());
+        originalAuthor.setGender(Gender.valueOf(authorViewModel.getGender()));
+        return originalAuthor;
     }
 
     @Override

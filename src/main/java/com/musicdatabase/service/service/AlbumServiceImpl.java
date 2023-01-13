@@ -50,7 +50,6 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public void removeAlbum(Album album) {
         logger.info("removeAlbum called with album: " + album);
-        album.getSongs().forEach(songService::removeSong);
         albumRepository.deleteAlbum(album);
     }
 

@@ -60,13 +60,22 @@ public class SongController {
             return new ModelAndView("/song/addsong");
         }
         Song song = songService.merge(new Song(), songViewModel);
-        song.addAuthor(authorService.getAuthors().stream()
-                .filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
+
+        if (songViewModel.getAuthor() != null) {
+            String[] authorsArray = songViewModel.getAuthor().split(",");
+            List<Author> authors = new ArrayList<>();
+            for (String author : authorsArray) {
+                authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
+            }
+            song.setAuthors(authors);
+        }
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             song.setAlbum(album);
             song.setIndex(songViewModel.getIndex());
         }
+
+        
         songService.createSong(song);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/songs");

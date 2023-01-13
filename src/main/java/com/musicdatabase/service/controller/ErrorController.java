@@ -48,7 +48,7 @@ public class ErrorController {
         return modelAndView;
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RuntimeException.class)
     public ModelAndView defaultErrorHandler(Exception e) throws Exception {
         ModelAndView modelAndView = new ModelAndView("error");
         if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
