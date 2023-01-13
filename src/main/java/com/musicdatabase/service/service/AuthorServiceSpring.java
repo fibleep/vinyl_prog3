@@ -64,11 +64,6 @@ public class AuthorServiceSpring implements AuthorService {
     @Override
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);
-        author.getAlbums().forEach(albumService::removeAlbum);
-        author.getSongs().forEach(song -> {
-            song.removeAuthor(author);
-            songService.updateSong(song, song);
-        });
         authorRepository.delete(author);
     }
 

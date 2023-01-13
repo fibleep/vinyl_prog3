@@ -2,12 +2,14 @@ package com.musicdatabase.service.controller.viewmodel;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@ToString
 public class AlbumViewModel {
 
     @NotBlank(message = "name is required")

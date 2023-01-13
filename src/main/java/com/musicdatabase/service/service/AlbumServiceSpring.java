@@ -2,6 +2,7 @@ package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.controller.viewmodel.AlbumViewModel;
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Genre;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.AlbumRepositorySpring;
@@ -9,6 +10,7 @@ import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -65,7 +67,12 @@ public class AlbumServiceSpring implements AlbumService {
 
     @Override
     public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
-        return null;
+        logger.info("merge called with originalAlbum: " + originalAlbum + " and albumViewModel: " + albumViewModel.toString());
+        originalAlbum.setName(albumViewModel.getName());
+        LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(albumViewModel.getYear()), 1, 1, 0, 0);
+        originalAlbum.setYear(localDateTime);
+        originalAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
+        return originalAlbum;
     }
 
     @Override

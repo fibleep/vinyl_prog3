@@ -25,12 +25,12 @@ public class Album {
     @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     private List<Song> songs = new ArrayList<>();
     @Column(name = "year", nullable = false)
-    private LocalDateTime year = LocalDateTime.now();
+    private LocalDateTime year;
     @Enumerated(EnumType.STRING)
     private Genre genre;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Author author;
+    private Author author = new Author();
 
     public Album(String name, LocalDateTime year, Genre genre, Author author, List<Song> songs) {
         this.name = name;

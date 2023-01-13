@@ -64,9 +64,12 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public Song merge(Song originalSong, SongViewModel song) {
-        originalSong.setTitle(song.getTitle());
-        originalSong.setLength(song.getLength());
-        originalSong.setIndex(song.getIndex());
+        if (song.getTitle() != null && !song.getTitle().isEmpty()) {
+            originalSong.setTitle(song.getTitle());
+        }
+        if (song.getLength() != 0.0) {
+            originalSong.setLength(song.getLength());
+        }
         return originalSong;
     }
 

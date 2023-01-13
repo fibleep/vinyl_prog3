@@ -2,6 +2,7 @@ package com.musicdatabase.service.controller.viewmodel;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@ToString
 public class AuthorViewModel {
     @Size(max = 40, message = "Name must be less than 40 characters")
     @NotBlank(message = "Name is required")
@@ -20,13 +22,4 @@ public class AuthorViewModel {
     @NotNull(message = "Age is required")
     @Max(120)
     private int age;
-
-    @Override
-    public String toString() {
-        return "AuthorViewModel{" +
-                "name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }

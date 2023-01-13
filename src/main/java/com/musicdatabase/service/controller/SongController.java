@@ -59,19 +59,13 @@ public class SongController {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
             return new ModelAndView("/song/addsong");
         }
-        Song song = new Song();
-        song.setTitle(songViewModel.getTitle());
-        song.setIndex(songViewModel.getIndex());
-        double seconds = songViewModel.getSeconds() == 0.0 ? 0 : songViewModel.getSeconds() / 100.0;
-        double length = songViewModel.getMinutes() + seconds;
-        song.setLength(length);
+        Song song = songService.merge(new Song(), songViewModel);
         song.addAuthor(authorService.getAuthors().stream()
                 .filter(author -> author.getName().equals(songViewModel.getAuthor())).findFirst().get());
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             song.setAlbum(album);
             song.setIndex(songViewModel.getIndex());
-
         }
         songService.createSong(song);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
@@ -112,8 +106,8 @@ public class SongController {
         }
         Song originalSong = songService.getSong(song);
         Song songToUpdate = originalSong;
-        // set title
         songToUpdate = songService.merge(originalSong, songViewModel);
+
         if (songViewModel.getAuthor() != null) {
             String[] authorsArray = songViewModel.getAuthor().split(",");
             List<Author> authors = new ArrayList<>();
@@ -123,10 +117,6 @@ public class SongController {
             songToUpdate.setAuthors(authors);
         }
         // set index
-        if (songViewModel.getMinutes() != 0 && songViewModel.getSeconds() != 0) {
-            double length = songViewModel.getMinutes() + (songViewModel.getSeconds() / 100.0);
-            songToUpdate.setLength(length);
-        }
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             songToUpdate.setAlbum(album);

@@ -54,9 +54,9 @@ public class AlbumController {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
             return new ModelAndView("/album/addalbum");
         }
-        Album album = new Album();
-
-        albumService.addAlbum(albumService.merge(album, albumViewModel));
+        Album album = albumService.merge(new Album(), albumViewModel);
+        album.setAuthor(authorService.getAuthorByName(albumViewModel.getAuthor()));
+        albumService.addAlbum(album);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/albums");
     }

@@ -81,7 +81,8 @@ public class AlbumServiceImpl implements AlbumService {
     public Album merge(Album originalAlbum, AlbumViewModel albumViewModel) {
         logger.info("merge called with originalAlbum: " + originalAlbum + " and albumViewModel: " + albumViewModel);
         originalAlbum.setName(albumViewModel.getName());
-        originalAlbum.setYear(LocalDateTime.parse(albumViewModel.getYear()));
+        LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(albumViewModel.getYear()), 1, 1, 0, 0);
+        originalAlbum.setYear(localDateTime);
         originalAlbum.setGenre(Genre.valueOf(albumViewModel.getGenre()));
         return originalAlbum;
     }

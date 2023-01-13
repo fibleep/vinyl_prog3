@@ -16,12 +16,10 @@ import java.util.logging.Logger;
 public class SongServiceSpring implements SongService {
     private final JsonDataWriter jsonDataWriter;
     private final SongRepositorySpring songRepository;
-    private final AlbumService albumService;
 
-    public SongServiceSpring(SongRepositorySpring songRepository, AlbumService albumService, JsonDataWriter jsonDataWriter) {
+    public SongServiceSpring(SongRepositorySpring songRepository, JsonDataWriter jsonDataWriter) {
         this.songRepository = songRepository;
         this.jsonDataWriter = jsonDataWriter;
-        this.albumService = albumService;
     }
 
     private final Logger logger = Logger.getLogger(SongServiceImpl.class.getName());
@@ -64,14 +62,17 @@ public class SongServiceSpring implements SongService {
     @Override
     public void updateSong(Song originalSong, Song newSong) {
         logger.info("updateSong called with originalSong: " + originalSong + " and newSong: " + newSong);
+        songRepository.save(newSong);
     }
 
     @Override
     public Song merge(Song originalSong, SongViewModel song) {
-        originalSong.setTitle(song.getTitle());
-        originalSong.setLength(song.getLength());
-        originalSong.setAlbum(albumService.getAlbumByName(song.getAlbum()));
-        originalSong.setIndex(song.getIndex());
+        if (song.getTitle() != null && !song.getTitle().isEmpty()) {
+            originalSong.setTitle(song.getTitle());
+        }
+        if (song.getLength() != 0.0) {
+            originalSong.setLength(song.getLength());
+        }
         return originalSong;
     }
 
