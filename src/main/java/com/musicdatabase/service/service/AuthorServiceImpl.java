@@ -1,7 +1,7 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.exceptions.EntryNotFoundException;
 import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
-import com.musicdatabase.service.model.Album;
 import com.musicdatabase.service.model.Author;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AuthorRepository;
@@ -57,6 +57,7 @@ public class AuthorServiceImpl implements AuthorService {
         return null;
     }
 
+    //TODO: deleting authors for jdbc breaks other entities
     @Override
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);
@@ -69,9 +70,7 @@ public class AuthorServiceImpl implements AuthorService {
                 songService.updateSong(song, updatedSong);
             }
         }
-        for (Album album : author.getAlbums()) {
-            albumService.removeAlbum(album);
-        }
+        author.getAlbums().forEach(albumService::removeAlbum);
         authorRepository.removeAuthor(author);
     }
 
@@ -86,6 +85,6 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepository.readAuthors().stream()
                 .filter(author -> author.getName().equals(name))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new EntryNotFoundException("Author with name: " + name + " not found"));
     }
 }

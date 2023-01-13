@@ -85,7 +85,6 @@ public class AuthorController {
     public ModelAndView deleteAuthor(@PathVariable String author, HttpServletRequest request) {
         logger.info("deleteAuthor called");
         authorService.removeAuthor(authorService.getAuthorByName(author));
-        historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/authors");
     }
 

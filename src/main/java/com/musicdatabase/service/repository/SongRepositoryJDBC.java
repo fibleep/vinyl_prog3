@@ -45,7 +45,6 @@ public class SongRepositoryJDBC implements SongRepository {
                 }, albumId));
                 song.setLength(resultSet.getInt("duration"));
                 song.setIndex(resultSet.getInt("album_index"));
-                logger.info("Song: " + song);
                 return song;
             });
         } catch (Exception e) {
@@ -70,13 +69,18 @@ public class SongRepositoryJDBC implements SongRepository {
         }
     }
 
+    // TODO: jdbc updates....
     @Override
     public void updateSong(Song song, Song newSong) {
-
+        try {
+            jdbcTemplate.update("update song set title = ?, duration = ?, album_index = ? where id = ?", newSong.getTitle(), newSong.getLength(), newSong.getIndex(), song.getId());
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
     public List<Song> findSongByAlbumName(String albumName) {
-        return null;
+        return readSongs().stream().filter(song -> song.getAlbum().getName().equals(albumName)).toList();
     }
 }

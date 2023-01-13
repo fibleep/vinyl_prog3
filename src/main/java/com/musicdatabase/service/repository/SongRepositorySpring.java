@@ -21,4 +21,5 @@ public interface SongRepositorySpring extends JpaRepository<Song, Long> {
 
     @Query("SELECT s FROM Song s WHERE s.album.name = ?1")
     List<Song> findByAlbumName(String album);
+
 }

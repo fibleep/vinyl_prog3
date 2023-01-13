@@ -38,7 +38,7 @@ public class SongServiceSpring implements SongService {
 
     @Override
     public List<Song> findSongsByAuthorName(String author) {
-        return null;
+        return songRepository.findAll().parallelStream().filter(song -> song.getAuthors().stream().anyMatch(s -> s.getName().equals(author))).toList();
     }
 
     @Override

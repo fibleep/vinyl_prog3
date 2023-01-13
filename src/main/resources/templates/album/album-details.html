@@ -60,19 +60,19 @@
                         </div>
                         <div class="modal-body d-flex flex-wrap">
                             <label class="form-label" th:for="name"  th:text="#{form.name}">Name</label>
-                            <input class="form-control" type="text" th:field="*{name}" th:value="${album.getName()}" th:placeholder="${album.getName()}" th:default="${album.getName()}"/>
+                            <input class="text-white form-control border-danger bg-black" type="text" th:field="*{name}" th:value="${album.getName()}" th:placeholder="${album.getName()}" th:default="${album.getName()}"/>
                             <label th:for="genre"  th:text="#{form.genre}">Genre</label>
-                            <select class="form-control" th:field="*{genre}" th:value="${album.getGenre()}" th:placeholder="${album.getGenre()}" required>
+                            <select class="text-white form-control border-danger bg-black" th:field="*{genre}" th:value="${album.getGenre()}" th:placeholder="${album.getGenre()}" required>
                                 <option selected="selected" th:value="${album.getGenre()}" th:text="${album.getGenre()}"></option>
                                 <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
                             </select>
                             <label class="form-label" th:for="author"  th:text="#{form.author}">Author</label>
-                            <select class="form-control" th:field="*{author}">
+                            <select class="text-white form-control border-danger bg-black" th:field="*{author}">
                                 <option selected="selected" th:value="${album.getAuthor().getName()}" th:text="${album.getAuthor().getName()}"></option>
                                 <span th:each="author : ${authors}" th:if="${author.getName()!=album.getAuthor().getName()}"> <option th:value="${author.getName()}" th:text="${author.getName()}"></option> </span>
                             </select>
                             <label class="form-label" th:for="year"  th:text="#{form.year}">Year</label>
-                            <input class="form-control" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1888" max="2023" step="1"/>
+                            <input class="text-white form-control border-danger bg-black" type="number" th:field="*{year}" th:value="${album.getYear()}" th:placeholder="${album.getYear()}" th:default="${album.getYear()}" min="1888" max="2023" step="1"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  th:text="#{form.close}">Close</button>

@@ -26,7 +26,7 @@ public class Author {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "author", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private List<Album> albums = new ArrayList<>();
     @ManyToMany(mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Song> songs = new ArrayList<>();

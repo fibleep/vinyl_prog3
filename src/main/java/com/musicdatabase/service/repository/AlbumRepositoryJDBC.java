@@ -2,6 +2,8 @@ package com.musicdatabase.service.repository;
 
 import com.musicdatabase.service.controller.exceptions.DatabaseException;
 import com.musicdatabase.service.model.Album;
+import com.musicdatabase.service.model.Author;
+import com.musicdatabase.service.model.Gender;
 import com.musicdatabase.service.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,6 +48,13 @@ public class AlbumRepositoryJDBC implements AlbumRepository {
                 album.setYear(LocalDateTime.of(resultSet.getInt("release_year"), 1, 1, 0, 0));
                 album.setSongs(songRepository.findSongByAlbumName(album.getName()));
                 album.setGenre(Genre.valueOf(resultSet.getString("genre")));
+                album.setAuthor(jdbcTemplate.queryForObject("select * from author where id = (select AUTHOR_ID from entry where ALBUM_ID=? LIMIT 1)", (resultSetAuthor, i1) -> {
+                    Author author = new Author();
+                    author.setName(resultSetAuthor.getString("name"));
+                    author.setGender(Gender.valueOf(resultSetAuthor.getString("gender")));
+                    author.setAge(resultSetAuthor.getInt("age"));
+                    return author;
+                }, resultSet.getInt("id")));
                 return album;
             });
         } catch (Exception e) {

@@ -2,11 +2,13 @@ package com.musicdatabase.service.service;
 
 import com.musicdatabase.service.controller.viewmodel.AuthorViewModel;
 import com.musicdatabase.service.model.Author;
+import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.AuthorRepository;
 import com.musicdatabase.service.repository.AuthorRepositorySpring;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -62,8 +64,19 @@ public class AuthorServiceSpring implements AuthorService {
     }
 
     @Override
+    @Transactional
     public void removeAuthor(Author author) {
         logger.info("removeAuthor called with author: " + author);
+        for (Song song : songService.findSongsByAuthorName(author.getName())) {
+            Song updatedSong = song;
+            updatedSong.removeAuthor(author);
+            if (updatedSong.getAuthors().size() == 0) {
+                songService.removeSong(song);
+            } else {
+                songService.updateSong(song, updatedSong);
+            }
+        }
+        author.getAlbums().forEach(albumService::removeAlbum);
         authorRepository.delete(author);
     }
 

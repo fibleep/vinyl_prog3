@@ -80,6 +80,7 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
         }
     }
 
+    // TODO: jdbc updates...
     @Override
     public void updateAuthor(Author author, Author newAuthor) {
         try {
@@ -101,7 +102,7 @@ public class AuthorRepositoryJDBC implements AuthorRepository {
 
     @Override
     public Author findAuthorByAlbumName(String album) {
-        return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where album_id=(select id from album where name=?))", this::mapRow, album).get(0);
+        return jdbcTemplate.query("SELECT * from author where id in (select author_id from entry where album_id=(select id from album where title=?))", this::mapRow, album).get(0);
     }
 
     public Author mapRow(ResultSet rs, int rowNum) throws SQLException {

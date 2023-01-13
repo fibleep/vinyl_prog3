@@ -32,9 +32,9 @@ public class H2DatabaseCreator {
                 "id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, age INTEGER NOT NULL,  gender VARCHAR(6)  NOT NULL CHECK (gender in ('FEMALE', 'MALE', 'OTHER')))");
         jdbcTemplate.execute("CREATE TABLE entry(" +
                 "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
-                "    author_id VARCHAR(50) NOT NULL REFERENCES author (id)," +
-                "    song_id   INT         NOT NULL REFERENCES song (id)," +
-                "    album_id  INT         NOT NULL REFERENCES album (id)," +
+                "    author_id VARCHAR(50) NOT NULL REFERENCES author (id) ON DELETE CASCADE," +
+                "    song_id   INT         NOT NULL REFERENCES song (id) ON DELETE SET NULL," +
+                "    album_id  INT          NOT NULL REFERENCES album (id) ON DELETE CASCADE," +
                 "    co_author BOOL DEFAULT FALSE)");
 
         jdbcTemplate.execute("INSERT INTO AUTHOR(name, age, gender) VALUES ('Taco Hemingway', 32, 'MALE'), ('Dawid Podsiadło', 29, 'MALE'), ('Daria Zawiałow', 30, 'FEMALE'), ('Quebonafide', 31, 'MALE')");
