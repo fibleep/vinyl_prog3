@@ -84,7 +84,6 @@ public class AlbumController {
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.warning(error.toString()));
             return new ModelAndView("redirect:/album/album-details");
-
         }
         Album originalAlbum = albumService.getAlbums().stream().filter(a -> a.getName().equals(album)).findFirst().get();
         Album newAlbum = originalAlbum;

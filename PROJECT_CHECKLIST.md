@@ -1,9 +1,5 @@
 # Checklist for the project for programming 3
 
-TODO: Once a song is assigned to an album, automatically check the creator
-TODO: Index validating
-TODO: Split up put for songs because its chonky and bad, validator class?
-
 - Deadline: *Friday January 13th 23:59*
 - 3 entities according to specs in assignment 1 [X]
 - Option to save data to a JSON file [X]
@@ -36,11 +32,12 @@ TODO: Split up put for songs because its chonky and bad, validator class?
         - support for second language [X]
         - validation:
             - use viewmodels for the forms, add validation there [X]
-            - use validation messages, show them in your views
-            - some minimal client side validation
+            - use validation messages, show them in your views [?] My controller handler seems to be catching all of my
+              exceptions
+            - some minimal client side validation [X]
 - repository layer: 4 implementations
     - using collections [X]
-    - using JdbcTemplate
+    - using JdbcTemplate [?] JDBC updating doesnt work
     - using ORM (JPA) [X]
     - using JpaRepository (Spring Data) [X]
         - at least two method queries [X]

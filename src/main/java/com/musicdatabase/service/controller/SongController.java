@@ -60,22 +60,19 @@ public class SongController {
             return new ModelAndView("/song/addsong");
         }
         Song song = songService.merge(new Song(), songViewModel);
-
-        if (songViewModel.getAuthor() != null) {
-            String[] authorsArray = songViewModel.getAuthor().split(",");
-            List<Author> authors = new ArrayList<>();
-            for (String author : authorsArray) {
-                authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
-            }
-            song.setAuthors(authors);
+        String[] authorsArray = songViewModel.getAuthor().split(",");
+        List<Author> authors = new ArrayList<>();
+        for (String author : authorsArray) {
+            authors.add(authorService.getAuthors().stream().filter(a -> a.getName().equals(author)).findFirst().get());
         }
+        song.setAuthors(authors);
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             song.setAlbum(album);
             song.setIndex(songViewModel.getIndex());
         }
 
-        
+
         songService.createSong(song);
         historyController.addPageVisit(new PageVisit(request.getRequestURL().toString()));
         return new ModelAndView("redirect:/songs");
@@ -126,18 +123,16 @@ public class SongController {
             songToUpdate.setAuthors(authors);
         }
         // set index
+        songService.updateSong(originalSong, songToUpdate);
         if (songViewModel.getAlbum() != null) {
             Album album = albumService.getAlbums().stream().filter(a -> a.getName().equals(songViewModel.getAlbum())).findFirst().get();
             songToUpdate.setAlbum(album);
-            if (songViewModel.getIndex() != 0 && songViewModel.getIndex() != originalSong.getIndex() && !album.getSongIndexes().contains(songViewModel.getIndex())) {
-                songToUpdate.setIndex(songViewModel.getIndex());
-            }
+            songToUpdate.setIndex(songViewModel.getIndex());
             Album originaAlbum = originalSong.getAlbum();
             Album updatedAlbum = originaAlbum;
             updatedAlbum.updateSong(originalSong, songToUpdate);
             albumService.updateAlbum(originaAlbum, updatedAlbum);
         }
-        songService.updateSong(originalSong, songToUpdate);
         return new ModelAndView("redirect:/songs");
     }
 

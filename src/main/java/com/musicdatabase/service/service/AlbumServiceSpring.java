@@ -9,6 +9,7 @@ import com.musicdatabase.service.repository.AlbumRepositorySpring;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -50,6 +51,7 @@ public class AlbumServiceSpring implements AlbumService {
     }
 
     @Override
+    @Transactional
     public void removeAlbum(Album album) {
         album.getSongs().forEach(songService::removeSong);
         albumRepository.delete(album);

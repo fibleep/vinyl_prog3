@@ -8,6 +8,7 @@ import com.musicdatabase.service.repository.AlbumRepository;
 import com.musicdatabase.service.repository.JsonDataWriter;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -60,6 +61,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @Transactional
     public void updateAlbum(Album originalAlbum, Album newAlbum) {
         logger.info("updateAlbum called with originalAlbum: " + originalAlbum + " and newAlbum: " + newAlbum);
         for (Song song : originalAlbum.getSongs()) {

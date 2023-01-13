@@ -1,5 +1,6 @@
 package com.musicdatabase.service.service;
 
+import com.musicdatabase.service.controller.exceptions.IndexAlreadyExistsException;
 import com.musicdatabase.service.controller.viewmodel.SongViewModel;
 import com.musicdatabase.service.model.Song;
 import com.musicdatabase.service.repository.JsonDataWriter;
@@ -47,6 +48,9 @@ public class SongServiceImpl implements SongService {
     @Override
     public void createSong(Song song) {
         logger.info("createSong called with song: " + song);
+        if (song.getAlbum().getSongIndexes().stream().anyMatch(songIndex -> songIndex == song.getIndex())) {
+            throw new IndexAlreadyExistsException("Index already exists");
+        }
         songRepository.createSong(song);
     }
 
